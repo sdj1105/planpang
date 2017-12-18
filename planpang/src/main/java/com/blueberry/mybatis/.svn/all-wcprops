@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/java2606/!svn/ver/517/planpang/src/main/java/com/blueberry/mybatis
+END
+HomeMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/java2606/!svn/ver/453/planpang/src/main/java/com/blueberry/mybatis/HomeMapper.java
+END
+MyPlanBbsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/java2606/!svn/ver/363/planpang/src/main/java/com/blueberry/mybatis/MyPlanBbsMapper.java
+END
+PlanWriterMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/java2606/!svn/ver/496/planpang/src/main/java/com/blueberry/mybatis/PlanWriterMapper.java
+END
+PlanBbsMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/java2606/!svn/ver/517/planpang/src/main/java/com/blueberry/mybatis/PlanBbsMapper.xml
+END
+MyFavPlanBbsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/java2606/!svn/ver/393/planpang/src/main/java/com/blueberry/mybatis/MyFavPlanBbsMapper.java
+END
+PlanBbsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/java2606/!svn/ver/514/planpang/src/main/java/com/blueberry/mybatis/PlanBbsMapper.java
+END
+MyFavPlanBbsMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/java2606/!svn/ver/450/planpang/src/main/java/com/blueberry/mybatis/MyFavPlanBbsMapper.xml
+END
+PlanWriterMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/java2606/!svn/ver/496/planpang/src/main/java/com/blueberry/mybatis/PlanWriterMapper.xml
+END
+MyPlanBbsMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/java2606/!svn/ver/450/planpang/src/main/java/com/blueberry/mybatis/MyPlanBbsMapper.xml
+END
+HomeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/java2606/!svn/ver/496/planpang/src/main/java/com/blueberry/mybatis/HomeMapper.xml
+END

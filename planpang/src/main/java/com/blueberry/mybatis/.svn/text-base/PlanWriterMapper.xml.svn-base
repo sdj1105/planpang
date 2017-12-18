@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blueberry.mybatis.PlanWriterMapper">
+	
+	<select id="getArticle" parameterType="hashmap" resultType="hashmap">
+		select 		MEMSEQ
+				,	PLANSEQ
+				,	PLANPHOTO
+				,	PLANTITLE
+				,	PLANCOST
+				,	SHAREYN
+				,	DELYN
+				,	REGDT
+				,	CNT
+				,	LIKENUM
+				,	FEWDAYS
+				,	REGPOOMCD
+				,	MEMO
+				,	PLANAREA
+				,	UPDATEDT				
+				,	TO_CHAR(PLANPERIOD, 'yyyy-mm-dd') PLANPERIOD
+		from	PP_PLAN
+		where	planSeq	= #{planSeq}
+	</select>
+	<update id="updateArticle" parameterType="hashmap">
+		update	PP_PLAN
+		set		PLANPERIOD		= TO_DATE('${planPeriod}', 'yyyy-mm-dd')
+			,	PLANTITLE 		= #{planTitle}
+			,	PLANAREA 		= #{planArea}
+			,	PLANCOST 		= #{planCost}
+			,	UPDATEDT 		= sysdate
+			,	FEWDAYS 		= #{fewDays}
+			,	MEMO 			= #{memo}
+			,	SHAREYN 		= #{shareyn}
+		where	planSeq 		= #{planSeq}
+	</update>
+	<update id="deleteArticle" parameterType="hashmap">
+		update 	PP_PLAN
+		set		delyn = 'Y'
+		where	planSeq 		= #{planSeq}
+		and		memSeq 			= #{memSeq}
+	</update>
+	
+	
+	
+	
+	<select id="getArticlePhoto" parameterType="hashmap" resultType="hashmap">
+		select 	PLANPHOTO
+		from	PP_PLAN
+		where	planSeq	= #{planSeq}
+	</select>
+	<update id="updateArticlePhoto" parameterType="hashmap">
+		update	PP_PLAN
+		set		PLANPHOTO 		= #{planPhoto}
+		where	planSeq 		= #{planSeq}
+	</update>
+	
+	
+	
+	
+	
+	<insert id="insertDay" parameterType="hashmap">
+		insert into PP_PLANDAY(
+				planSeq
+			,	daySeq
+			,	paperSeq
+		)
+		values(
+				#{planSeq}
+			,	(	SELECT 	NVL(MAX(DAYSEQ)+1,1)
+					FROM	PP_PLANDAY
+					WHERE	PLANSEQ		=	#{planSeq})	
+			,	-1
+		)
+	</insert>
+	<update id="updateDay" parameterType="hashmap">
+		update 	PP_PLANDAY
+		set		PAPERSEQ	= 	#{paperSeq}  	
+		where	PLANSEQ		=	#{planSeq}
+		and 	DAYSEQ		=	#{daySeq}
+	</update>
+	<delete id="deleteDay" parameterType="hashmap">
+		delete 	
+		from 	PP_PLANDAY
+		where	PLANSEQ		=	#{planSeq}
+		and 	DAYSEQ		=	(SELECT Max(daySeq) 
+								FROM 	PP_PLANDAY
+								where	PLANSEQ = #{planSeq})
+	</delete>
+
+
+
+
+
+
+
+	
+	<delete id="deletePaper" parameterType="hashmap">
+		delete 	from PP_PLANPAPER
+		where	PLANSEQ 	=	#{planSeq}
+		AND		paperSeq	=	#{paperSeq}		
+	</delete>
+	<select id="getTimeList" parameterType="hashmap" resultType="hashmap">
+		select 		PLANSEQ
+				,	PAPERINSIDE
+		        ,	PAPERCOST
+		        ,	UPDATEDT
+		        ,	REGDT
+		        ,	PAPERMEMO
+		        ,	PAPERTIMESTART
+		        ,	PAPERTIMEEND
+		        ,	TIMESEQ
+		        ,	PAPERSEQ
+				,	TO_CHAR(PAPERTIMESTART, 'hh24') PAPERTIMESTART1
+				,	TO_CHAR(PAPERTIMESTART, 'mi') PAPERTIMESTART2
+				,	TO_CHAR(PAPERTIMEEND, 'hh24') PAPERTIMEEND1
+				,	TO_CHAR(PAPERTIMEEND, 'mi') PAPERTIMEEND2
+				,	(select	iconpath  
+					from 	pp_icons i 
+					where 	p.iconcd = i.iconcd) ICONPATH
+				,	ICONCD
+		from	PP_PLANPAPER p
+		where	PLANSEQ = 	#{planSeq}
+		and		paperSeq	=	#{paperSeq}
+		order by TO_NUMBER(TO_CHAR(PAPERTIMESTART, 'hh24mi')) ASC		
+	</select>
+	<insert id="insertOneTime" parameterType="hashmap">
+		insert into PP_PLANPAPER(
+				PLANSEQ
+			,	paperSeq
+			,	TIMESEQ
+			,	PAPERTIMESTART
+			,	PAPERTIMEEND
+			,	PAPERINSIDE
+			,	PAPERCOST
+			,	PAPERMEMO
+			,	ICONCD
+		)
+		VALUES(
+				#{planSeq}
+			, 	#{paperSeq}
+			,	(	SELECT 	NVL(MAX(TIMESEQ)+1,1)
+					FROM	PP_PLANPAPER
+					WHERE	PLANSEQ		=	#{planSeq}
+					AND		paperSeq	=	#{paperSeq})		
+			,	TO_DATE('${paperTimeStart1}${paperTimeStart2}', 'hh24mi')
+			,	TO_DATE('${paperTimeEnd1}${paperTimeEnd2}', 'hh24mi')
+			,	#{paperInside}
+			,	#{paperCost}
+			,	#{paperMemo}
+			,	#{iconCd}
+		)
+	</insert>
+	<update id="updateOneTime" parameterType="hashmap">
+		update	PP_PLANPAPER
+		set		PAPERTIMESTART 		= TO_DATE('${paperTimeStart1}${paperTimeStart2}', 'hh24mi')
+			,	PAPERTIMEEND 		= TO_DATE('${paperTimeEnd1}${paperTimeEnd2}', 'hh24mi')
+			,	PAPERINSIDE 	= #{paperInside}
+			,	PAPERCOST 		= #{paperCost}
+			,	PAPERMEMO			= #{paperMemo}
+			,	ICONCD			= #{iconCd}
+		where	PLANSEQ 	=	#{planSeq}
+		AND		paperSeq	=	#{paperSeq}	
+		AND		TIMESEQ		=	#{timeSeq}
+	</update>
+	<delete id="deleteOneTime" parameterType="hashmap">
+		delete from PP_PLANPAPER
+		where	PLANSEQ 	=	#{planSeq}
+		AND		paperSeq	=	#{paperSeq}	
+		AND		TIMESEQ		=	#{timeSeq})
+	</delete>
+	
+	
+	
+	<select id="getPBoxSeqList" parameterType="hashmap" resultType="java.lang.String">
+		select 	DISTINCT paperSeq
+		from	PP_PLANPAPER
+		where	PLANSEQ 	= 	#{planSeq}
+	</select>
+	<select id="getDBoxSeqList" parameterType="hashmap" resultType="java.lang.String">
+		select 	paperSeq
+		from	PP_PLANDAY
+		where	PLANSEQ 	= 	#{planSeq}		
+		ORDER BY daySeq ASC		
+	</select>
+	
+	
+	
+	<update id="updateShareYN" parameterType="hashmap">
+	</update>
+	
+	
+	
+	<select id="getPlanIcons" parameterType="hashmap" resultType="java.lang.String">
+		select	iconpath
+		from	pp_icons		
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+.writeplanform {text-align:left;}
+.writeplanform input	{border:2px dashed #aaaaaa;
+						 border-radius:30px;
+						 background-color:rgba(0,0,0,0);				 
+						 width:; height:30px;	margin:0px;
+						 font-size:12px;}
+						 
+						 
+#inputPlan1{width:300px;	margin:0px;}
+#inputPlan2{width:300px;	margin:0px;}
+#inputPlan3{width:50px; 	margin:0px;}
+#inputPlan4{width:300px;	margin:0px;}
+#inputPlan5{width:300px;	margin:0px;}
+#inputPlan6{width:300px; 	height:200px;	margin:0px;}
+#inputPlan7{width:300px;	margin:0px;}
+#inputPlan8{width:50px;		margin:0px;}

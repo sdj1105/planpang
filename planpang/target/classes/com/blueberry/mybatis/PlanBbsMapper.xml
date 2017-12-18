@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blueberry.mybatis.PlanBbsMapper">
+
+<!-- ///////////////////공유 게시판 /////////////////-->
+
+	<select id="getArticleList" parameterType="hashmap" resultType="hashmap">
+		  	SELECT *
+		     	  FROM
+				   (SELECT rownum r,a.* 
+					  FROM  
+				        ( SELECT 
+                				   P.PLANSEQ
+			          			 , M.MEMBERID 
+			                 	 , M.NICKNM 
+					             , P.PLANPHOTO
+					             , P.PLANTITLE
+					             , P.FEWDAYS 
+					             , P.PLANAREA
+					             , P.PLANCOST
+					             , P.REGDT
+					             , P.CNT
+					             , P.LIKENUM 
+					             , COUNT(C.COMMENTSEQ) COMMENTSEQ
+				            FROM PP_PLAN P, PP_COMMENTS C, PP_MEMBERS M
+				           WHERE P.DELYN = 'N'
+				             AND P.SHAREYN = 'Y'
+				             AND P.PLANSEQ = C.PLANSEQ(+)
+		             		 AND M.MEMSEQ = P.MEMSEQ(+)
+	           			<if test="searchWord != null ">
+							 AND (M.MEMBERID  LIKE '%${searchWord}%'
+							  OR  P.PLANTITLE LIKE '%${searchWord}%'
+							  OR  P.PLANAREA  LIKE '%${searchWord}%'
+							  OR  P.FEWDAYS   LIKE '%${searchWord}%')
+						</if>	
+				           GROUP BY P.PLANSEQ
+		            		   , M.MEMBERID
+		                 	   , M.NICKNM
+				               , P.PLANPHOTO
+				               , P.PLANTITLE
+				               , P.FEWDAYS
+				               , P.PLANAREA
+				               , P.PLANCOST
+				               , P.REGDT
+				               , P.CNT
+				               , P.LIKENUM	
+						   ORDER BY P.PLANSEQ DESC 
+						)a 
+					)  
+					WHERE r BETWEEN ${startAtcIdx} AND ${endAtcIdx}
+	</select>
+<select id="getTotalArticleCnt" parameterType="hashmap" resultType="int">
+		SELECT count(*) FROM  PP_PLAN P, PP_MEMBERS M 
+		 WHERE P.DELYN='N'
+		   AND M.MEMSEQ=P.MEMSEQ
+		   AND P.SHAREYN='Y'
+			<if test="searchWord != null ">
+				AND (M.MEMBERID   LIKE '%${searchWord}%'
+				 OR  P.PLANTITLE LIKE '%${searchWord}%'
+				 OR  P.PLANAREA  LIKE '%${searchWord}%'
+			     OR  P.FEWDAYS   LIKE '%${searchWord}%')
+			</if> 	
+			
+</select>
+
+<select id="getArticle" parameterType="hashmap" resultType="hashmap">
+		  SELECT P.MEMSEQ, 
+	      		 P.PLANSEQ, 
+	      		 P.PLANPHOTO, 
+	      		 P.PLANPERIOD, 
+	      		 P.PLANTITLE, 
+	      		 P.PLANCOST, 
+	      		 P.PLANAREA, 
+	      		 P.MEMO, 
+	      		 P.SHAREYN, 
+	      		 P.REGDT, 
+	      		 P.CNT, 
+	     		 P.LIKENUM, 
+	      		 P.FEWDAYS , 
+	      		 P.REGPOOMCD 
+	 	    FROM PP_PLAN P
+	       WHERE P.PLANSEQ=${planSeq}
+
+</select>
+
+<insert id="insertArticle" parameterType="hashmap">
+	
+		INSERT INTO PP_PLAN(		
+								MEMSEQ
+		                      , PLANSEQ
+		                      , PLANPhoto
+		                      , PLANPeriod
+		                      , PLANTitle		                   			                     
+		                      , PLANAREA
+		                      , MEMO	
+		                      , FEWDAYS
+						  	  , SHAREYN
+						  )
+					values(
+		             			${memSeq}
+		                      , (SELECT NVL(MAX(PLANSEQ+1),1)
+		                           FROM PP_PLAN )
+		                      , '${planPhoto}'
+		                      , TO_DATE('${planPeriod}', 'yyyy-mm-dd')		   
+		                      , '${planTitle}'		                     
+		                      , '${planArea}'		  
+		                      , '${memo}'               
+		                      , '${fewDays}'
+		                      , '${shareyn}'
+		                   )
+</insert>
+
+<insert id="insertArtDetail" parameterType="hashmap">
+		INSERT INTO PP_PLANPAPER
+		       ( 
+		           PLANSEQ,
+		           PAPERSEQ,
+				   TIMESEQ,	
+				   PAPERTIMESTART,
+				   PAPERTIMEEND,
+		           PAPERINSIDE,
+		           PAPERCOST,
+		           PAPERMEMO,
+		           UPDATEDT,
+		           REGDT
+		       )     
+		       VALUES
+		       ( 	 
+		             ${planSeq}
+		          ,  (SELECT NVL(MAX(PAPERSEQ+1),1)
+		                FROM PP_PLANPAPER )    
+		          ,  (SELECT NVL(MAX(TIMESEQ+1),1)
+		                FROM PP_PLANPAPER ) 
+		          , '${paperTimeStart}'  
+		          , '${paperTimeEnd}
+		          , '${planInside}' 
+		          ,  ${planCost}  
+		          , '${paperMemo}'   
+		          , SYSDATE  
+		          , SYSDATE 
+       ) 
+</insert>
+<update id="planUpdate">
+		UPDATE PP_PLAN
+		   SET 
+               PLANPHOTO    = '${planPhoto}'
+             , PLANPERIOD   = '${planPeriod}'
+             , PLANTITLE	= '${planTitle}'
+             , PLANCOST     = ${planCost}
+             , PLANAREA     = '${planArea}'
+             , MEMO	        = '${memo}'
+             , SHAREYN      = '${shareYn}'
+             , UPDATEDT     = SYSDATE
+             , FEWDAYS      = '${fewDays}'
+             , REGPOOMCD	= '${regPoomCd}'
+		 WHERE PLANSEQ = ${planSeq}
+</update>
+
+<update id="updateArticle" parameterType="hashmap">
+		UPDATE   PP_PLANPAPER 
+	       SET 	 PAPERTIMESTART  = TO_DATE('${paperTimeStrart}','YYYYMMDDHH24MI')
+	      	 ,   PAPERTIMEEND    = TO_DATE('${paperTimeEnd}','YYYYMMDDHH24MI')
+	         ,   PAPERINSIDE     ='${paperInside}'	
+	       	 , 	 PAPERCOST	     = ${paperCost}		
+	       	 ,   PAPERMEMO   	 ='${paperMemo}'		
+	       	 ,   UPDATEDT	     = SYSDATE
+		 WHERE 	 PLANSEQ 	     = ${planSeq}
+		   AND   PAPERSEQ		 = ${paperSeq}
+		   AND   TIMESEQ		 = ${timeSeq}
+	
+</update>
+
+<delete id="deleteArticle" parameterType="hashmap">
+		UPDATE PP_PLAN
+		   SET DELYN   ='Y'
+		 WHERE PLANSEQ =${planSeq}
+</delete>
+
+<update id="updateArticleHit" parameterType="hashmap">
+		UPDATE PP_PLAN
+	   	   SET CNT=CNT+1
+	 	 WHERE PLANSEQ = ${planSeq}
+</update>
+
+<update id="likeArticle" parameterType="hashmap">
+		UPDATE PP_PLAN
+	   	   SET LIKENUM=LIKENUM+1
+	 	 WHERE PLANSEQ = ${planSeq}
+</update>
+
+<insert id="insertIdLikeArticle" parameterType="hashmap">
+		INSERT INTO PP_LIKES(
+							    MEMSEQ	
+							  , PLANSEQ		
+							)
+  					  VALUES(
+							   '${memSeq}'
+							  , ${planSeq}
+							)
+</insert>
+
+<select id="chkLikeArticle" parameterType="hashmap" resultType="int">
+		SELECT count(*) 
+		  FROM PP_LIKES 
+		 WHERE MEMSEQ='${memSeq}'
+		   AND PLANSEQ=${planSeq}
+</select>
+
+<select id="getLatestPlanSeq" parameterType="hashmap" resultType="int">
+		SELECT MAX(PLANSEQ) 
+		  FROM PP_PLAN
+       	 WHERE MEMSEQ =${memSeq}
+</select>
+
+
+
+
+<!--/////////////////// 댓글  ///////////////////-->
+
+<select id="getCommentList" parameterType="hashmap" resultType="hashmap">
+		SELECT M.MEMBERID
+			 , C.PLANSEQ	
+			 , C.COMMENTSEQ	
+			 , C.MEMSEQ	
+			 , C.ICONCD	
+			 , C.UPDATEDT	
+			 , C.REGDT	
+			 , C.DELYN	
+			 , C.COMMENTMEMO
+			 , C.LIKENUM		 
+		  FROM pp_COMMENTS C , PP_MEMBERS M
+		 WHERE PLANSEQ=${planSeq}
+    	   AND C.MEMSEQ=M.MEMSEQ
+		   AND DELYN = 'N'
+		 ORDER BY LIKENUM DESC
+</select>
+
+<insert id="insertComment" parameterType="hashmap">
+		INSERT INTO PP_COMMENTS(
+									PLANSEQ	
+								  ,	COMMENTSEQ	
+								  ,	MEMSEQ
+								 <!--  ,	ICONCD -->
+								  ,	UPDATEDT
+								  ,	REGDT	
+								  ,	COMMENTMEMO	
+							)
+						 VALUES(
+						 		  	${planSeq}	
+						 		  ,	(SELECT NVL(MAX(COMMENTSEQ+1),1) 
+						               FROM PP_COMMENTS)
+								  , ${memSeq}		<!-- 로그인 아이디 값  -->
+<!-- 								  , '1'			iconCD   -->								  , SYSDATE
+								  , SYSDATE
+								  , '${commentMemo}'
+					 		)
+	
+</insert>
+
+<update id="updateComment" parameterType="hashmap">
+		UPDATE PP_COMMENTS
+	  	   SET COMMENTMEMO  = '${commentMemo}'
+	 	 WHERE COMMENTSEQ	= ${commentSeq}
+	   	   AND PLANSEQ 		= ${planSeq}
+	
+</update>
+
+<update id="deleteComment" parameterType="hashmap">
+		UPDATE PP_COMMENTS 
+	  	   SET DELYN	  = 'Y'
+	 	 WHERE PLANSEQ 	  = ${planSeq}
+	   	   AND COMMENTSEQ = ${commentSeq}
+</update>
+
+<update id="likeComment" parameterType="hashmap">
+		UPDATE PP_COMMENTS
+	   	   SET LIKENUM=LIKENUM+1
+	 	 WHERE PLANSEQ = ${planSeq}
+	 	   AND COMMENTSEQ =${commentSeq}
+</update>
+	
+
+<insert id="insertIdLikeComment" parameterType="hashmap">
+		INSERT INTO PP_COMMENTLIKES(
+										COMMENTSEQ	
+									  , MEMSEQ	
+									  , PLANSEQ		
+									 )
+	  						   VALUES(
+	  						   			${commentSeq}
+									  , '${memSeq}'
+									  , ${planSeq})
+</insert>
+
+<select id="chkLikeComment" parameterType="hashmap" resultType="int">
+		SELECT count(*) 
+		  FROM PP_COMMENTLIKES 
+		 WHERE COMMENTSEQ =${commentSeq}
+		   AND MEMSEQ='${memSeq}'
+		   AND PLANSEQ=${planSeq}
+</select>
+
+<!-- ///////////////////댓글댓글///////////////////  -->
+
+<select id="getCmtCmtList" parameterType="hashmap" resultType="hashmap">
+		SELECT M.MEMBERID
+      		 , R.COMMENTMEMO
+         	 , R.COMMENTSEQ
+          	 , R.DELYN
+          	 , R.ICONCD
+          	 , R.LIKENUM
+          	 , R.MEMSEQ
+          	 , R.PLANSEQ
+          	 , R.RECOMMENTSEQ
+          	 , R.REGDT
+          	 , R.UPDATEDT 
+		  FROM PP_RECOMMENTS R,PP_MEMBERS M 
+		 WHERE DELYN = 'N'
+       	   AND R.MEMSEQ=M.MEMSEQ
+		   AND PLANSEQ = ${planSeq}
+		   AND COMMENTSEQ =${commentSeq}
+		 ORDER BY LIKENUM DESC
+</select>	
+
+<update id="updateCmtCmt" parameterType="hashmap">
+		UPDATE PP_RECOMMENTS
+		   SET UPDATEDT    = SYSDATE
+		     , COMMENTMEMO = '${commentMemo}'	    
+		 WHERE PLANSEQ 	   = ${planSeq}
+		   AND COMMENTSEQ  = ${commentSeq}
+		   AND RECOMMENTSEQ= ${reCommentSeq}  
+</update>
+<insert id="insertCmtCmt" parameterType="hashmap">
+		INSERT INTO PP_RECOMMENTS(
+								    PLANSEQ
+		                          , COMMENTSEQ
+		                          , RECOMMENTSEQ
+		                          , MEMSEQ
+		                          , ICONCD
+		                          , COMMENTMEMO
+								 )
+						   VALUES(
+                   				    ${planSeq}
+		                          , ${commentSeq}
+		                          , (SELECT NVL(MAX(RECOMMENTSEQ+1),1) 
+								               FROM PP_RECOMMENTS)
+		                          , ${memSeq}
+		                          , '2'
+		                          ,'${commentMemo}' 
+                   			 )
+                         
+</insert> 
+
+<update id="deleteCmtCmt" parameterType="hashmap">
+		UPDATE PP_RECOMMENTS
+		   SET DELYN ='Y' 
+		 WHERE PLANSEQ      = ${planSeq}
+		   AND COMMENTSEQ   = ${commentSeq}
+		   AND RECOMMENTSEQ = ${reCommentSeq}
+</update>	
+
+<update id="likeCmtCmt" parameterType="hashmap">
+		UPDATE PP_RECOMMENTS
+	   	   SET LIKENUM=LIKENUM+1
+	 	 WHERE PLANSEQ = ${planSeq}
+	 	   AND COMMENTSEQ =${commentSeq}
+     	   AND RECOMMENTSEQ = ${reCommentSeq}
+       
+</update>
+
+<insert id="insertIdLikeCmtCmt" parameterType="hashmap">
+		INSERT INTO PP_RECOMMENTLIKES(
+										COMMENTSEQ	
+									  , RECOMMENTSEQ
+									  , MEMSEQ
+									  , PLANSEQ		
+									 )
+	  						   VALUES(
+	  						   			${commentSeq}
+								  	  , ${reCommentSeq}
+									  , '${memSeq}'
+									  , ${planSeq})
+</insert>
+
+<select id="chkLikeCmtCmt" parameterType="hashmap" resultType="int">
+		SELECT count(*) 
+		  FROM PP_RECOMMENTLIKES 
+		 WHERE COMMENTSEQ =${commentSeq}
+		   AND RECOMMENTSEQ=${reCommentSeq} 
+		   AND MEMSEQ='${memSeq}'
+		   AND PLANSEQ=${planSeq}
+</select>
+
+<!-- 즐겨찾기 등록  -->
+<insert id="insertMyFavPlan" parameterType="hashmap">
+		INSERT INTO PP_MYFAVPLAN(
+								    MEMSEQ
+		                          , PLANSEQ
+		                          , MYFAVPLANSEQ
+		                          , MYFAVPLANTITLE                         
+		                          , REGDT
+								)
+						  VALUES(
+                  					${memSeq}
+		                          , ${planSeq}
+		                          , (SELECT NVL(MAX(MYFAVPLANSEQ+1),1)
+				                       FROM PP_MYFAVPLAN )
+		                          , '${myFavPlanTitle}'
+		                          , SYSDATE
+                  				)
+</insert>
+
+<select id="chkMyFavPlan" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*)
+		  FROM PP_MYFAVPLAN
+		 WHERE PLANSEQ=${planSeq}
+		   AND MEMSEQ=${memSeq}
+</select>
+
+
+
+<select id="getBestLike" parameterType="hashmap" resultType="hashmap">
+		SELECT * 
+		  FROM  PP_COMMENTS C,PP_MEMBERS M
+	     WHERE  C.MEMSEQ = M.MEMSEQ
+       	   AND 	PLANSEQ = ${planSeq}
+    	 ORDER BY LIKENUM DESC
+</select>
+
+</mapper>

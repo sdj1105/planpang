@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/java2606/!svn/ver/528/planpang/src/main/webapp/WEB-INF/spring
+END
+security-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/java2606/!svn/ver/445/planpang/src/main/webapp/WEB-INF/spring/security-context.xml
+END
+root-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java2606/!svn/ver/528/planpang/src/main/webapp/WEB-INF/spring/root-context.xml
+END

@@ -1,0 +1,115 @@
+@CHARSET "UTF-8";
+		
+		
+		
+		
+		
+		.pbox-zone {width:100%; height:300px;
+					border:0px solid brown;
+					background-color:brown;
+					background:url("/planpang/resources/img/planwriter/planpencil2.png") no-repeat;
+					background-size: 500px 300px;
+					background-position: bottom right;
+					z-index:0;}
+					
+		.planbox { 	display:inline-block;
+				width:120px; height:200px; 
+				background-color:;
+				background:url("/planpang/resources/img/planwriter/paper.jpg") no-repeat;
+				background-size:100% 100%;				
+				border:1px dashed white;
+				font-size:15px;
+				text-align:center;								
+				cursor:pointer;}
+		.planbox:hover{opacity:0.4;	background-color:#eeeeee;	}
+
+		
+		
+		
+		
+		
+		
+		
+		.dbox-zone {width:100%; height:300px;
+				border:0px solid;
+				background-color:;
+				/* background:url("/planpang/resources/img/planwriter/planboard1.png") no-repeat; */
+				background-size: 100% 100%;
+				background-position: bottom right;
+				z-index:0;
+				}
+		
+		
+		.daybox {	display:inline-block;								
+					border:5px solid white;
+					background-color:rgba(30,60,30,.1);
+					width:60px; height:100px;
+					font-size:15px;
+					text-align:center; 
+					overflow:hidden;}	
+		.daybox:hover {border:5px solid skyblue;}
+		
+		.daybox .planbox {	position:absolute;
+							width:60px; height:100px;
+							border:5px dashed white;
+							opacity:0.6;
+							}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		.emp 		{position:fixed; 
+					display:block;
+					box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px, rgba(0,0,0,0.5) 2px 2px 3px 3px;				
+					z-index : 71;}
+		.mask 		{position:fixed; top:0; left:0; 
+					display:block;
+					width:100%; height:100%;
+					z-index: 70;}
+					
+		.insertemp {position:fixed; 
+					display:block;
+					box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px, rgba(0,0,0,0.5) 2px 2px 3px 3px;				
+					z-index: 81;}
+		.insertmask {position:fixed; top:0; left:0; 
+					display:block;
+					width:100%; height:100%;
+					z-index: 80;}			
+		
+					
+		.onmouse-content{display:none; position:absolute; top:0px; left:0px;
+						border:0px solid; border-radius:15px; 
+						background-color:rgba(0,0,0,0);
+						z-index:10;}
+		.onmouse-content .col5
+		
+		.onclick-mask	{display:none; position:fixed; top:0px; left:0px;}
+		.onclick-content{display:none; position:fixed; top:0px; left:0px;
+						border:0px dashed black; border-radius:15px;}
+		
+		
+		
+		
+						
+									
+		.list {	display:block;
+				border:1px solid black;
+				width:100%;}
+				}
+		.fn {	display:block;
+				border:1px solid black;
+				width:100%;}
+				
+		
+		.view 	{width:100%; height:97%;
+					border:0px solid;}
+		
+		
+
+		

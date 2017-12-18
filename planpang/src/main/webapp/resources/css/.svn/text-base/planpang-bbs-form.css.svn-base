@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+	.content{background-color:#eeeeee;
+			border:3px dashed #eeeeee; border-radius:15px;
+			width:400px;}
+	.content .title{font-size:15px;
+					text-align:left;}
+	.content:hover{border:3px dashed skyblue;}
+	
+	.el {border:3px solid #dddddd; border-radius:10px;
+			background-color:#dddddd;	
+			width:400px; margin:3px;}
+	.el:hover{background-color:skyblue;}
+	
+	.col {display:inline-block; background-color:; 
+			width:100px;
+			text-align:right;}
+	.val {display:inline-block; background-color:;
+			width:200px;
+			text-align:center;}		
+		.personalN1 {width:70px;}
+       	.personalN2 {width:70px;}
+		.phoneN1 {width:30px;}
+		.phoneN2 {width:40px;}
+		.phoneN3 {width:40px;}	
+		.postN1 {width:30px;}
+		.postN2 {width:30px;}
+		.sex {}
+	.val input[type=email]
+			,[type=date]
+			,[type=password]
+		, textarea, select
+		, .commons	{width: 99.5%;
+						margin: 1px 0.5%;
+						padding: 1px 0.5%;}

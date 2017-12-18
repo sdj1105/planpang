@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blueberry.mybatis.MyPlanBbsMapper">
+	<select id="getArticleList" parameterType="hashmap" resultType="hashmap">
+		SELECT 			*
+		FROM
+			( SELECT rownum r,a.* 
+				FROM 
+					( SELECT  a.PLANSEQ
+							, a.PLANTITLE
+							, a.REGDT
+							, a.CNT
+							, a.PLANPERIOD
+							, a.PLANAREA
+							, a.PLANCOST
+							, a.PLANPHOTO
+							, b.MEMBERID
+							, a.FEWDAYS
+							, a.LIKENUM 
+							, count(distinct(f.ATTFILESEQ)) ATTFILESEQ
+							, count(distinct(c.COMMENTSEQ)) COMMENTSEQ
+						FROM PP_PLAN a, PP_ATTACHFILE f, PP_COMMENTS c, PP_PLANPAPER d, PP_MEMBERS b
+						WHERE a.PLANSEQ = d.PLANSEQ(+) 
+						AND a.PLANSEQ = c.PLANSEQ(+) 
+						AND a.PLANSEQ = f.PLANSEQ(+) 
+						AND a.MEMSEQ = b.MEMSEQ(+) 
+						AND a.DELYN = 'N'
+					    AND b.MEMSEQ = ${memSeq} 
+						<if test="searchWord!=null">
+							AND (a.PLANTITLE LIKE '%${searchWord}%' 
+							OR 	 a.PLANAREA LIKE '%${searchWord}%'
+							OR   a.FEWDAYS LIKE '%${searchWord}%' )
+						</if> 	
+						GROUP BY   a.PLANSEQ
+							, a.PLANTITLE
+							, a.REGDT
+							, a.CNT
+							, a.PLANPERIOD
+							, a.PLANAREA
+							, a.PLANCOST
+							, a.PLANPHOTO
+							, b.MEMBERID 
+							, a.LIKENUM
+							, a.FEWDAYS 
+						ORDER BY a.PLANSEQ DESC 
+					)a 
+			) 
+			WHERE r BETWEEN #{startAtcIdx} AND #{endAtcIdx}
+	</select>
+	
+	<select id="getTotalArticleCnt" parameterType="hashmap" resultType="int">
+		SELECT 	count(*)
+		FROM	PP_PLAN
+		WHERE	DELYN ='N'
+		AND		MEMSEQ=${memSeq}
+		<if test="searchWord!=null">
+			AND (PLANTITLE LIKE '%${searchWord}%'
+			OR 	 PLANAREA LIKE '%${searchWord}%'
+			OR   FEWDAYS LIKE '%${searchWord}%')
+		</if> 	 	
+		
+	</select>
+	
+	<update id="del" parameterType="hashmap" >
+		update  PP_PLAN
+		set 	DELYN = 'Y'
+		where   PLANSEQ = #{PLANSEQ}
+	</update>
+	
+	 <update id="del2" parameterType="hashmap" >
+		update  PP_PLAN
+		set 	DELYN = 'Y'
+		where   PLANSEQ = #{checked}
+	</update>
+	
+</mapper>

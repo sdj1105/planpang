@@ -1,0 +1,423 @@
+@CHARSET "UTF-8";
+
+
+			.bbs {width:100% }
+			
+			/*게시물 리스트*/
+			.bbs .atclist {display:block; width:100%;
+						border:0px solid; border-radius:10px;						
+						/* background-color:#eeeeee; */
+						
+						}
+			/* 게시물 버튼 */
+			.search input[type=submit]{
+			padding: 0px; width: 70px;
+			}
+						
+						
+						
+						
+						
+						
+						
+						
+			/*게시판 헤더*/	
+			.bbs .header  {display:block; width:700px; 
+							border:5px solid black; border-radius:10px;
+							background-color:black;
+							color:white; font-weight:bold;}
+			
+			/*게시물 없을 때 */
+			.bbs .no-data-msg {display:block; width:99%; 
+							border:1px solid black;	 border-radius:10px;
+							background-color:#aaaaaa;
+							height:100px;
+							color:white; font-size:70px; font-weight:bold; 
+							text-align:center;}						
+			
+			/*게시물  */
+			.atc  {
+				display:inline-block; 
+				width: 300px; 
+				height: 300px;
+				border: 1px solid #dbdbdb; 
+				border-radius:200px;				 
+				cursor:pointer; 
+				z-index:20;
+				overflow:hidden;
+				transition-duration: 1s;
+				margin-right:32px;				
+			}
+			.atc:last-child{
+				margin-right:-32px;
+			}
+							
+			.atc:hover {background-color:; opacity:0.7;}
+			
+			/*게시물 컬럼*/		
+			.atc .col  {	display:inline-block;
+							position:relative; top:20px;						
+							width:100%;
+							text-align:center;
+							border:0px solid; border-radius:30px;
+							background-color:rgba(100,160,48,0.3);
+							opacity:1;}
+			.atc .col1 {	display:inline-block;
+							position:relative; top:180px;						
+							width:100%;
+							text-align:center;
+							border:0px solid; border-radius:30px;
+							background-color:rgba(100,160,48,0.3);
+							opacity:1;}	
+											
+			.atc-title {z-index:50; border:5px solid red;}
+			
+			/* 짠! 하고 나타나는 컬럼*/
+			.atc .coljjan		{	display:inline-block; 
+									position:absolute; 
+									opacity:0;
+									width: 290px;
+									height: 290px;
+									color: #000000;
+									text-align: center;
+									text-indent: -9999px;
+									z-index:30;
+									/* 
+									line-height: 300px;
+									white-space: nowrap;
+									overflow: hidden; 
+									*/
+			}			
+			.atc .coljjan:hover {	background: #000000;
+									opacity:0.5;									
+									border: 5px solid rgba(79,86,146,1);
+									border-radius:200px;
+									text-align: center;
+									color:white;
+									/* position: relative; */
+			}
+
+
+			
+			.imgText{
+				position: relative;
+				top:0px;
+				left:0px;
+				font-weight: bold;
+			}
+			
+			
+			.mtitle{
+				background-color:transparent; 
+				text-align:center;
+				font-weight: bold;
+				text-shadow: 0.1em 0.1em 0.15em #333; 
+				color:white;
+				font-size: 15px;
+				border:0px solid;				
+			}
+			.mtitle:hover {background-color:#dddddd;}
+			
+			.colhap{
+				font-family: dotum;
+				font-size: 14px;
+				padding-left: 20px;
+			}
+			.colhap .col{
+				line-height: 25px;
+				vertical-align: middle;
+			}
+			.colhap .col img{
+				vertical-align: middle;
+			}
+			
+
+			.atcList .bestCmt {
+			display:none; 
+			position:absolute; 
+			background-color: rgba(76, 106, 161, 0.9);
+			color: white; 
+			border-radius:30px;
+			z-index:140;}
+				
+				
+			/* 제목 */
+			.view .title	{display:block; 
+							width:; height:;				
+							opacity:0.9;
+							text-align:left;
+							z-index:100;}
+			
+			
+			.div-2-1 {	display:inline-block; 
+						width:49%; margin:0px; 
+						border:0px;
+						}
+			.div-3-1 {	display:inline-block; 
+						width:33%; margin:0px; 
+						border:0px;
+						}
+			.div-3-2 {	display:inline-block; 
+						width:66%; margin:0px; 
+						border:0px;
+						}
+			.div-align-left { text-align:left;}
+			.div-align-right { text-align:right;}
+			
+			
+			.font001 {color:white; 
+						font-weight: bold;
+						text-shadow: 0.1em 0.1em 0.15em #333; }
+			
+			/* 게시물 페이징  */
+			.bbs .pg {display:inline-block; 
+						width:; height:55px; 
+						position:relative; left:0px; top:;
+						border:0px solid red; border-radius:;						
+						text-align:left;
+						overflow:hidden;}			
+			.pg	button{display:inline-block; 
+						width:28px; height:28px; 
+						position:; top:;
+						border:1px solid rgba(82,63,149,0); border-radius:50px;						
+						text-align:;
+						cursor:pointer;		
+						opacity:0.7;										
+						}
+			.pg	button:hover{border:1px dashed rgba(82,63,149,1); opacity:1;}
+			.btn-nowpgn {background-color:rgba(82,63,149,1); color:white; font-weight: bold}
+			/* 기능 */
+			.bbs .fn {display:block; 
+						width:100%; height:80px; padding-top:20px;
+						border:0px solid red; border-radius:10px;						
+						background-color:#999999;						
+						opacity:0.9;
+						text-align:right;
+						z-index:200;
+						}
+			.bbs .fn div {display:inline-block;}			
+			
+			/* 검색기 */
+			.fn-search {display:inline-block;
+						width:260px; height:55px;
+						overflow:hidden;											
+						}
+							
+			.fn-search .search-txt {display:inline-block;
+									border:2px solid; border-radius:50px;
+									width:200px; height:53px; margin:0;
+									background-color: black;
+									color: white;
+									font-size:20px; font-weight:bold;
+									opacity:0.7;
+									}
+			.fn-search .search-btn {display:inline-block;
+									border:2px solid #dbdbdb; border-radius:50px;
+									background-color: black;
+									width:53px; height:53px;
+									color: white;
+									margin:0;
+									transition-duration:1s;
+									cursor:pointer;}
+			.fn-search .search-btn:hover {background-color:#eeeeee;
+											color:black;} 
+								
+				
+			/*수정모드  */
+			.fn-editmode {display:inline-block;
+						/* position:relative; top:35px; left:-670px; */								
+						border:1px solid rgba(0,0,0,0);
+						width:55px; height:55px;
+						font-size:10px; font-weight:bold;
+						text-align:center;
+						background: url('/planpang/resources/img/btneditmode.png') no-repeat center;
+						background-size:100% 100%; 
+						overflow:hidden;		
+						transition-duration:1s;
+						cursor:pointer;						
+						}
+			.fn-editmode:hover { background-color:;
+								border:1px dashed rgba(82,63,149,1); border-radius:80px;
+								}
+			
+				
+			/*쓰레기통  */
+			.fn-deletebox {display:inline-block;
+						/* position:relative; top:35px; left:-670px; */								
+						border:1px solid rgba(0,0,0,0);
+						width:55px; height:55px;
+						font-size:10px; font-weight:bold;
+						text-align:center; 
+						overflow:hidden;
+						background: url('/planpang/resources/img/Basketry.png') no-repeat center;
+						background-size:100% 100%;
+						transition-duration:1s;
+						cursor:pointer;
+						}
+			.fn-deletebox:hover { background-color:;
+								border:1px dashed rgba(82,63,149,1); border-radius:80px;}
+			/*즐찾 박스 */
+			.fn-addfavbox {display:inline-block;
+						/* position:relative; top:35px; left:-670px;		 */						
+						border:0px solid black; border-radius:0px;
+						width:55px; height:55px;
+						font-size:10px; font-weight:bold;
+						text-align:center; 
+						overflow:hidden;
+						background: url('/planpang/resources/img/bookmark.png') no-repeat center;
+						background-size:100% 100%;
+						transition-duration:1s;
+						}
+			/* 최상단으로 점프 */
+			.fn-jumptotop {display:inline-block;
+						/* position:relative; top:35px; left:-670px;		 */						
+						border:1px solid rgba(0,0,0,0);
+						width:55px; height:55px;
+						font-size:10px; font-weight:bold;
+						text-align:center; 
+						overflow:hidden;
+						background: url('/planpang/resources/img/topBtn.png') no-repeat center;
+						background-size:100% 100%;
+						transition-duration:1s;
+						cursor:pointer;
+						}
+			.fn-jumptotop:hover { background-color:#eeeeee;
+								border:1px dashed rgba(82,63,149,1); border-radius:80px;}
+			/*일정 등록 버튼*/			
+			.fn-writeplan {display:inline-block;
+						/* position:relative; top:35px; left:-670px;		 */						
+						border:1px solid rgba(0,0,0,0);
+						width:55px; height:55px;
+						font-size:10px; font-weight:bold;
+						text-align:center; 
+						overflow:hidden;
+						background: url('/planpang/resources/img/writeplan.png') no-repeat center;
+						background-size:100% 100%;
+						transition-duration:1s;
+						cursor:pointer;
+						}
+			.fn-writeplan:hover { background-color:#eeeeee;
+								border:1px dashed rgba(82,63,149,1); border-radius:50px;}
+											
+											
+											
+											
+											
+			form {display:inline-block;}
+			
+			/*그냥 버튼  */
+			.btn-sj-1 {display:inline-block;
+						border:2px solid; border-radius:15px;
+						width:50px;}
+		
+		
+		
+		/* 마우스 따라다니는 놈  */
+	
+		.onmouse-content{display:none; position:absolute; top:0px; left:0px;
+						border:0px solid; border-radius:15px; 
+						/* background-color:skyblue; */ 
+						transition-duration: 1s;}
+		
+		
+						
+		
+		
+		
+		
+		
+		
+		
+/* *************** 흔들리기  *************** */
+/**
+ * CSSReset.com - Demo - Shaking Up The Web With CSS3 (or: How To Make Links Shake In Their Space-Boots) - Webkit only
+ * 
+ * Contains CSS rules to make elements shake using -webkit-animations.
+ * Original Tutorial: http://www.cssreset.com/2011/css-tutorials/css3-webkit-animation-shake-links/
+ *
+ * by Joss Crowcroft and CSS Reset
+ * 1st January 2011
+ *
+ * License: Do whatever makes you happy! And, you know, give credit and links back if you like it.
+ *
+ * If you manage to work this into a project, please comment up and let me know. Kay?
+ */
+
+
+/**
+ * The declaration of the groovy shaky 'spaceboots' animation 
+ */
+@-webkit-keyframes spaceboots {
+	0%   { -webkit-transform: translate(2px, 1px)   rotate(0deg); }
+	10%  { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+	20%  { -webkit-transform: translate(-3px, 0px)  rotate(1deg); }
+	30%  { -webkit-transform: translate(0px, 2px)   rotate(0deg); }
+	40%  { -webkit-transform: translate(1px, -1px)  rotate(1deg); }
+	50%  { -webkit-transform: translate(-1px, 1px)  rotate(-1deg); }
+	60%  { -webkit-transform: translate(-3px, -2px)  rotate(0deg); }
+	70%  { -webkit-transform: translate(2px, 1px)   rotate(-1deg); }
+	80%  { -webkit-transform: translate(-1px, -2px) rotate(1deg); }
+	90%  { -webkit-transform: translate(2px, -1px)   rotate(0deg); }
+	100% { -webkit-transform: translate(1px, -2px)  rotate(-1deg); }
+}
+
+@-moz-keyframes spaceboots {
+	0%   { -moz-transform: translate(2px, 1px)   rotate(0deg); }
+	10%  { -moz-transform: translate(-1px, -2px) rotate(-1deg); }
+	20%  { -moz-transform: translate(-3px, 0px)  rotate(1deg); }
+	30%  { -moz-transform: translate(0px, 2px)   rotate(0deg); }
+	40%  { -moz-transform: translate(1px, -1px)  rotate(1deg); }
+	50%  { -moz-transform: translate(-1px, 1px)  rotate(-1deg); }
+	60%  { -moz-transform: translate(-3px, -2px)  rotate(0deg); }
+	70%  { -moz-transform: translate(2px, 1px)   rotate(-1deg); }
+	80%  { -moz-transform: translate(-1px, -2px) rotate(1deg); }
+	90%  { -moz-transform: translate(2px, -1px)   rotate(0deg); }
+	100% { -moz-transform: translate(1px, -2px)  rotate(-1deg); }
+}
+
+@keyframes spaceboots {
+	0%   { transform: translate(2px, 1px)   rotate(0deg); }
+	10%  { transform: translate(-1px, -2px) rotate(-1deg); }
+	20%  { transform: translate(-3px, 0px)  rotate(1deg); }
+	30%  { transform: translate(0px, 2px)   rotate(0deg); }
+	40%  { transform: translate(1px, -1px)  rotate(1deg); }
+	50%  { transform: translate(-1px, 1px)  rotate(-1deg); }
+	60%  { transform: translate(-3px, -2px)  rotate(0deg); }
+	70%  { transform: translate(2px, 1px)   rotate(-1deg); }
+	80%  { transform: translate(-1px, -2px) rotate(1deg); }
+	90%  { transform: translate(2px, -1px)   rotate(0deg); }
+	100% { transform: translate(1px, -2px)  rotate(-1deg); }
+}
+					
+.hulahula {
+	-webkit-animation-name: 'spaceboots';
+	-webkit-animation-duration: 1.6s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	
+	-moz-animation-name: 'spaceboots';
+	-moz-animation-duration: 1.6s;
+	-moz-transform-origin:50% 50%;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	
+	animation-name: 'spaceboots';
+	animation-duration: 1.6s;
+	transform-origin:50% 50%;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blueberry.mybatis.HomeMapper">
+<!-- MAIN 화면의 추천 베스트 게시글 목록 -->
+	<select id="getBestList" parameterType="hashmap" resultType="hashmap">
+    		SELECT PLANSEQ, MEMBERID, NICKNM, PLANPHOTO, PLANTITLE,FEWDAYS,
+					 PLANAREA, PLANCOST, REGDT, CNT, LIKENUM, COMMENTSNUM
+		  FROM
+		   ( SELECT rownum r,P.*
+		    FROM
+		      ( SELECT P.PLANSEQ PLANSEQ
+          			 , M.MEMBERID MEMBERID
+                 	 , M.NICKNM NICKNM
+		             , P.PLANPHOTO PLANPHOTO
+		             , P.PLANTITLE PLANTITLE
+		             , P.FEWDAYS FEWDAYS
+		             , P.PLANAREA PLANAREA
+		             , P.PLANCOST PLANCOST
+		             , P.REGDT REGDT
+		             , P.CNT CNT
+		             , P.LIKENUM LIKENUM
+		             , COUNT(C.COMMENTSEQ) COMMENTSNUM
+		         FROM PP_PLAN P, PP_COMMENTS C, PP_MEMBERS M
+		        WHERE P.DELYN = 'N'
+		          AND P.SHAREYN = 'Y'
+		          AND P.PLANSEQ = C.PLANSEQ(+)
+              AND M.MEMSEQ = P.MEMSEQ(+)
+		        GROUP BY P.PLANSEQ
+            		   , M.MEMBERID
+                 	   , M.NICKNM
+		               , P.PLANPHOTO
+		               , P.PLANTITLE
+		               , P.FEWDAYS
+		               , P.PLANAREA
+		               , P.PLANCOST
+		               , P.REGDT
+		               , P.CNT
+		               , P.LIKENUM
+		        ORDER BY P.CNT DESC, P.LIKENUM DESC, P.REGDT DESC, P.PLANSEQ DESC
+		      ) P
+		     )
+		  WHERE r BETWEEN 1 AND 10
+	</select>
+	
+<!-- 회원 가입  -->
+	<insert id="insertMember" parameterType="hashmap">
+		INSERT INTO PP_MEMBERS
+	       (
+	           MEMSEQ,
+	           CONNECTDT,
+	           MEMBERID,
+	           PASSWD,
+	           MEMNM,
+	           SEX,
+	           MEMTEL,
+	           MEMPHOTO,
+	           MEMADDR,
+	           NICKNM
+	       )
+	       VALUES
+	       (
+			   (SELECT NVL(MAX(MEMSEQ+1),1) FROM PP_MEMBERS),
+	           SYSDATE,
+	           #{memberId},
+	           #{passwd},
+	           #{memNm},
+	           #{sex},
+	           '${tel01}-${tel02}-${tel03}',
+	           #{memPhoto},
+	           #{memAddr},
+	           #{nickNm}
+	       )
+	</insert>
+	
+<!-- 유저 권한 주기  -->
+	<insert id="giveRoleUser" parameterType="hashmap">
+		INSERT INTO PP_USER_ROLES
+		(
+			MEMBERID,
+			USERROLEID,
+			ROLE
+		)
+		VALUES
+		(
+			#{memberId},
+			(SELECT NVL(MAX(USERROLEID+1),1) FROM PP_USER_ROLES),
+			'ROLE_USER'
+		)
+	</insert>
+	
+<!-- FaceBook 회원가입 -->
+	<insert id="insertFbMember" parameterType="hashmap">
+		INSERT INTO PP_MEMBERS
+	      (
+	          MEMSEQ,
+	          CONNECTDT,
+	          MEMBERID,
+	          PASSWD,
+	          MEMNM,
+	          SEX,
+	          MEMPHOTO,
+	          NICKNM
+	      )
+	      VALUES
+	      (
+		   (SELECT NVL(MAX(MEMSEQ+1),1) FROM PP_MEMBERS),
+	          SYSDATE,
+	          #{memberId},
+	          #{memberId},
+	          #{memNm},
+	          #{sex},
+	          #{memPhoto},
+	          #{nickNm}
+	      )
+	</insert>
+	
+<!-- 회원가입 여부 체크 -->
+	<select id="chkMember" parameterType="hashmap" resultType="int">
+		SELECT COUNT(MEMBERID) 
+		  FROM PP_MEMBERS
+		 WHERE MEMBERID = '${memberId}'
+	</select>
+	
+<!-- 회원 Seq가져오기  -->
+	<select id="getMemberSeq" parameterType="hashmap" resultType="int">
+		SELECT MEMSEQ FROM PP_MEMBERS
+		WHERE MEMBERID = #{memberId}
+	</select>
+	
+<!-- 접속시간 업데이트  -->
+	<update id="updateConnectDt" parameterType="hashmap">
+		UPDATE PP_MEMBERS
+		SET CONNECTDT = SYSDATE
+		WHERE MEMBERID = #{memberId}
+	</update>
+	
+	
+
+<!-- 방문자 SESSION 설정 -->
+<!-- 전체 방문자 수 +1 -->
+	<insert id="setVisitTotalCount" parameterType="hashmap">
+		INSERT INTO PP_VISIT (VISITDATE, CONNECTIP) 
+		VALUES (SYSDATE,#{connectIp})
+	</insert>
+	
+<!-- 전체 방문자 수 -->
+	<select id="getVisitTotalCount" resultType="int">
+		select count(*) from PP_VISIT
+	</select>
+	
+<!-- 오늘 방문자 수 -->
+	<select id="getVisitTodayCount" resultType="int">
+		select count(*) from PP_VISIT  	
+		where  TO_CHAR(VISITDATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</select>
+
+
+
+<!--  ADMIN PAGE -->
+<!-- 최근 7일간 방문자 수 -->
+	<select id="getLatestWeekVisit" parameterType="hashmap" resultType="hashmap">
+		SELECT DISTINCT
+				(SELECT 	COUNT(CONNECTIP)
+	             FROM		PP_VISIT
+	            WHERE		TO_CHAR(VISITDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')) DAY0
+		,		(SELECT 	COUNT(CONNECTIP)
+	             FROM		PP_VISIT
+	            WHERE		TO_CHAR(VISITDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE-1, 'YYYYMMDD')) DAY1
+	      ,		(SELECT 	COUNT(CONNECTIP)
+	             FROM		PP_VISIT
+	            WHERE		TO_CHAR(VISITDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE-2, 'YYYYMMDD')) DAY2
+	      ,		(SELECT 	COUNT(CONNECTIP)
+	             FROM		PP_VISIT
+	            WHERE		TO_CHAR(VISITDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE-3, 'YYYYMMDD')) DAY3
+	      ,		(SELECT 	COUNT(CONNECTIP)
+	             FROM		PP_VISIT
+	            WHERE		TO_CHAR(VISITDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE-4, 'YYYYMMDD')) DAY4
+	      ,		(SELECT 	COUNT(CONNECTIP)
+	             FROM		PP_VISIT
+	            WHERE		TO_CHAR(VISITDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE-5, 'YYYYMMDD')) DAY5
+	      ,		(SELECT 	COUNT(CONNECTIP)
+	             FROM		PP_VISIT
+	            WHERE		TO_CHAR(VISITDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE-6, 'YYYYMMDD')) DAY6
+	
+		FROM      PP_VISIT
+	</select>
+	
+<!-- 최근 7일간 가입자 수  -->
+	<select id="getLatestWeekJoin" parameterType="hashmap" resultType="hashmap">
+		SELECT DISTINCT 
+				(SELECT 	COUNT(MEMSEQ) 
+		         FROM		PP_MEMBERS 
+		          WHERE		TO_CHAR(JOINDT, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')) DAY0
+			,	(SELECT 	COUNT(MEMSEQ) 
+		          FROM		PP_MEMBERS 
+		          WHERE		TO_CHAR(JOINDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-1, 'YYYYMMDD')) DAY1
+		      ,	(SELECT 	COUNT(MEMSEQ) 
+		          FROM		PP_MEMBERS 
+		          WHERE		TO_CHAR(JOINDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-2, 'YYYYMMDD')) DAY2
+		      ,	(SELECT 	COUNT(MEMSEQ) 
+		          FROM		PP_MEMBERS 
+		        	WHERE		TO_CHAR(JOINDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-3, 'YYYYMMDD')) DAY3
+		      ,	(SELECT 	COUNT(MEMSEQ) 
+		          FROM		PP_MEMBERS 
+		          WHERE		TO_CHAR(JOINDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-4, 'YYYYMMDD')) DAY4
+		      ,	(SELECT 	COUNT(MEMSEQ) 
+		          FROM		PP_MEMBERS 
+		          WHERE		TO_CHAR(JOINDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-5, 'YYYYMMDD')) DAY5
+		      ,	(SELECT 	COUNT(MEMSEQ) 
+		          FROM		PP_MEMBERS 
+		          WHERE		TO_CHAR(JOINDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-6, 'YYYYMMDD')) DAY6
+		FROM  PP_MEMBERS
+	</select>
+	
+<!-- 최근 7일간 게시물 수 -->
+	<select id="getLatestWeekPlan" parameterType="hashmap" resultType="hashmap">
+		SELECT DISTINCT
+			   (SELECT   	COUNT(PLANSEQ)
+	             FROM		PP_PLAN
+	            WHERE		TO_CHAR(REGDT, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')) DAY0
+		 ,		(SELECT 	COUNT(PLANSEQ)
+	             FROM		PP_PLAN
+	            WHERE		TO_CHAR(REGDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-1, 'YYYYMMDD')) DAY1
+	      ,		(SELECT 	COUNT(PLANSEQ)
+	             FROM		PP_PLAN
+	            WHERE		TO_CHAR(REGDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-2, 'YYYYMMDD')) DAY2
+	      ,		(SELECT 	COUNT(PLANSEQ)
+	             FROM		PP_PLAN
+	            WHERE		TO_CHAR(REGDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-3, 'YYYYMMDD')) DAY3
+	      ,		(SELECT 	COUNT(PLANSEQ)
+	             FROM		PP_PLAN
+	            WHERE		TO_CHAR(REGDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-4, 'YYYYMMDD')) DAY4
+	      ,		(SELECT 	COUNT(PLANSEQ)
+	             FROM		PP_PLAN
+	            WHERE		TO_CHAR(REGDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-5, 'YYYYMMDD')) DAY5
+	      ,		(SELECT 	COUNT(PLANSEQ)
+	             FROM		PP_PLAN
+	            WHERE		TO_CHAR(REGDT, 'YYYYMMDD') = TO_CHAR(SYSDATE-6, 'YYYYMMDD')) DAY6
+	
+		FROM  PP_PLAN
+	</select>
+	
+<!-- 전체 멤버 수 -->
+	<select id="getTotalMem" parameterType="hashmap" resultType="int">
+		SELECT COUNT(MEMSEQ) FROM PP_MEMBERS 
+		WHERE UNREGYN = '${unregyn}'
+	</select>
+	
+<!-- 전체 게시글 수 -->
+	<select id="getTotalPlan" parameterType="hashmap" resultType="int">
+		SELECT COUNT(PLANSEQ) FROM PP_PLAN WHERE DELYN = '${delyn}'
+	</select>
+	
+<!-- 전체 댓글 수 -->
+	<select id="getTotalComments" resultType="int">
+		SELECT COUNT(COMMENTSEQ) FROM PP_COMMENTS WHERE DELYN = 'N'
+	</select>
+	
+<!-- 회원가입/탈퇴한 회원정보 -->
+	<select id="getMemberInfo" parameterType="hashmap" resultType="hashmap">
+	  	SELECT *
+	     	  FROM
+			   (SELECT rownum r,a.* 
+				  FROM  
+			        (SELECT M.MEMSEQ MEMSEQ,
+	                     M.MEMBERID MEMBERID,
+	                     M.MEMNM MEMNM,
+	                     TO_CHAR(M.JOINDT, 'YYYY-MM-dd') JOINDT,
+	                     TO_CHAR(M.CONNECTDT, 'YYYY-MM-dd') CONNECTDT,
+	                     R.ROLE ROLE,
+	                     COUNT(P.PLANSEQ) PLANNUM
+	                FROM PP_MEMBERS M,
+	                     PP_USER_ROLES R,
+	                     PP_PLAN P
+	               WHERE M.MEMBERID = R.MEMBERID(+)
+	                     AND M.MEMSEQ = P.MEMSEQ(+)
+	                     <if test="unregyn != null">
+	                     AND M.UNREGYN = '${unregyn}'
+	                     </if>
+	               GROUP BY M.MEMSEQ,
+	                     M.MEMBERID,
+	                     M.MEMNM,
+	                     M.JOINDT,
+	                     M.CONNECTDT,
+	                     R.ROLE
+	               ORDER BY M.MEMSEQ ASC
+					)a 
+				)  
+				WHERE r BETWEEN ${startAtcIdx} AND ${endAtcIdx}
+	</select>
+	
+<!-- 등록/삭제된  모든 게시글 정보  -->
+	<select id="getPlanInfo" parameterType="hashmap" resultType="hashmap">
+	  	SELECT *
+	     	  FROM
+			   (SELECT rownum r,a.* 
+				  FROM  
+			        (SELECT P.PLANSEQ PLANSEQ, 
+	                        P.PLANTITLE PLANTITLE, 
+	                        P.SHAREYN SHAREYN, 
+	                        TO_CHAR(P.REGDT, 'YYYY-MM-DD') REGDT, 
+	                        M.MEMNM MEMNM, 
+	                        P.CNT CNT, 
+	                        P.LIKENUM LIKENUM, 
+	                        TO_CHAR(P.UPDATEDT, 'YYYY-MM-DD') UPDATEDT 
+	                   FROM PP_PLAN P, 
+	                        PP_MEMBERS M 
+	                  WHERE P.MEMSEQ = M.MEMSEQ(+) 
+	      		            <if test="delyn != null">
+	                         AND DELYN = '${delyn}' 
+	                 		</if>
+	               ORDER BY P.PLANSEQ DESC
+					)a 
+				)  
+				WHERE r BETWEEN ${startAtcIdx} AND ${endAtcIdx}
+	</select>
+	
+<!-- 가입된 회원 권한 수정 -->
+	<update id="editRole" parameterType="hashmap">
+		UPDATE PP_USER_ROLES
+		SET ROLE = #{role}
+		WHERE MEMBERID = #{memberId}
+	</update>
+	
+<!-- 회원 탈퇴 및 복구 처리 -->
+	<update id="editUnregMember" parameterType="hashmap">
+		UPDATE PP_MEMBERS
+		SET UNREGYN = '${unregyn}'
+		WHERE MEMBERID = #{memberId}
+	</update>
+	
+<!-- 게시글 삭제 및 복구 처리 -->
+	<update id="editDelPlan" parameterType="hashmap">
+		UPDATE PP_PLAN
+		SET DELYN = '${delyn}'
+		WHERE PLANSEQ = #{planSeq}
+	</update>
+	
+<!-- 엑셀 다운로드를 위한 회원 전체 정보 -->
+	<select id="getAllMember" resultType="hashmap">
+		SELECT M.MEMSEQ MEMSEQ,
+		       M.MEMBERID MEMBERID,
+		       M.MEMNM MEMNM,
+		       TO_CHAR(M.JOINDT, 'YYYY-MM-DD') JOINDT,
+		       TO_CHAR(M.CONNECTDT, 'YYYY-MM-DD') CONNECTDT,
+		       R.ROLE ROLE,
+		       M.NICKNM NICKNM,
+		       M.MEMTEL MEMTEL,
+		       M.MEMADDR MEMADDR,
+		       M.UNREGYN UNREGYN
+		  FROM PP_MEMBERS M,
+		       PP_USER_ROLES R
+		 WHERE M.MEMBERID = R.MEMBERID(+)
+		 ORDER BY M.MEMSEQ ASC
+	</select>
+</mapper>

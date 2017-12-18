@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blueberry.mybatis.MyFavPlanBbsMapper">
+	<select id="getArticleList" parameterType="hashmap" resultType="hashmap">
+		     SELECT *
+		FROM
+				( SELECT rownum r, a.* 
+					FROM 
+						 (SELECT M.MYFAVPLANSEQ "MYFAVPLANSEQ" , 
+	                     M.MYFAVPLANTITLE "MYFAVPLANTITLE" , 
+	                     to_char(M.regDt, 'YYYY.MM.DD') "REGDT" , 
+	                     P.CNT "CNT",
+	                     P.PLANPHOTO,
+	                     P.PLANTitle,
+	                     P.PLANAREA,
+	                     P.FewDays,
+	                     P.PLANSEQ,
+	                     P.PLANCost,
+	                     P.LIKENUM,
+	                     MB.MEMBERID, 
+	                     COUNT(C.PLANSEQ) "COMMENTSEQ"
+	                FROM PP_MYFAVPLAN M, PP_PLAN P, PP_MEMBERS MB,PP_COMMENTS C
+	               WHERE M.DELYN = 'N' 
+	                 AND P.PLANSEQ = C.PLANSEQ(+)
+	                 AND P.PLANSEQ = M.PLANSEQ(+)
+	                 AND P.MEMSEQ  = MB.MEMSEQ(+)             
+					 AND M.MEMSEQ = ${memSeq} 
+					 <if test="searchWord != null">
+							AND (M.MYFAVPLANTITLE LIKE '%${searchWord}%'
+							 OR  MB.MEMBERID LIKE '%${searchWord}%'
+							 OR  P.PLANAREA LIKE '%${searchWord}%'
+							 OR  P.FewDays LIKE '%${searchWord}%')
+					</if>        
+						  GROUP  BY MYFAVPLANSEQ,
+		           				 MYFAVPLANTITLE,
+		                         M.REGDT,
+		                         P.CNT,
+		                         PLANPHOTO,
+		                         P.PLANTitle,
+		                         P.PLANAREA,
+		                         P.FewDays,
+		                         P.PLANSEQ,
+		                         P.PLANCost,
+		                         P.LIKENUM,
+		                         MB.MEMBERID                           
+		               	ORDER BY M.MYFAVPLANSEQ DESC
+						)a  
+				)			
+				WHERE r BETWEEN #{startAtcIdx} AND #{endAtcIdx}
+    
+        		 
+	</select>
+	
+	<select id="getTotalArticleCnt" parameterType="hashmap" resultType="int">
+		SELECT 	count(MYFAVPLANSEQ)
+		  FROM	PP_MYFAVPLAN M ,PP_PLAN P ,PP_MEMBERS MB
+	 	 WHERE	M.delyn='N'
+	       AND  M.PLANSEQ =P.PLANSEQ
+	       AND  M.MEMSEQ =MB.MEMSEQ
+		   AND  M.MEMSEQ ='${memSeq}'			 
+		  <if test="searchWord != null">
+		   AND (MYFAVPLANTITLE LIKE '%${searchWord}%'
+		    OR  MB.MEMBERID LIKE '%${searchWord}%'
+			OR  P.PLANAREA LIKE '%${searchWord}%'
+		    OR  P.FewDays LIKE '%${searchWord}%')
+		  </if>   
+	</select>
+	
+	<update id="updateTitle" parameterType="hashmap">
+		UPDATE	PP_MYFAVPLAN 
+		SET		MYFAVPLANTITLE = #{myFavPlanTitle} 
+		WHERE	MYFAVPLANSEQ = #{myFavPlanSeq}
+	</update>
+	
+	<update id="deleteCheck" parameterType="java.lang.String">
+		UPDATE	PP_MYFAVPLAN 
+		SET		delYn ='Y' 
+		WHERE	MYFAVPLANSEQ = #{value}
+	</update>
+	
+	<update id="myFavPlanDelete" parameterType="hashmap">
+			UPDATE	PP_MYFAVPLAN 
+			   SET	delYn ='Y' 
+			 WHERE	MYFAVPLANSEQ = #{MYFAVPLANSEQ}
+	</update>
+	
+	
+</mapper>

@@ -1,0 +1,83 @@
+@CHARSET "UTF-8";
+
+
+#blog-header-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 150px;
+      
+    background-color: #fff;
+}
+      
+#blog-header-container h1 {
+    position: relative;
+    top: 40px;
+    left: 20px;
+      
+    font-size: 2.0em;
+    font-weight: bold;
+}
+      
+#menu-container {
+    position: fixed;
+    top: 150px;
+    left: 90%;
+      
+    width:;
+    height: 50px;
+    padding-left: 20px;
+    padding-top: 15px;
+    box-sizing: border-box;
+      
+    border:5px solid black;
+    background-color: transparent;
+    z-index:9999;
+      
+    -webkit-transition: padding-left 200ms linear;
+    -moz-transition: padding-left 200ms linear;
+    -ms-transition: padding-left 200ms linear;
+    -o-transition: padding-left 200ms linear;
+    transition: padding-left 200ms linear;
+}
+#menu-container.fixed {
+    padding-left: 70px;
+    opacity: 0.95;
+    /* -webkit-box-shadow: 0 1px 5px 1px rgba(0,0,0,0.2); // 검색바 넣을수도 있음 그림자 슬라이드됨
+    box-shadow: 0 1px 5px 1px rgba(0,0,0,0.2); */
+}
+#menu-container .menu-item {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #fff;
+}
+#menu-container .menu-icon {
+    display: block !important;
+    position: absolute;
+    left: -50px;
+    top: 14px;
+    
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #fff;
+      
+    -webkit-transition: left 300ms linear;
+    -moz-transition: left 300ms linear;
+    -ms-transition: left 300ms linear;
+    -o-transition: left 300ms linear;
+    transition: left 300ms linear;
+}
+#menu-container .menu-icon.on {
+    left: 9;
+}
+      
+#blog-container {
+    margin-top:200px;
+    padding: 20px;
+}
+
+
+/* button img{
+	vertical-align: middle;
+} */
