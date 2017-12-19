@@ -7,13 +7,14 @@ Sha256Util.java
 --------
 프로그램
 - keyzen, toad for oracle
-- 나비캣
-- totalcommand
-- 어노테이션 설정 프로그램
-- sql developer - 경량화버전
+- 나비켓
+- totalcommand (파일관리 프로그램)
+- 어노테이션 설정 프로그램(음..)
+- sql developer - 경량화버전(음..)
 
 - sitemesh - 셋팅수월, 소규모사이트사용
    = apache어쩌구 프로그램000
+    -> 레이아웃 프레임워크(음..)
 
 ------
 web.xml에서부터 설명
@@ -53,7 +54,7 @@ URIEncoding="UTF-8"
 
 -----
 - tag liverlary
-tag iverlary -> web.mxl에서 선언
+tag iverlary -> web.xml에서 선언
 tag.vm에 공통적인 것들을 셋팅
    셋팅후에는 전체 jsp에서 선언할 필요가 없슴
 
@@ -61,12 +62,22 @@ tag.vm에 공통적인 것들을 셋팅
 프로그램 설치하면 web.xml에 추가를 시켜줬음
 
 ----
-스프링 프로젝트 업데이트 -> alt +enter
+스프링 프로젝트 업데이트 -> alt +f5
+
+ctrl + f6 이 열려있는 파일이동
 
 
---------
-002
-배포
+------------------------------
+1 접속정보 암호화
+
+------------------------------
+
+
+------------------------------
+
+2 배포
+
+------------------------------
 배포를 배우겟슴
 
 WAR
@@ -79,19 +90,42 @@ C:\study\apache-tomcat-8.0.38\webapps
 C:\study\apache-tomcat-8.0.38\bin에서
 sta tab누름 -> startup.bat
 
-C:\study\apache-tomcat-8.0.38\conf
+C:\study\apache-tomcat-8.0.38\conf안에 있는
 server.xml에 
 host아래에
 <Context path="/" docBase="Potoprojects" reloadable="false"></Context>
 를 추가
+docBase를 프로젝트 이름으로 변경
 
-3
+
+
+http://localhost:8080/login.do
 http://localhost:8080/login.do
 해당주소를 접속
 
 error가 나면 접속이 안됨
 error가 나면 java(TM) 끄고 startup.bat으로 시작
 
+------------------------------
+3 언어설정 properties
+------------------------------
+ 1) 다국어 처리를 위해 메시지를 별도의 파일로 분류해야 한다. 경로를 src/main/resources/locale에 각각 영어, 일본어, 한국어 메시지파일을 만든다.
+
+ 2) servlet-context.xml에 다국어 처리부분을 추가한다
+    1 context-message.xml에 설정추가
+    2 action-servlet.xml에 설정추가
+
+ 3) <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %><!-- spring 라이브러리 --> 추가
+
+  4) 해당 view에
+    <spring:message code="messageVo.messageReset" />
+     = 해당 lang에 맞는 text가 출력됨
+
+
+※ 스프링에서 다국어처리를하려면 controller를 통해서 해당 xxxxx.jsp에 이동이 가능해야한다
+
+참고 url
+http://yookeun.github.io/java/2015/08/12/spring-i18n/
 
 Potoprojects
 
