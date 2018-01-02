@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://androiddev.tistory.com/473 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./JAVA SHA256 암호화(Encrypt)_files/menubar.css"><!--[if lt IE 9]><script src="https://t1.daumcdn.net/tistory_admin/lib/jquery/jquery-1.12.4.min.js"></script><![endif]--><!--[if gte IE 9]>
+<!--><script src="./JAVA SHA256 암호화(Encrypt)_files/ca-pub-3516267319160381.js.다운로드"></script><script type="text/javascript" async="" src="./JAVA SHA256 암호화(Encrypt)_files/ga.js.다운로드"></script><script src="./JAVA SHA256 암호화(Encrypt)_files/jquery-3.2.1.min.js.다운로드"></script><!--<![endif]-->
+<script>var tjQuery = jQuery.noConflict(true);</script><style type="text/css">.tt_article_useless_p_margin p {padding-top:0 !important;padding-bottom:0 !important;margin-top:0 !important;margin-bottom:0 !important;}</style><meta name="referrer" content="always"><link rel="shortcut icon" href="http://cfile8.uf.tistory.com/original/2102DD3A543797101F4471"><meta name="description" content="개발을 하다 보면, 암호를 종종 다루어야 하는데, 암호를 저장할 때는 일방향 암호화를 해야한다. 보통 개인정보가 들어가는 곳에 대해서는 일방향 암호화가 필수이기 때문에 암호를 저장할 때 암호를 복호화가 불가능한 일방향 암호를 이용하곤 한다. 이번 포스팅에서는 자바에서 SHA 256으로 일방향 암호화를 하는 방법에 대해 알아보자.  JAVA SHA256 Encrypt 별도의 플러그인이 필요하지는 않고 자바의 secutiry 패키지에 있..">
+
+<!-- BEGIN OPENGRAPH -->
+<link rel="canonical" href="http://androiddev.tistory.com/473"><meta property="og:type" content="article"><meta property="og:url" content="http://androiddev.tistory.com/473"><meta property="og:site_name" content="Developer Study Blog"><meta property="og:title" content="JAVA SHA256 암호화(Encrypt)"><meta name="by" content="안드로이드 개발자 을지휘소"><meta property="og:description" content="개발을 하다 보면, 암호를 종종 다루어야 하는데, 암호를 저장할 때는 일방향 암호화를 해야한다. 보통 개인정보가 들어가는 곳에 대해서는 일방향 암호화가 필수이기 때문에 암호를 저장할 때 암호를 복호화가 불가능한 일방향 암호를 이용하곤 한다. 이번 포스팅에서는 자바에서 SHA 256으로 일방향 암호화를 하는 방법에 대해 알아보자.  JAVA SHA256 Encrypt 별도의 플러그인이 필요하지는 않고 자바의 secutiry 패키지에 있.."><meta property="og:image" content="http://cfile30.uf.tistory.com/image/251D713E58ACCE9A0DE582"><meta property="article:section" content="IT 인터넷">
+<!-- END OPENGRAPH -->
+
+
+
+<!-- BEGIN TWITTERCARD -->
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@TISTORY"><meta name="twitter:title" content="JAVA SHA256 암호화(Encrypt)"><meta name="twitter:description" content="개발을 하다 보면, 암호를 종종 다루어야 하는데, 암호를 저장할 때는 일방향 암호화를 해야한다. 보통 개인정보가 들어가는 곳에 대해서는 일방향 암호화가 필수이기 때문에 암호를 저장할 때 암호를 복호화가 불가능한 일방향 암호를 이용하곤 한다. 이번 포스팅에서는 자바에서 SHA 256으로 일방향 암호화를 하는 방법에 대해 알아보자.  JAVA SHA256 Encrypt 별도의 플러그인이 필요하지는 않고 자바의 secutiry 패키지에 있.."><meta property="twitter:image" content="http://cfile30.uf.tistory.com/image/251D713E58ACCE9A0DE582">
+<!-- END TWITTERCARD -->
+
+
+
+<!-- BEGIN DAUMAPP -->
+<meta property="dg:plink" content="http://androiddev.tistory.com/473"><meta name="plink" content="http://androiddev.tistory.com/473"><meta name="title" content="JAVA SHA256 암호화(Encrypt)"><meta name="article:media_name" content="Developer Study Blog"><meta property="article:mobile_url" content="http://androiddev.tistory.com/m/473"><meta property="article:pc_url" content="http://androiddev.tistory.com/473"><meta property="article:mobile_view_url" content="http://androiddev.tistory.com/m/473"><meta property="article:pc_view_url" content="http://androiddev.tistory.com/473"><meta property="article:talk_channel_view_url" content="http://androiddev.tistory.com/m/473"><meta property="article:pc_service_home" content="http://www.tistory.com"><meta property="article:mobile_service_home" content="http://www.tistory.com/m"><meta property="article:txid" content="952678_473"><meta property="article:published_time" content="2017-02-22T08:42:18+09:00"><meta property="og:regDate" content="20170222084218"><meta property="article:modified_time" content="2017-02-22T09:15:18+09:00">
+<!-- END DAUMAPP -->
+
+
+
+<!-- BEGIN STRUCTURED_DATA -->
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":{"@id":"http:\/\/androiddev.tistory.com\/473"},"url":"http:\/\/androiddev.tistory.com\/473","headline":"JAVA SHA256 \uc554\ud638\ud654(Encrypt)","description":"\uac1c\ubc1c\uc744 \ud558\ub2e4 \ubcf4\uba74, \uc554\ud638\ub97c \uc885\uc885 \ub2e4\ub8e8\uc5b4\uc57c \ud558\ub294\ub370, \uc554\ud638\ub97c \uc800\uc7a5\ud560 \ub54c\ub294 \uc77c\ubc29\ud5a5 \uc554\ud638\ud654\ub97c \ud574\uc57c\ud55c\ub2e4. \ubcf4\ud1b5 \uac1c\uc778\uc815\ubcf4\uac00 \ub4e4\uc5b4\uac00\ub294 \uacf3\uc5d0 \ub300\ud574\uc11c\ub294 \uc77c\ubc29\ud5a5 \uc554\ud638\ud654\uac00 \ud544\uc218\uc774\uae30 \ub54c\ubb38\uc5d0 \uc554\ud638\ub97c \uc800\uc7a5\ud560 \ub54c \uc554\ud638\ub97c \ubcf5\ud638\ud654\uac00 \ubd88\uac00\ub2a5\ud55c \uc77c\ubc29\ud5a5 \uc554\ud638\ub97c \uc774\uc6a9\ud558\uace4 \ud55c\ub2e4. \uc774\ubc88 \ud3ec\uc2a4\ud305\uc5d0\uc11c\ub294 \uc790\ubc14\uc5d0\uc11c SHA 256\uc73c\ub85c \uc77c\ubc29\ud5a5 \uc554\ud638\ud654\ub97c \ud558\ub294 \ubc29\ubc95\uc5d0 \ub300\ud574 \uc54c\uc544\ubcf4\uc790.  JAVA SHA256 Encrypt \ubcc4\ub3c4\uc758 \ud50c\ub7ec\uadf8\uc778\uc774 \ud544\uc694\ud558\uc9c0\ub294 \uc54a\uace0 \uc790\ubc14\uc758 secutiry \ud328\ud0a4\uc9c0\uc5d0 \uc788..","author":{"@type":"Person","name":"\uc548\ub4dc\ub85c\uc774\ub4dc \uac1c\ubc1c\uc790 \uc744\uc9c0\ud718\uc18c"},"image":{"@type":"ImageObject","url":"http:\/\/cfile30.uf.tistory.com\/image\/251D713E58ACCE9A0DE582","width":"800px","height":"800px"},"datePublished":"20170222T08:42:18+09:00","dateModified":"20170222T09:15:18+09:00","publisher":{"@type":"Organization","name":"TISTORY","logo":{"@type":"ImageObject","url":"https:\/\/t1.daumcdn.net\/cssjs\/icon\/557567EA016E200001","width":"800px","height":"800px"}}}</script>
+<!-- END STRUCTURED_DATA -->
+
+<link rel="apple-touch-icon" href="http://i1.daumcdn.net/thumb/C180x180/?fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2604CB39543796DA3633BA">
+<link rel="apple-touch-icon" sizes="76x76" href="http://i1.daumcdn.net/thumb/C76x76/?fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2604CB39543796DA3633BA">
+<link rel="apple-touch-icon" sizes="120x120" href="http://i1.daumcdn.net/thumb/C120x120/?fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2604CB39543796DA3633BA">
+<link rel="apple-touch-icon" sizes="152x152" href="http://i1.daumcdn.net/thumb/C152x152/?fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2604CB39543796DA3633BA">
+
+
+<meta name="naver-site-verification" content="cbf33c35a9a64eafc949787070955f32f9c0a323">
+<meta name="Robots" content="ALL">
+<meta name="Robots" content="index,follow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+<meta name="author" content="을지휘소">
+<meta name="description" content="개발 업무로 할 수 있는 부업, 투잡, 창업에 대한 강의를 초급부터 고급까지.
+재택근무 가능한 인터넷 비즈니스 블로그 스터디.
+개발 직종 취업에 대한 정보 블로그">
+<meta name="generator" content="FastBoot">
+<link rel="shortcut icon" href="http://androiddev.tistory.com/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="Developer Study Blog" href="http://androiddev.tistory.com/rss">
+<!--F Open Sources are using here: Bootstrap, Bootflat, Fontawesome -->
+<link href="./JAVA SHA256 암호화(Encrypt)_files/fastboot.css" rel="stylesheet">
+<link rel="stylesheet" media="screen" type="text/css" href="./JAVA SHA256 암호화(Encrypt)_files/style.css">
+<title>JAVA SHA256 암호화(Encrypt)</title>
+<!--F IE Old Version Compatible -->
+<script>var ielt9 = 0;</script>
+<!--[if lt IE 9]><link href="https://tistory1.daumcdn.net/tistory/952678/skin/images/ie.fix.css?17" rel="stylesheet" /><script>ielt9 = 1</script><![endif]-->
+<!--[if IE 7]><link href="https://tistory1.daumcdn.net/tistory/952678/skin/images/ie7.css?0505" rel="stylesheet" /><div id="ie_topbar">Developer Study Blog | <a href="/">Home</a> | <a href="/tag">Tag</a> | <a href="/guestbook">Guestbook</a> | <a href="/admin">Admin</a></div><![endif]-->
+
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/jquery.min.js.다운로드"></script>
+	<script async="" src="./JAVA SHA256 암호화(Encrypt)_files/adsbygoogle.js.다운로드"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3516267319160381",
+    enable_page_level_ads: true
+  });
+</script>
+<script language="JavaScript">
+<!--
+ $(window).ready(function(){  
+  $('.daum_like_button').css({'margin':'0px'});
+
+	$('.actionTrail').before($('.daum_like_button'));	
+  //$('.daum_like_button').after($('#naver_connector'));	 		
+  $('.actionTrail').before($('.tt-plugin'));	$('.another_category.another_category_color_red').before($('#naver_connector'));
+	
+	$('#naver_connector').after($('.tt-plugin.tt-share-entry-with-sns.tt-sns-icon-alignment-right.tt-sns-icon-size-small'));
+	
+	 if($(".media").length>0){  //미디어 태그dml 공간이 뜬다. 
+      	$(".media")[0].remove();
+   }
+	
+	
+	  var largeTitleDiv = document.getElementById("large_title_123");
+  largeTitleDiv .style.display = "none"; 
+  var parent = largeTitleDiv .parentNode;
+  if(!parent .className == "tt_article_useless_p_margin"){
+  	parent .style.display = "none"; 
+  }
+	 
+ });
+ //-->
+</script>
+<script>
+/* ----------------- FastBoot Setting Variables ---------------*/
+/* 
+---------- Category Setting 
+			0: Gallery (Default)
+			1: List
+			2: Simple Title
+-------------------------------
+*/
+var f_categoryDefaultMode = 0;
+/* 
+---------- T-Edition Enable
+			false: Use FastBoot Index (Default)
+			true: Use T-edition
+-------------------------------
+*/
+var f_enableTedition = false;
+</script>
+<script>
+/* FastBoot Index by Readiz */
+var urlAddr = decodeURIComponent(location.href);urlAddr = urlAddr.replace('http://','').replace('https://','');urlAddr = urlAddr.split('#')[0]; urlAddr = urlAddr.split('?')[0];
+var url = urlAddr.split('/');
+var rssLogFlag;
+if(!f_enableTedition && url[1] == '') {
+	document.title='Developer Study Blog';
+	rssLogFlag=1;
+	document.write('<style>#sidebar,#content{display:none}#coverDiv{min-height:100%;margin-bottom:50px;display:block;}#coverDiv img{float:right; padding-left:10px; max-width:100%}#coverDiv .info p{margin-bottom:50px;}#coverDiv .col-md-12,#coverDiv .col-md-6{padding:10px}#coverDiv .col-md-3 img{float:none;display:block;margin:auto;padding:0;}#coverDiv .col-md-12 img{max-height:200px;}#coverDiv .col-md-6 img{max-height:150px;}#coverDiv p.des{font-size:12px;}#coverDiv .col-md-12 img{float:left;padding-left:0;padding-right:10px;}#coverDiv div.thumbImages{margin:30px 10px;height:185px;overflow:hidden;text-align:center;}#coverDiv div.thumbImages img{padding:0;margin:5px;float:none;}#coverDiv h5{margin-bottom:5px;}#coverDiv .pubDate{float:right;font-weight:bold;}#coverDiv .loading{height:1080px;}#coverDiv img{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;}#coverDiv img:hover{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";filter:alpha(opacity=100);-moz-opacity:1;opacity:1;}#outer_btn_left,#outer_btn_right{display:none !important;}@media screen and (max-width: 767px) {#coverDiv .col-md-12 p.des, #coverDiv .col-md-6 p.des{display:none}#coverDiv .col-md-12 img, #coverDiv .col-md-6 img{padding:0;width:100%;height:auto;max-height:none;}}.contentPadding{background-color:#ffffff;padding:10px;margin:5px;-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);box-shadow: 0 1px 2px rgba(0, 0, 0, .2);}</style>')
+}
+</script>
+
+
+
+<link href="./JAVA SHA256 암호화(Encrypt)_files/font-awesome.min.css" rel="stylesheet">
+	       <!-- 구글 아날리스틱 시작 -->
+	<script type="text/javascript">
+	
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-31910109-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script><link rel="preload" href="./JAVA SHA256 암호화(Encrypt)_files/integrator.js.다운로드" as="script"><script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/integrator.js.다운로드"></script><link rel="preload" href="./JAVA SHA256 암호화(Encrypt)_files/integrator.js(1).다운로드" as="script"><script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/integrator.js(1).다운로드"></script>
+        <!-- 구글 아날리스틱 종료-->
+<meta http-equiv="imagetoolbar" content="no"><link rel="stylesheet" type="text/css" href="./JAVA SHA256 암호화(Encrypt)_files/shareEntryWithSNS.css">
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/shareEntryWithSNS.js.다운로드"></script>
+
+<style type="text/css">
+		#daumSearchBox {
+			height: 21px;
+			background-image : url(//i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bg_search2_2.gif);
+			margin: 5px auto ;
+			padding: 0;
+		}
+		#daumSearchBox input {
+			background: none;
+			margin : 0;
+			padding : 0;
+			border : 0;
+		}
+		#daumSearchBox #daumLogo {
+			width: 34px;
+			height: 21px;
+			float: left;
+			margin-right: 5px;
+			background-image : url(//i1.daumcdn.net/img-media/tistory/img/bg_search1_2_2010ci.gif);
+		}
+		#daumSearchBox #show_q {
+			background-color: transparent;
+			border: none;
+			font: 12px Gulim, Sans-serif;
+			color: #555;
+			margin-top: 4px;
+			margin-right: 15px;
+			float: left;
+		}
+
+		#daumSearchBox #show_btn {
+			background-image : url(//i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bt_search_2.gif);
+			width: 37px;
+			height: 21px;
+			float: left;
+			margin:0;
+			cursor:pointer;
+			text-indent:-1000em;
+		}
+	</style><link rel="stylesheet" href="./JAVA SHA256 암호화(Encrypt)_files/lightbox.min.css">
+<link rel="stylesheet" type="text/css" href="./JAVA SHA256 암호화(Encrypt)_files/style(1).css">
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/profile.js.다운로드"></script>
+	<style type="text/css">
+		.another_category { border: 1px solid #E5E5E5; padding: 10px 10px 5px; margin:10px 0; clear: both; }
+		.another_category h4 { font-size: 12px !important; margin: 0 !important; border-bottom: 1px solid #E5E5E5 !important; padding: 2px 0 6px !important; }
+		.another_category h4 a { font-weight: bold !important; }
+		.another_category table { table-layout: fixed; border-collapse: collapse; width: 100% !important; margin-top: 10px !important; }
+		* html .another_category table { width: auto !important; }
+		*:first-child+html .another_category table { width: auto !important; }
+		.another_category th, .another_category td { padding: 0 0 4px !important; }
+		.another_category th { text-align: left; font-size: 12px !important; font-weight: normal;  word-break: break-all; overflow: hidden; line-height: 1.5; }
+		.another_category td { text-align: right; width: 80px; font-size: 11px; }
+		.another_category th a { font-weight: normal; text-decoration: none; border: none !important; }
+		.another_category th a.current{ font-weight: bold; text-decoration: none !important; border-bottom: 1px solid !important; }
+		.another_category th span { font-weight: normal; text-decoration: none; font: 10px Tahoma, Sans-serif; border: none !important; }
+
+		.another_category_color_gray, .another_category_color_gray h4 { border-color: #E5E5E5 !important; }
+		.another_category_color_gray * { color: #909090 !important; }
+		.another_category_color_gray th a.current{border-color:#909090 !important;}
+		.another_category_color_gray h4, .another_category_color_gray h4 a { color: #737373 !important; }
+
+
+		.another_category_color_red, .another_category_color_red h4 { border-color: #F6D4D3 !important;  }
+		.another_category_color_red * { color: #E86869 !important; }
+		.another_category_color_red th a.current{border-color:#E86869 !important;}
+		.another_category_color_red h4, .another_category_color_red h4 a { color: #ED0908 !important; }
+
+
+		.another_category_color_green, .another_category_color_green h4 { border-color: #CCE7C8 !important; }
+		.another_category_color_green * { color: #64C05B !important; }
+		.another_category_color_green th a.current{border-color:#64C05B !important;}
+		.another_category_color_green h4, .another_category_color_green h4 a { color: #3EA731 !important; }
+
+
+		.another_category_color_blue, .another_category_color_blue h4 { border-color: #C8DAF2 !important; }
+		.another_category_color_blue * { color: #477FD6 !important; }
+		.another_category_color_blue th a.current{border-color:#477FD6 !important;}
+		.another_category_color_blue h4, .another_category_color_blue h4 a { color: #1960CA !important; }
+
+
+		.another_category_color_violet, .another_category_color_violet h4 { border-color: #E1CEEC !important;  }
+		.another_category_color_violet * { color:#9D64C5 !important; }
+		.another_category_color_violet th a.current{border-color:#9D64C5 !important;}
+		.another_category_color_violet h4, .another_category_color_violet h4 a { color: #7E2CB5 !important; }
+	</style>
+<script type="text/javascript">
+        window.TistoryBlog = {
+            url: "http://androiddev.tistory.com",
+            tistoryUrl: "http://androiddev.tistory.com"
+        };
+        var servicePath = "";
+        var blogURL = "";
+    </script>
+
+	<script> (function() { window.orgjQuery = window.jQuery; window.jQuery = tjQuery })()</script>
+    <script src="./JAVA SHA256 암호화(Encrypt)_files/uoclike.min.js.다운로드"></script>
+	<script> (function() { window.jQuery = window.orgjQuery; delete window.orgjQuery })()</script>
+    <script>
+		(function($) {
+			$.fn.extend({
+				size: function () {
+					return this.length
+				}
+			});
+			$.fn.UOCLike.defaults.updateServiceCategory = true;
+					})(tjQuery)
+    </script>
+        <script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/base.js.다운로드"></script>
+        <link rel="stylesheet" type="text/css" href="./JAVA SHA256 암호화(Encrypt)_files/dialog.css">
+            <link rel="stylesheet" type="text/css" href="./JAVA SHA256 암호화(Encrypt)_files/postBtn.css">
+    <script src="./JAVA SHA256 암호화(Encrypt)_files/kakao.min.js.다운로드"></script><style type="text/css">#DragSchLayer{display:block;position:absolute;z-index:1000;width:61px;height:31px;margin:-30px 0px 0px -5px;background:url(http://search1.daumcdn.net/search/statics/common/pi/btn_drag_rect.png);cursor:pointer}             @media             only screen and (-webkit-min-device-pixel-ratio: 1.5),             only screen and (min-device-pixel-ratio: 1.5),             only screen and (min-resolution: 1.5dppx) {             #DragSchLayer{background-image:url(http://search1.daumcdn.net/search/statics/common/pi/r2/btn_drag_rect.png);background-size:61px 31px}}            </style><script type="text/javascript" async="" src="./JAVA SHA256 암호화(Encrypt)_files/td.min.js.다운로드"></script><link type="text/css" rel="stylesheet" href="chrome-extension://eobejphpabbjeehffmbiecckpkggpbai/style.css"><script type="text/javascript" charset="utf-8" src="chrome-extension://eobejphpabbjeehffmbiecckpkggpbai/js/content-script/page_context.js"></script><link rel="stylesheet" type="text/css" href="./JAVA SHA256 암호화(Encrypt)_files/uoclike.min-20150408-2.css"><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head><body id="tt-body-page" naver_screen_capture_injected="true" class="navFixed">
+
+<!--F 빅 사이즈 좌우 버튼 (1400px 이상 좌우 배치) -->
+<div id="outer_btn_left" class="hidden"><a href="http://androiddev.tistory.com/474" class=""><i class="fa fa-5x fa-chevron-left"></i></a></div>
+<div id="outer_btn_right" class="hidden"><a href="http://androiddev.tistory.com/472" class=""><i class="fa fa-5x fa-chevron-right"></i></a></div>
+<!--F 데스크탑용 네비게이션 바 시작 -->
+<div id="desktopNav" class="hidden-xs fixed">
+	<div class="container">
+		<p class="graylink pull-right"><a href="http://androiddev.tistory.com/admin" title="Admin"><i class="fa fa-cogs"></i></a><span id="loginout_append"><a href="https://www.tistory.com/login"><i class="fa fa-lock fa-fw"></i> Login</a></span></p>
+		<div class="navMiddle">
+			<form class="pull-right" role="search">
+				<div class="form-search search-only">
+					<i class="fa fa-search search-icon"></i>
+					<input type="text" name="search2" value="" onkeypress="if (event.keyCode == 13) { try{window.location.href=&#39;/search/&#39; + looseURIEncode(document.getElementsByName(&#39;search2&#39;)[0].value);document.getElementsByName(&#39;search2&#39;)[0].value = &#39;&#39;; return false;}catch(e){} }" class="form-control search-query">
+				</div>
+			</form>
+			<p class="graylink pull-right rightMenus">
+				<a href="http://androiddev.tistory.com/">Home</a>
+				<a href="http://androiddev.tistory.com/tag">Tags</a>
+				<a href="http://androiddev.tistory.com/guestbook">Guestbook</a>
+				<a href="http://androiddev.tistory.com/category">Recents</a>
+			</p>
+			<h3>Developer Study Blog</h3>
+			<p class="text-muted">개발 업무로 할 수 있는 부업, 투잡, 창업에 대한 강의를 초급부터 고급까지.
+재택근무 가능한 인터넷 비즈니스 블로그 스터디.
+개발 직종 취업에 대한 정보 블로그</p>
+		</div>
+		
+	</div>
+</div>
+<!--F 고정 상단 네비게이션 바 시작(모바일/스크롤 시) -->
+<div id="fixedNav" class="visible-xs navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<span class="lntoggle visible-xs"><i class="fa fa-list-ul fa-2x fa-fw"></i></span>
+	<div id="searchButton" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-search fa-2x fa-fw"></i></div>
+	<div class="container">
+	  <div class="navbar-header">
+	  	<!--F 모바일 제목 -->
+	    <div class="visible-xs" style="overflow:hidden; height:50px; line-height:2.5em; font-size: 1.4em; font-weight: bold; text-align: center; color: #fff;">Developer Study Blog</div>
+		<a id="blog_title" class="navbar-brand dropdown-toggle hidden-xs" data-toggle="dropdown" href="http://androiddev.tistory.com/">Developer Study Blog</a>
+	  </div>
+	  <div class="collapse navbar-collapse">
+		<ul class="nav navbar-nav navbar-right">
+		  <li id="navbar-page"><a href="http://androiddev.tistory.com/" title="Home"><i class="fa fa-home fa-fw fa-2x"></i><span class="visible-xs"> Home</span></a></li>
+		  <li id="navbar-tag"><a href="http://androiddev.tistory.com/tag" title="Tags"><i class="fa fa-tags fa-fw fa-2x"></i><span class="visible-xs"> Tags</span></a></li>
+		  <li id="navbar-guestbook"><a href="http://androiddev.tistory.com/guestbook" title="Guestbook"><i class="fa fa-book fa-fw fa-2x"></i><span class="visible-xs"> Guestbook</span></a></li>
+		  <li><a href="http://androiddev.tistory.com/category"><i class="fa fa-th fa-fw fa-2x"></i><span class="visible-xs"> Recents</span></a></li>
+		  <!--F 필요한 티스토리 추가 메뉴가 있으시면 주석에서 꺼내 쓰세요
+		  <li id="navbar-media"><a href="/media"><i class="fa fa-video-camera fa-fw fa-2x"></i><span class="visible-xs">  Media</span></a></li>
+		  <li id="navbar-location"><a href="/location"><i class="fa fa-map-marker fa-fw fa-2x"></i><span class="visible-xs"> Location</span></a></li>
+		  <li id="navbar-rss"><a href="http://androiddev.tistory.com/rss" onclick="window.open(this.href); return false" title="Developer Study Blog 구독하기"><i class="fa fa-rss fa-fw fa-2x"></i><span class="visible-xs"> RSS</span></a></li>-->
+		  <!--F 검색 모듈 -->
+		  
+		  <form id="search_fix" class="navbar-form navbar-right" role="search">
+			  <div class="form-search search-only">
+				  <i class="fa fa-search search-icon"></i>
+				  <input type="text" name="search" value="" onkeypress="if (event.keyCode == 13) { try{window.location.href=&#39;/search/&#39;+looseURIEncode(document.getElementsByName(&#39;search&#39;)[0].value);document.getElementsByName(&#39;search&#39;)[0].value=&#39;&#39;;return false;}catch(e){} }" class="form-control search-query">
+			  </div>
+		  </form>
+		  
+		</ul>
+	  </div>
+	</div>
+</div>
+<!--F 상단 네비게이션 바 끝 -->
+<script type="text/javascript">
+	(function() {
+		if (!window.T) {
+			window.T = {}
+		}
+		window.T.config = {"TOP_SSL_URL":"https:\/\/www.tistory.com","PREVIEW":false,"ROLE":"guest","PREV_PAGE":"\/474","NEXT_PAGE":"\/472","BLOG":{"isDormancy":false,"title":"Developer Study Blog"},"NEED_COMMENT_LOGIN":false,"COMMENT_LOGIN_CONFIRM_MESSAGE":"","LOGIN_URL":"https:\/\/www.tistory.com\/auth\/login\/?redirectUrl=http%3A%2F%2Fandroiddev.tistory.com%2F473","DEFAULT_URL":"http:\/\/androiddev.tistory.com","USER":{"name":null,"homepage":null}};
+	})();
+</script>
+
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/common.js.다운로드"></script>
+<div style="margin:0; padding:0; border:none; background:none; float:none; clear:none; z-index:0"></div>
+
+<div id="secondNavWrap" class="hidden-xs fixed">
+	<div id="secondNav" class="container">
+		<ul class="tt_category">
+	<li class="">
+		<a class="link_tit" href="http://androiddev.tistory.com/category">
+			IT							<span class="c_cnt">341</span>
+			
+					</a>
+
+				<ul class="category_list">
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Android">
+						Android													<span class="c_cnt">71</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/Install">
+									Install
+																			<span class="c_cnt">2</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/design">
+									design
+																			<span class="c_cnt">10</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/lecture">
+									lecture
+																			<span class="c_cnt">12</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/api">
+									api
+																			<span class="c_cnt">8</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/TroubleShooting">
+									TroubleShooting
+																			<span class="c_cnt">39</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Java">
+						Java													<span class="c_cnt">32</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Web">
+						Web													<span class="c_cnt">32</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/DB">
+						DB													<span class="c_cnt">34</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/DB/Oracle">
+									Oracle
+																			<span class="c_cnt">16</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/DB/MSSQL">
+									MSSQL
+																			<span class="c_cnt">10</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/DB/MYSQL">
+									MYSQL
+																			<span class="c_cnt">7</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Unix">
+						Unix													<span class="c_cnt">45</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Unix/WAS">
+									WAS
+																			<span class="c_cnt">18</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%20%EB%B3%B4%ED%98%B8%EB%B2%95">
+						개인정보 보호법													<span class="c_cnt">8</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/ETC">
+						ETC													<span class="c_cnt">110</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/TroubleShooting">
+									TroubleShooting
+																			<span class="c_cnt">19</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/Eclipse">
+									Eclipse
+																			<span class="c_cnt">6</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/API">
+									API
+																			<span class="c_cnt">10</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/App">
+									App
+																			<span class="c_cnt">2</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/Delphi">
+									Delphi
+																			<span class="c_cnt">15</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/Smart%20TV">
+									Smart TV
+																			<span class="c_cnt">1</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/JIRA">
+									JIRA
+																			<span class="c_cnt">2</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+					</ul>
+			</li>
+</ul>
+		<!--F Breadcrumb (Locator) -->
+		<div id="bread_nav"><a href="http://androiddev.tistory.com/"><i class="fa fa-home"></i> Home</a><i class="fa fa-angle-right"></i><a href="http://androiddev.tistory.com/category/Web"><i class="fa fa-folder-open"></i> Web</a></div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div id="coverDiv"><div class="info col-md-12 hidden"><h3>Developer Study Blog</h3><p class="text-muted">개발 업무로 할 수 있는 부업, 투잡, 창업에 대한 강의를 초급부터 고급까지.
+재택근무 가능한 인터넷 비즈니스 블로그 스터디.
+개발 직종 취업에 대한 정보 블로그</p></div><div class="loading"></div></div>
+		<div id="leftContent" class="col-md-9">
+			<div id="content">
+			<!--F 추천 광고위치 1 : 포스팅 제목 윗부분(모든 페이지에 출력) -->
+			<!--F 태그 -->
+			
+			<!--F 지역로그 -->
+			
+			<!--F 방명록 -->
+			
+			<!--F 본문검색리스트 -->
+			
+			<!--F 댓글검색리스트 -->
+			
+			<!--F 공지사항글 -->
+			
+			<!--F 보호글 -->
+			
+			<!--F 포스트의 본문 시작 -->
+			
+				<article>
+				<h1 class="title">
+				<i class="fa fa-bars"></i> <a href="http://androiddev.tistory.com/473">JAVA SHA256 암호화(Encrypt)</a></h1>
+				<div class="author"><span class="text">Posted by</span> Breeze24</div>
+				<div class="article-attr-wrap">
+					<!--F 포스트관리(관리자에게만 보이는 메뉴) -->
+					
+					<span class="label label-info" style="display:inline"><i class="fa fa-clock-o"></i> 2017.02.22 08:42</span>
+					<a class="label-default label" href="http://androiddev.tistory.com/category/Web" style="display:inline">
+						<i class="fa fa-folder-open"></i>
+						Web
+						<span class="caret"></span>
+					</a>
+					<div id="current_category" class="hidden">Web</div>
+				</div>
+				<!--F 포스트 본문 내용 -->
+				<div class="article">
+					<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody><tr>
+	<td align="center" width="100%">
+<script async="" src="./JAVA SHA256 암호화(Encrypt)_files/adsbygoogle.js.다운로드"></script>
+<ins class="adsbygoogle" style="display: block; height: 60px;" data-ad-client="ca-pub-3516267319160381" data-ad-slot="2472468039" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:682px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:682px;background-color:transparent;"><iframe width="682" height="60" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:682px;height:60px;" src="./JAVA SHA256 암호화(Encrypt)_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>	
+
+	     </td>
+		  </tr>
+			<tr>
+				<td width="100%" align="center">
+<script async="" src="./JAVA SHA256 암호화(Encrypt)_files/adsbygoogle.js.다운로드"></script>
+<!-- 개발 상단 좌측 -->
+<br>
+<!-- androiddev_상단_링크 -->
+<ins class="adsbygoogle" style="display: block; width: 300px; height: 190px;" data-ad-client="ca-pub-3516267319160381" data-ad-slot="4045702832" data-ad-format="link" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:190px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:190px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="190" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:300px;height:190px;" src="./JAVA SHA256 암호화(Encrypt)_files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</td>
+</tr>
+</tbody></table>
+
+					<div class="tt_article_useless_p_margin"><p><span style="font-size: 11pt;">개발을 하다 보면, 암호를 종종 다루어야 하는데, 암호를 저장할 때는 일방향 암호화를 해야한다.&nbsp;</span></p><p><span style="font-size: 11pt;">보통 개인정보가 들어가는 곳에 대해서는 일방향 암호화가 필수이기 때문에 암호를 저장할 때 암호를&nbsp;복호화가 불가능한 일방향 암호를 이용하곤 한다.&nbsp;</span></p><p><br></p><p><span style="font-size: 11pt;">이번 포스팅에서는 자바에서 SHA 256으로 일방향 암호화를 하는 방법에 대해 알아보자.&nbsp;</span></p><p><br></p><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:300px;width: 300px; height: 174px;;height:auto;max-width:100%"><span data-url="http://cfile30.uf.tistory.com/attach/251D713E58ACCE9A0DE582" data-lightbox="lightbox"><img src="./JAVA SHA256 암호화(Encrypt)_files/251D713E58ACCE9A0DE582" style="cursor: pointer;max-width:100%;height:auto" width="300" height="174" alt="JAVA SHA256 암호화" filename="b1.png" filemime="image/jpeg" original="yes"></span></span></p><p><br></p><p><br></p><p></p><h2>JAVA SHA256 Encrypt</h2><br><p></p><p><span style="font-size: 11pt;">별도의 플러그인이 필요하지는 않고 자바의 secutiry 패키지에 있는 MessageDigest를 이용한 방법이다.&nbsp;</span></p>.<div id="adbeforelocate"><div id="adnewlocate" style="width:100%;text-align:center;">
+<!-- 재무 상단 우측2 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-3516267319160381" data-ad-slot="1577722831" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:300px;height:250px;" src="./JAVA SHA256 암호화(Encrypt)_files/saved_resource(2).html"></iframe></ins></ins></ins>
+
+</div><div id="adnewlocate_link" style="width:100%;text-align:center;">
+<br>
+	<!-- androiddev_포스팅안_링크 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 190px;" data-ad-client="ca-pub-3516267319160381" data-ad-slot="9952635633" data-ad-format="link" data-adsbygoogle-status="done"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:190px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_3_anchor" style="display:block;border:none;height:190px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="190" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;width:300px;height:190px;" src="./JAVA SHA256 암호화(Encrypt)_files/saved_resource(3).html"></iframe></ins></ins></ins>
+</div></div>
+<p></p><div><div id="highlighter_785120" class="syntaxhighlighter  java"><div class="toolbar"><span><a href="http://androiddev.tistory.com/473#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java keyword">public</code> <code class="java keyword">class</code> <code class="java plain">Sha256Util {</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">private</code> <code class="java plain">Logger logger = LogManager.getLogger();</code></div><div class="line number4 index3 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java plain">String encoding(String param) </code><code class="java keyword">throws</code> <code class="java plain">Exception{</code></div><div class="line number5 index4 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">String result = </code><code class="java string">""</code><code class="java plain">;</code></div><div class="line number6 index5 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">try</code> <code class="java plain">{</code></div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number8 index7 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">MessageDigest md = MessageDigest.getInstance(</code><code class="java string">"SHA-256"</code><code class="java plain">); </code><code class="java comments">// SHA-256 또는 MD5&nbsp; </code></div><div class="line number9 index8 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">md.update(param.getBytes());</code></div><div class="line number10 index9 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">byte</code> <code class="java plain">bs[] = md.digest();</code></div><div class="line number11 index10 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">StringBuffer sb = </code><code class="java keyword">new</code> <code class="java plain">StringBuffer();</code></div><div class="line number12 index11 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">for</code><code class="java plain">(</code><code class="java keyword">int</code> <code class="java plain">i=</code><code class="java value">0</code><code class="java plain">; i&lt;bs.length; i++) {</code></div><div class="line number13 index12 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">sb.append(Integer.toString((bs[i]&amp;</code><code class="java value">0xff</code><code class="java plain">) + </code><code class="java value">0x100</code><code class="java plain">, </code><code class="java value">16</code><code class="java plain">).substring(</code><code class="java value">1</code><code class="java plain">));</code></div><div class="line number14 index13 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">}</code></div><div class="line number15 index14 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">result = sb.toString();</code></div><div class="line number16 index15 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">logger.debug(result); </code><code class="java comments">// 결과물이 출력됨. aed19017dbb4d25a580b7f9e012e29be089bd1f3&nbsp; //65자</code></div><div class="line number17 index16 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">} </code><code class="java keyword">catch</code><code class="java plain">(NoSuchAlgorithmException e){</code></div><div class="line number18 index17 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">logger.error(e.toString());</code></div><div class="line number19 index18 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">throw</code> <code class="java plain">e;</code></div><div class="line number20 index19 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">} </code><code class="java keyword">catch</code><code class="java plain">(Exception e){</code></div><div class="line number21 index20 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">logger.error(e.toString());</code></div><div class="line number22 index21 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">throw</code> <code class="java plain">e;</code></div><div class="line number23 index22 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">}</code></div><div class="line number24 index23 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">return</code> <code class="java plain">result;</code></div><div class="line number25 index24 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">}</code></div><div class="line number26 index25 alt1"><code class="java plain">}</code></div></div></td></tr></tbody></table></div></div><p></p><p><br><span style="font-size: 11pt;">위와 같이 소스를 작성하고 아래와 같이 실행하면 된다.&nbsp;</span></p><p><br></p><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:580px;;height:auto;max-width:100%"><img src="./JAVA SHA256 암호화(Encrypt)_files/251A934258ACCEAF19146C" style="max-width:100%;height:auto" width="580" height="68" alt="JAVA SHA256 Encrypt" filename="b2.png" filemime="image/jpeg" original="yes"></span></p><p><br></p><p><span style="font-size: 11pt;">그렇게 하면 아래와 같은 결과가 출력된다.&nbsp;</span></p><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:700px;;height:auto;max-width:100%"><span data-url="http://cfile1.uf.tistory.com/attach/271EE63E58ACCEE3138782" data-lightbox="lightbox"><img src="./JAVA SHA256 암호화(Encrypt)_files/271EE63E58ACCEE3138782" style="cursor: pointer;max-width:100%;height:auto" width="700" height="25" alt="자바 SHA256 암호화" filename="b3.png" filemime="image/jpeg" original="yes"></span></span></p>
+.<div id="adbeforelocate_bottm"><div id="adnewlocate_bottom" style="width:100%;text-align:center;">
+<!-- androiddev_하단_링크 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 190px;" data-ad-client="ca-pub-3516267319160381" data-ad-slot="2429368830" data-ad-format="link" data-adsbygoogle-status="done"><ins id="aswift_4_expand" style="display:inline-table;border:none;height:190px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_4_anchor" style="display:block;border:none;height:190px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="190" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_4" name="aswift_4" style="left:0;position:absolute;top:0;width:300px;height:190px;" src="./JAVA SHA256 암호화(Encrypt)_files/saved_resource(4).html"></iframe></ins></ins></ins>
+	<br>
+</div><div id="adnewlocate_bottom_link" style="width:100%;text-align:center;">
+<!-- 개발_하단 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-3516267319160381" data-ad-slot="9100989636" data-adsbygoogle-status="done"><ins id="aswift_5_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_5_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_5" name="aswift_5" style="left:0;position:absolute;top:0;width:300px;height:250px;" src="./JAVA SHA256 암호화(Encrypt)_files/saved_resource(5).html"></iframe></ins></ins></ins>	
+</div></div>
+<p><span style="font-size: 11pt;">이렇게 하면 암호를 SHA256으로 쉽게 암호화할 수 있다.&nbsp;</span></p><p><span style="font-size: 11pt;">자바로 암호화하는 방법은 위와 같고, JAVASCRIPT로도 SHA256으로 암호화할 수 있는데, 다음 포스팅에서는 자바스크립트로 SHA256 암호화하는 방법에 대해 알아보자.&nbsp;</span></p><p><span style="font-size: 11pt;">클라이언트단에서부터 암호화가 되어 이동되기 때문에 자바로 암호화하는 것보다 더 안전할 수 있다.&nbsp;</span></p><p><span style="font-size: 11pt;"><br></span></p><p style="text-align: center;"><span style="font-size: 14.6667px;"><b><a href="http://androiddev.tistory.com/474" target="_blank" class="tx-link">JAVASCRIPT SHA256 Encrypt</a></b></span></p><div class="container_postbtn"><div class="postbtn_like"><div class="like_btn" data-uoc-svc="tistory" data-uoc-uid="952678_473" data-uoc-sc="401" data-uoc-pcurl="http://androiddev.tistory.com/473" data-uoc-fetchurl="http://api.kakao.tistory.com/like/fetch?uid=952678_473"><label class="uoc-icon"><span class="ico_postbtn ico_like"></span> <span class="txt_like uoc-text screen_out">공감</span><span class="txt_like uoc-count">1</span><input type="button" class="inp_btn uoc-button"></label></div><span class="ico_bar"></span><label><span class="ico_postbtn ico_sns">sns</span><input type="button" class="inp_btn"></label><span class="ico_bar"></span><label data-entry-id="473"><span class="ico_postbtn ico_report">신고</span><input type="button" class="inp_btn"></label></div></div>
+<div id="naver_connector" style="width:100%;text-align:center;">
+<iframe style="height:485px; width:171px;" src="./JAVA SHA256 암호화(Encrypt)_files/WidgetView.html" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+</div><div class="tt-plugin tt-share-entry-with-sns tt-sns-icon-alignment-right tt-sns-icon-size-small">
+	<div class="tt-sns-wrap" id="ttSnsWrap-473">
+		<ul class="tt-sns-service-default">
+			<li class="tt-sns-service-kakaostory"><a href="javascript:;" onclick="ShareEntryWithSNS.share(&#39;kakaostory&#39;, &#39;473&#39;, &#39;JAVA%20SHA256%20%EC%95%94%ED%98%B8%ED%99%94%28Encrypt%29&#39;);">카카오스토리</a></li>
+			<li class="tt-sns-service-twitter"><a href="javascript:;" onclick="ShareEntryWithSNS.share(&#39;twitter&#39;, &#39;473&#39;, &#39;JAVA%20SHA256%20%EC%95%94%ED%98%B8%ED%99%94%28Encrypt%29&#39;);">트위터</a></li>
+			<li class="tt-sns-service-facebook"><a href="javascript:;" onclick="ShareEntryWithSNS.share(&#39;facebook&#39;, &#39;473&#39;, &#39;JAVA%20SHA256%20%EC%95%94%ED%98%B8%ED%99%94%28Encrypt%29&#39;);">페이스북</a></li>
+		</ul>
+	</div>
+	<div class="tt-sns-clear"></div>
+</div><div class="another_category another_category_color_red">
+<h4>'<a href="http://androiddev.tistory.com/category/Web">Web</a>' 카테고리의 다른 글</h4>
+<table>
+<tbody><tr>
+<th>
+<a href="http://androiddev.tistory.com/476?category=448957">checkbox 속성 추가(다건의 attribute)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.05.05</td>
+</tr>
+<tr>
+<th>
+<a href="http://androiddev.tistory.com/474?category=448957">Javascript SHA256 Encrypt(자바스크립트 SHA256 암호화)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.02.22</td>
+</tr>
+<tr>
+<th>
+<a href="http://androiddev.tistory.com/473?category=448957" class="current">JAVA SHA256 암호화(Encrypt)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.02.22</td>
+</tr>
+<tr>
+<th>
+<a href="http://androiddev.tistory.com/470?category=448957">자바스크립트 리터럴이란?(javascript literal)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.01.03</td>
+</tr>
+<tr>
+<th>
+<a href="http://androiddev.tistory.com/464?category=448957">html5 예제 (기본 형식)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.10.29</td>
+</tr>
+<tr>
+<th>
+<a href="http://androiddev.tistory.com/461?category=448957">html 우클릭 방지, 복사 금지</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.10.16</td>
+</tr>
+</tbody></table></div></div>
+
+				<!--F 태그트레일 -->
+				
+				<div class="actionTrail">
+					<a href="http://androiddev.tistory.com/473#tb" onclick="alert(&#39;이 블로그에는 트랙백을 달 수 없습니다\t&#39;); return false" title="Trackback" class="label label-info"><i class="fa fa-random"></i> Trackback: <span id="trackbackCount473">0</span></a>
+					<a href="http://androiddev.tistory.com/473#rp" onclick="toggleLayerForEntry(&#39;473&#39;, &#39;comment&#39;); return false" title="Comment" class="label label-primary"><i class="fa fa-comments"></i> Comment: <span id="commentCount473">0</span></a>
+				</div>
+				<!--F 트랙백 -->
+				<div id="entry473Trackback" style="display:none">
+				<div class="trackback">
+					<p><i class="fa fa-random"></i> </p>
+					
+				</div>
+				</div>
+				<div id="entry473Comment" style="display:block">
+				<div class="comment">
+					<!--F 댓글쓰기 -->
+					<form method="post" action="http://androiddev.tistory.com/comment/add/473" onsubmit="return false" style="margin: 0">
+					<div class="commentWrite">
+						
+							
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+										<input class="form-control" placeholder="Name" type="text" name="name" value="" id="name_">
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+										<input class="form-control" placeholder="Password" type="password" name="password" value="" id="password_">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-home fa-fw"></i></span>
+										<input class="form-control" placeholder="Homepage" type="text" name="homepage" value="http://" id="homepage_">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-sm-12">
+									<input style="display:inline;" type="checkbox" name="secret" id="secret_" class="checkbox">
+									<span>이 댓글을 비밀 댓글로</span>
+								</div>
+							</div>
+						
+						<div class="row">
+							<div class="col-sm-12">
+								<textarea class="form-control" placeholder="내용을 입력하세요." name="comment" rows="6"></textarea>
+							</div>
+						</div>
+						<button class="btn btn-primary" type="submit" onclick="addComment(this, 473); return false;">
+							<i class="fa fa-check"></i>
+							댓글 달기
+						</button>
+					</div>
+					</form>
+					<!-- 댓글읽기 -->
+					<div class="commentList">
+						
+					</div>
+				</div>
+				</div><script type="text/javascript">loadedComments[473]=true;findFragmentAndHighlight(473)</script>
+			</div></article>
+			
+			<!--F 페이지 -->
+			
+			<!--F 좌우 여백에 이전글 다음글 표시 Script 완벽 동작 버전 by Readiz (1400px 이상) -->
+			<div id="prevTmp" class="hidden"><a href="http://androiddev.tistory.com/474" class=""><i class="fa fa-5x fa-chevron-left"></i></a></div>
+			<div id="nextTmp" class="hidden"><a href="http://androiddev.tistory.com/472" class=""><i class="fa fa-5x fa-chevron-right"></i></a></div>
+			<script>
+				document.getElementById("outer_btn_left").innerHTML = document.getElementById("prevTmp").innerHTML;
+				document.getElementById("outer_btn_right").innerHTML = document.getElementById("nextTmp").innerHTML;
+			</script>
+			<div id="paging">
+				<a href="http://androiddev.tistory.com/474" class="" id="prevPage" title="이전"><span>«이전</span>&nbsp;</a>
+				<span class="numbox">
+					
+					<a href="http://androiddev.tistory.com/492" class="num"><span>1</span></a>
+					
+					<a class="num"><span>···</span></a>
+					
+					<a href="http://androiddev.tistory.com/477" class="num"><span>16</span></a>
+					
+					<a href="http://androiddev.tistory.com/476" class="num"><span>17</span></a>
+					
+					<a href="http://androiddev.tistory.com/475" class="num"><span>18</span></a>
+					
+					<a href="http://androiddev.tistory.com/474" class="num"><span>19</span></a>
+					
+					<a class="num"><span class="selected">20</span></a>
+					
+					<a href="http://androiddev.tistory.com/472" class="num"><span>21</span></a>
+					
+					<a href="http://androiddev.tistory.com/471" class="num"><span>22</span></a>
+					
+					<a href="http://androiddev.tistory.com/470" class="num"><span>23</span></a>
+					
+					<a href="http://androiddev.tistory.com/469" class="num"><span>24</span></a>
+					
+					<a class="num"><span>···</span></a>
+					
+					<a href="http://androiddev.tistory.com/2" class="num"><span>341</span></a>
+					
+				</span>
+				<a href="http://androiddev.tistory.com/472" class="" id="nextPage" title="다음">&nbsp;<span>다음»</span></a>
+			</div>
+			
+		</div> <!--F / content -->
+	</div> <!-- /col-md-9 -->
+	<aside><div id="sidebar" class="sidebar col-md-3">
+			
+				<!-- 카테고리 모듈 -->
+					<div class="panel panel-default category">
+						<h4 class="panel-heading"><i class="fa fa-list"></i> Category</h4>
+						<div class="panel-body">
+							<ul class="tt_category">
+	<li class="">
+		<a class="link_tit" href="http://androiddev.tistory.com/category">
+			IT							<span class="c_cnt">341</span>
+			
+					</a>
+
+				<ul class="category_list">
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Android">
+						Android													<span class="c_cnt">71</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/Install">
+									Install
+																			<span class="c_cnt">2</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/design">
+									design
+																			<span class="c_cnt">10</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/lecture">
+									lecture
+																			<span class="c_cnt">12</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/api">
+									api
+																			<span class="c_cnt">8</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/TroubleShooting">
+									TroubleShooting
+																			<span class="c_cnt">39</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Java">
+						Java													<span class="c_cnt">32</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Web">
+						Web													<span class="c_cnt">32</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/DB">
+						DB													<span class="c_cnt">34</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/DB/Oracle">
+									Oracle
+																			<span class="c_cnt">16</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/DB/MSSQL">
+									MSSQL
+																			<span class="c_cnt">10</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/DB/MYSQL">
+									MYSQL
+																			<span class="c_cnt">7</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Unix">
+						Unix													<span class="c_cnt">45</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Unix/WAS">
+									WAS
+																			<span class="c_cnt">18</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%20%EB%B3%B4%ED%98%B8%EB%B2%95">
+						개인정보 보호법													<span class="c_cnt">8</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/ETC">
+						ETC													<span class="c_cnt">110</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/TroubleShooting">
+									TroubleShooting
+																			<span class="c_cnt">19</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/Eclipse">
+									Eclipse
+																			<span class="c_cnt">6</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/API">
+									API
+																			<span class="c_cnt">10</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/App">
+									App
+																			<span class="c_cnt">2</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/Delphi">
+									Delphi
+																			<span class="c_cnt">15</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/Smart%20TV">
+									Smart TV
+																			<span class="c_cnt">1</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/JIRA">
+									JIRA
+																			<span class="c_cnt">2</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+					</ul>
+			</li>
+</ul>
+						</div>
+					</div>
+				
+				<!-- 최근 포스트 모듈 -->
+				<div id="recentPost" class="panel panel-default">
+					<h4 class="panel-heading"><i class="fa fa-file-o"></i> Writings</h4>
+					<ul class="list-group list-group-flush">
+						
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/492"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/99B1124F5A40F84833837B" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  아웃룩 서명이 첨부파일로 들어가는 문제.. <span class="name" style="display: none;"><span id="commentCountOnRecentEntries492"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/491"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/99C838335A23DC9D06AA29" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  L2 스위치, L3 스위치, L4 스위치, 백본 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries491"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/490"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/9964903359EC410F0D6E4A" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  이클립스 인터페이스 Implementation 구.. <span class="name" style="display: none;"><span id="commentCountOnRecentEntries490"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/489"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/9935AE3359EAB279010D14" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  본인확인 전자서명(signing)하는 방법 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries489"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/488"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/998F643359D1F4CF06D0E4" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  크로스 사이트 요청 위조 예제 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries488"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/487"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/990D203359C66C6D3515D7" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  안드로이드 스튜디오와 이클립스 플러그.. <span class="name" style="display: none;"><span id="commentCountOnRecentEntries487"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/486"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/993D123359C665C325546F" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  크로스 사이트 요청 위조 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries486"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/485"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/998BF233598D9CE7058DAF" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  암호 알고리즘 종류 및 정책 수립기준 정리 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries485"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/484"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/99B25D33598D2CAF33D8DD" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  오라클 TDE 암호화 절차 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries484"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/483"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/99B22D33598D27071F3F01" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  html select box 값 가져오기 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries483"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/482"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/99152D33598C459B2FC518" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  putty 백업 및 복구 방법 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries482"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/481"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/259BB533597C8AA32AB46E" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  이클립스 자바스크립트 인코딩 설정 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries481"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/480"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/2714794F5303740F17001C" alt="" class="dno"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  현재 위치에서 디렉토리별 사용량 보기 <span class="name" style="display: none;"><span id="commentCountOnRecentEntries480"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/479"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/2233AC42594DA98E023C86" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  화면 회전 막는 방법(ctrl alt 화살표 위.. <span class="name"><span id="commentCountOnRecentEntries479">2</span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+
+							<li class="list-group-item">
+								<a href="http://androiddev.tistory.com/478"><span class="thumb"><img src="./JAVA SHA256 암호화(Encrypt)_files/2502EF3C5928AFC4257EDE" alt="" class="byRSS"></span><div style="text-indent:-4px"><i class="fa fa-angle-right"></i>  일행과 공유가 편리한 여행 계획 사이트,.. <span class="name" style="display: none;"><span id="commentCountOnRecentEntries478"></span></span><div class="clearfix"></div></div>
+								</a>
+							</li>
+						
+					</ul>
+				</div>
+				
+				<!-- 최근 댓글 모듈 -->
+				<div class="panel panel-default">
+					<h4 class="panel-heading"><i class="fa fa-comments"></i> Comments</h4>
+					<ul class="list-group list-group-flush">
+						
+						<li class="list-group-item">
+							<a href="http://androiddev.tistory.com/472#comment13475986">
+								깔끔한 설명이십니다.<br><span><i class="fa fa-clock-o"></i> 2017</span> <span class="name pull-right"><i class="fa fa-comment"></i> 심재헌</span> 
+							</a>
+						</li>
+						
+
+						<li class="list-group-item">
+							<a href="http://androiddev.tistory.com/479#comment13458714">
+								^^<br><span><i class="fa fa-clock-o"></i> 2017</span> <span class="name pull-right"><i class="fa fa-comment"></i> 을지휘소</span> 
+							</a>
+						</li>
+						
+
+						<li class="list-group-item">
+							<a href="http://androiddev.tistory.com/479#comment13458713">
+								키보드 하단을 막 누르다가 윈도우 화면..<br><span><i class="fa fa-clock-o"></i> 2017</span> <span class="name pull-right"><i class="fa fa-comment"></i> 질문자님최고</span> 
+							</a>
+						</li>
+						
+
+						<li class="list-group-item">
+							<a href="http://androiddev.tistory.com/469#comment13409585">
+								근데 원래 깔려있던 앱은 안지워지나요?..<br><span><i class="fa fa-clock-o"></i> 2017</span> <span class="name pull-right"><i class="fa fa-comment"></i> Rugby</span> 
+							</a>
+						</li>
+						
+
+						<li class="list-group-item">
+							<a href="http://androiddev.tistory.com/467#comment13391713">
+								전 고급설정이 없던데 어떻게 하나요?<br><span><i class="fa fa-clock-o"></i> 2017</span> <span class="name pull-right"><i class="fa fa-comment"></i> 신리</span> 
+							</a>
+						</li>
+						
+					</ul>
+				</div>
+				
+		</div></aside>
+	</div>
+</div>
+
+ <!-- /container -->
+	<!--F 푸터메뉴 -->
+    <footer><div id="footer">
+		<div class="container" style="padding-top:7px;">
+		  	<!--F 카피라이트 / 스킨 저작권 부분과 오픈소스 저작권 부분은 손대지 않으셨으면 합니다  -->
+			<div class="row">
+        		
+        		<div class="col-md-4 media"><div class="pull-left"><i class="fa fa-file-o fa-2x fa-fw"></i></div>
+					<div class="media-body">
+					<h3>Skin Info</h3>
+					<p class="text-muted">"FastBoot 1.6.1" Designed by <a href="http://readiz.com/" target="_blank">Readiz</a><br>Inspired by <a href="http://yongzz.com/" target="_blank">yongzz</a>, <a href="http://wincomi.com/" target="_blank">wincomi</a>, <a href="http://markquery.com/" target="_blank">Ungki. H</a><br><a href="http://blog.readiz.com/22">Further Information</a>
+					</p>
+					</div>
+				</div>
+        		<div class="col-md-4 media"><div class="pull-left"><i class="fa fa-link fa-2x fa-fw"></i></div>
+					<div class="media-body"><h3>Tistory links</h3>
+						<p class="text-muted">
+							<!--F 블로그 사용 환경 (설치형/티스토리)에 맞게 아래 주석으로 처리된 메뉴를 활성화 시키시기 바랍니다. -->
+							<a href="http://androiddev.tistory.com/" title="홈">홈</a> | <a href="http://androiddev.tistory.com/tag" title="태그">태그</a> | <a href="http://androiddev.tistory.com/media" title="미디어로그">미디어로그</a><br>
+							<a href="http://androiddev.tistory.com/location" title="지역로그">지역로그</a> | <a href="http://androiddev.tistory.com/guestbook" title="방명록">방명록</a><br>
+							<a href="http://androiddev.tistory.com/manage" title="관리자">관리자</a> | <a href="http://androiddev.tistory.com/manage/entry/post" title="글쓰기">글쓰기</a>
+							<!-- <a href="/keylog" class="key" title="키로그">키로그</a><br/> -->
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<hr>
+				<div class="col-md-12">
+					<p class="text-muted">Copyright ⓒ 2013-2014 Breeze24 All rights reserved. / Documentations under Creative Commons Attribution 3.0 / 
+					Open sources are copyright of their respective owners.</p>
+				</div>
+			</div>
+		</div>
+    </div></footer>
+	<!--F OffCanvas -->
+	<div id="lnav"><span class="lntoggle hidden-xs"><i class="fa fa-caret-right fa-3x"></i></span><ul class="category_list"><a href="http://androiddev.tistory.com/" style="font-size:14px;"><i class="fa fa-home"></i> <b>Developer Study Blog</b></a><li><a href="javascript:function none(){return false}" class="actoggle"><i class="fa fa-cogs fa-fw"></i> 티스토리 메뉴</a><ul><a href="https://www.tistory.com/login"><i class="fa fa-lock fa-fw"></i> Login</a><a href="http://androiddev.tistory.com/toolbar/popup/link/" target="_blank"><i class="fa fa-link fa-fw"></i> 링크 추가</a><a href="http://androiddev.tistory.com/guestbook"><i class="fa fa-book fa-fw"></i> 방명록</a><a href="http://androiddev.tistory.com/tag"><i class="fa fa-tags fa-fw"></i> 태그</a><a href="http://androiddev.tistory.com/admin"><i class="fa fa-cog fa-fw"></i> 관리자 모드</a><a href="http://androiddev.tistory.com/admin/entry/post"><i class="fa fa-pencil fa-fw"></i> 글쓰기</a></ul></li><a href="http://androiddev.tistory.com/category">모든 글 보기</a>
+							<li class="">
+					<a class="link_item actoggle" href="javascript:function none(){return false}">
+						Android													
+						
+											</a>
+
+										<ul class="sub_category_list"><a href="http://androiddev.tistory.com/category/Android">관련 글 모두 보기</a>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/Install">
+									Install
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/design">
+									design
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/lecture">
+									lecture
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/api">
+									api
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Android/TroubleShooting">
+									TroubleShooting
+																			
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Java">
+						Java													
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/Web">
+						Web													
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item actoggle" href="javascript:function none(){return false}">
+						DB													
+						
+											</a>
+
+										<ul class="sub_category_list"><a href="http://androiddev.tistory.com/category/DB">관련 글 모두 보기</a>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/DB/Oracle">
+									Oracle
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/DB/MSSQL">
+									MSSQL
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/DB/MYSQL">
+									MYSQL
+																			
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item actoggle" href="javascript:function none(){return false}">
+						Unix													
+						
+											</a>
+
+										<ul class="sub_category_list"><a href="http://androiddev.tistory.com/category/Unix">관련 글 모두 보기</a>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/Unix/WAS">
+									WAS
+																			
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://androiddev.tistory.com/category/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%20%EB%B3%B4%ED%98%B8%EB%B2%95">
+						개인정보 보호법													
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item actoggle" href="javascript:function none(){return false}">
+						ETC													
+						
+											</a>
+
+										<ul class="sub_category_list"><a href="http://androiddev.tistory.com/category/ETC">관련 글 모두 보기</a>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/TroubleShooting">
+									TroubleShooting
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/Eclipse">
+									Eclipse
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/API">
+									API
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/App">
+									App
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/Delphi">
+									Delphi
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/Smart%20TV">
+									Smart TV
+																			
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="http://androiddev.tistory.com/category/ETC/JIRA">
+									JIRA
+																			
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+					</ul></div>
+	<div class="hidden" id="category_tmp"><ul class="tt_category">
+	<li class="">
+		<a class="link_tit" href="http://androiddev.tistory.com/category">
+			IT							
+			
+					</a>
+
+				
+			</li>
+</ul></div>
+	<script>if (ielt9 == 1) window.jQuery || document.write('<script src="https://tistory1.daumcdn.net/tistory/952678/skin/images/jquery-1.11.0.min.js"><\/script>');
+	else if(ielt9 == 0) window.jQuery || document.write('<script src="https://tistory1.daumcdn.net/tistory/952678/skin/images/jquery-2.1.0.min.js"><\/script>');</script>
+	<!--F FastBoot_Plugins -->
+	<script>if(rssLogFlag==1)document.write('<script src="https://tistory1.daumcdn.net/tistory/952678/skin/images/fastboot_index.js"><\/script>');</script>
+    <script src="./JAVA SHA256 암호화(Encrypt)_files/fastboot.min.js.다운로드"></script>
+    <!--[if (gt IE 8)|!(IE)]><!--><script src="./JAVA SHA256 암호화(Encrypt)_files/fastboot_offcanvas.min.js.다운로드"></script><!--<![endif]-->
+	<div id="toTop" onclick="window.scrollTo(0, 0);" style="display: block;"><i class="fa fa-angle-double-up fa-2x"></i></div>
+<!-- highliting -->
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/shCore.js.다운로드"></script>
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/shBrushJScript.js.다운로드"></script>
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/shBrushJava.js.다운로드"></script>
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/shBrushBash.js.다운로드"></script>
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/shBrushSql.js.다운로드"></script>
+<link type="text/css" rel="stylesheet" href="./JAVA SHA256 암호화(Encrypt)_files/shCoreRDark.css">
+
+<script type="text/javascript">
+     SyntaxHighlighter.all()
+</script>
+<!--네이버 이웃 커넥터 시작-->
+
+	
+
+
+	
+
+	
+
+
+<script type="text/javascript">
+   function adLocate() {
+     if($("#adbeforelocate").length=="1"){
+     		$("#adbeforelocate").append($("#adnewlocate"));
+			   (adsbygoogle = window.adsbygoogle || []).push({});
+			  $("#adbeforelocate").append($("#adnewlocate_link"));
+			   (adsbygoogle = window.adsbygoogle || []).push({});
+     } else{
+      	$("#adnewlocate").remove();
+			  $("#adnewlocate_link").remove();
+     }
+		 
+		 if($("#adbeforelocate2").length=="1"){
+     		$("#adbeforelocate2").append($("#adnewlocate2"));
+			   (adsbygoogle = window.adsbygoogle || []).push({});
+     } else{
+      	$("#adnewlocate2").remove();
+     }
+		 
+		 if($("#adbeforelocate_bottm").length=="1"){
+       	$("#adbeforelocate_bottm").append($("#adnewlocate_bottom"));
+			 (adsbygoogle = window.adsbygoogle || []).push({});
+			  $("#adbeforelocate_bottm").append($("#adnewlocate_bottom_link"));
+			 (adsbygoogle = window.adsbygoogle || []).push({});
+      } else{
+      	$("#adnewlocate_bottom").remove();
+				$("#adnewlocate_bottom_link").remove();
+     	}
+   }
+   $('document').ready(adLocate());
+</script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<!--script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55c2f3b3ea370e13" async="async"></script-->
+<script type="text/javascript">
+ document.oncontextmenu = new Function ('return false');
+ document.ondragstart = new Function ('return false');
+ document.onselectstart = new Function ('return false');
+  document.body.style.MozUserSelect = 'none';
+</script>
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/functions.js.다운로드"></script>
+<script src="./JAVA SHA256 암호화(Encrypt)_files/search_dragselection.min.20170308053514.js.다운로드"></script>
+<script>
+    (function($) {
+        $("body").bind('copy', function (e) {
+
+            var url = document.location.href,
+                decodedUrl = decodeURI(url),
+                selection = window.getSelection();
+
+
+            if (typeof window.getSelection == "undefined") {//IE8 or earlier...
+                event.preventDefault();
+
+                var pagelink = '\n\n 출처: ' + decodedUrl,
+                    copytext = selection + pagelink;
+
+                if (window.clipboardData) {
+                    window.clipboardData.setData('Text', copytext);
+                }
+                return;
+            }
+            var body_element = document.getElementsByTagName('body')[0];
+
+            //if the selection is short let's not annoy our users
+            if (("" + selection).length < 30) return;
+
+            //create a div outside of the visible area
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            body_element.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            //we need a <pre> tag workaround
+            //otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName == "PRE") {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            newdiv.innerHTML += '<br /><br />출처: <a href="' + url + '">' + decodedUrl + '</a> [Developer Study Blog]';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                body_element.removeChild(newdiv);
+            }, 200);
+
+        });
+    })(tjQuery);
+</script><script src="./JAVA SHA256 암호화(Encrypt)_files/lightbox.min.js.다운로드"></script><div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href="http://androiddev.tistory.com/473"></a><a class="lb-next" href="http://androiddev.tistory.com/473"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>
+	<script>
+	    lightbox.option({
+			"fadeDuration": 200,
+		    "resizeDuration": 200,
+		    "wrapAround": false,
+			"albumLabel": "%1 / %2",
+			"fitImagesInViewport":true ,
+			"stopEvent": false
+	    })
+	</script><script type="text/javascript">
+var _tiq = 'undefined' !== typeof _tiq ? _tiq : [];
+_tiq.push(['__setConfig', {enableScroll:true, enableClick:true, enableButton:true}]);
+_tiq.push(["__setParam", "svcdomain", "user.tistory.com"]);
+(function(d) {
+	var se = d.createElement('script'); se.type = 'text/javascript'; se.async = true;
+	se.src = location.protocol + '//m2.daumcdn.net/tiara/js/td.min.js';
+	var s = d.getElementsByTagName('head')[0]; s.appendChild(se);
+})(document);
+_tiq.push(['__setParam', 'param_ex', JSON.stringify({"userId":"537422","blogId":"952678","entryId":"473"})]);
+_tiq.push(['__trackPageview']);
+_tiq.push(['__content', 't_content', {
+'c_id':'952678_473', 
+'c_title':'JAVA%20SHA256%20%EC%95%94%ED%98%B8%ED%99%94%28Encrypt%29', 
+'type':'article', 
+'author':'', 
+'author_id':'537422', 
+'cp':'Developer%20Study%20Blog', 
+'cp_id':'952678', 
+'regdata':'2017-02-22 08:42:18', 
+'plink':'http://androiddev.tistory.com/473', 
+'media':'pcweb', 
+}]);
+var addEvent = function (evt, fn) { window.addEventListener ? window.addEventListener(evt, fn, false) : window.attachEvent('on' + evt, fn); };
+var removeEvent = function(evt, fn) { window.removeEventListener ? window.removeEventListener(evt, fn, false) : window.detachEvent('on' + evt, fn);};
+var ua = navigator.userAgent.toLowerCase(); var isIOS = /iP[ao]d|iPhone/i.test(ua);
+var contentExStat = function() {
+		_tiq.push(['__content', 't_content_ex', {
+			'data_type':'usage'
+, 'meta': {
+'c_id':'952678_473', 
+'c_title':'JAVA%20SHA256%20%EC%95%94%ED%98%B8%ED%99%94%28Encrypt%29', 
+'type':'article', 
+'author':'', 
+'author_id':'537422', 
+'cp':'Developer%20Study%20Blog', 
+'cp_id':'952678', 
+'regdata':'2017-02-22 08:42:18', 
+'plink':'http://androiddev.tistory.com/473', 
+'media':'pcweb', 
+}
+}]);
+		removeEvent(isIOS ? 'pagehide' : 'beforeunload', contentExStat);
+};
+addEvent(isIOS ? 'pagehide' : 'beforeunload', contentExStat);
+</script>
+<script type="text/javascript">window.roosevelt_params_queue = window.roosevelt_params_queue || []; window.roosevelt_params_queue.push({channel_id: "dk", channel_label: 'tistory'});</script>
+<script type="text/javascript" src="./JAVA SHA256 암호화(Encrypt)_files/roosevelt_dk_bt.js.다운로드" async=""></script><script type="text/javascript">if(window.console!=undefined){setTimeout(console.log.bind(console,"%cTISTORY","font:8em Arial;color:#EC6521;font-weight:bold"),0);setTimeout(console.log.bind(console,"%c  나를 표현하는 블로그","font:2em sans-serif;color:#333;"),0);}</script><iframe style="position:absolute;width:1px;height:1px;left:-100px;top:-100px" src="./JAVA SHA256 암호화(Encrypt)_files/api.html" id="editEntry"></iframe><div id="layer_sns" class="layer_sns">
+        <div class="bg_layer" onclick="tistorySns.hide(); return false;"></div>
+        <ul class="list_sns">
+            <li><a class="ico_sns ico_fb" data-service="facebook">페이스북 공유하기</a></li>
+            <li style="display: none;"><a class="ico_sns ico_kt">카카오톡 공유하기</a></li>
+            <li><a class="ico_sns ico_ks" data-service="kakaostory">카카오스토리 공유하기</a></li>
+            <li><a class="ico_sns ico_tw" data-service="twitter">트위터 공유하기</a></li>
+        </ul>
+        <button type="button" class="btn_close" onclick="tistorySns.hide(); return false;"><span class="ico_sns ico_close">sns공유하기 레이어 닫기</span></button>
+    </div>
+<!--F Login Button Mapping -->
+<script>
+	var tmpLogin = document.getElementsByClassName("tt_menubar_logout")[0].getElementsByTagName("a")[0];
+	tmpLogin.className = "";
+	tmpLogin.innerHTML = tmpLogin.innerHTML.replace("로그아웃",'<i class="fa fa-unlock fa-fw"></i> Logout');
+	tmpLogin.innerHTML = tmpLogin.innerHTML.replace("로그인",'<i class="fa fa-lock fa-fw"></i> Login');
+	document.getElementById("loginout_append").innerHTML = tmpLogin.outerHTML;
+	$('#lnav ul li ul a')[0].outerHTML = tmpLogin.outerHTML;
+</script><ins class="adsbygoogle" data-adsbygoogle-status="done" style="display: none; width: auto; height: auto;"><ins id="aswift_6_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><ins id="aswift_6_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe width="0" height="0" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_6" name="aswift_6" style="left:0;position:absolute;top:0;width:0px;height:0px;" src="./JAVA SHA256 암호화(Encrypt)_files/saved_resource(6).html"></iframe></ins></ins></ins><span style="border-radius: 3px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 11px; line-height: 20px; font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; color: rgb(255, 255, 255); background: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjYmQwODFjIj48L3BhdGg+PC9nPjwvc3ZnPg==&quot;) 3px 50% / 14px 14px no-repeat rgb(189, 8, 28); position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; border: none; -webkit-font-smoothing: antialiased; top: 727px; left: 298px;">저장</span><span style="width: 24px; height: 24px; background: url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI0IDI0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxtYXNrIGlkPSJtIj48cmVjdCBmaWxsPSIjZmZmIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHJ4PSI2IiByeT0iNiIvPjxyZWN0IGZpbGw9IiMwMDAiIHg9IjUiIHk9IjUiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgcng9IjEiIHJ5PSIxIi8+PHJlY3QgZmlsbD0iIzAwMCIgeD0iMTAiIHk9IjAiIHdpZHRoPSI0IiBoZWlnaHQ9IjI0Ii8+PHJlY3QgZmlsbD0iIzAwMCIgeD0iMCIgeT0iMTAiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0Ii8+PC9tYXNrPjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNmZmYiIG1hc2s9InVybCgjbSkiLz48L3N2Zz4=&quot;) 50% 50% / 14px 14px no-repeat rgba(0, 0, 0, 0.4); position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; border: none; border-radius: 12px; top: 725px; left: 556px;"></span></body><audio src="" id="naver_dic_audio_controller" controls="controls" style="display: none;"></audio><div id="naver_dic-window" style="width: auto; height: auto; max-width: 600px; top: 213px; left: 183px; display: none;"></div></html>

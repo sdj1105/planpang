@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<!-- saved from url=(0170)https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/ -->
+<html lang="ko-KR"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width">
+	<title>Eclipse에서 .properties 파일의 한글이 깨질경우 | Dukeom's Blog</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://dukeom.wordpress.com/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="https://s0.wp.com/wp-content/themes/pub/twentythirteen/js/html5.js"></script>
+	<![endif]-->
+	<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.pubmine.com/">
+<link rel="dns-prefetch" href="https://x.bidswitch.net/">
+<link rel="dns-prefetch" href="https://static.criteo.net/">
+<link rel="dns-prefetch" href="https://ib.adnxs.com/">
+<link rel="dns-prefetch" href="https://aax.amazon-adsystem.com/">
+<link rel="dns-prefetch" href="https://bidder.criteo.com/">
+<link rel="dns-prefetch" href="https://cas.criteo.com/">
+<link rel="dns-prefetch" href="https://gum.criteo.com/">
+<link rel="dns-prefetch" href="https://ads.pubmatic.com/">
+<link rel="dns-prefetch" href="https://gads.pubmatic.com/">
+<link rel="dns-prefetch" href="https://tpc.googlesyndication.com/">
+<link rel="dns-prefetch" href="https://ad.doubleclick.net/">
+<link rel="dns-prefetch" href="https://googleads.g.doubleclick.net/">
+<link rel="dns-prefetch" href="https://www.googletagservices.com/">
+<link rel="dns-prefetch" href="https://cdn.switchadhub.com/">
+<link rel="dns-prefetch" href="https://delivery.g.switchadhub.com/">
+<link rel="dns-prefetch" href="https://delivery.swid.switchadhub.com/">
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="Dukeom&#39;s Blog » 피드" href="https://dukeom.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Dukeom&#39;s Blog » 댓글 피드" href="https://dukeom.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Dukeom&#39;s Blog » Eclipse에서 .properties 파일의 한글이 깨질경우 댓글 피드" href="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s2.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1505864856h&ver=4.9.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56794,8205,9794,65039],[55358,56794,8203,9794,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/wp-emoji-release.min.js.다운로드" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="all-css-0-1" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource" type="text/css" media="all">
+<link rel="stylesheet" id="twentythirteen-fonts-css" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="all-css-2-1" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource(1)" type="text/css" media="all">
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentythirteen-ie-css'  href='https://s0.wp.com/wp-content/themes/pub/twentythirteen/css/ie.css?m=1423935199h&#038;ver=2013-07-18' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="all-css-4-1" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource(2)" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource(3)"></script>
+<link rel="stylesheet" id="all-css-0-2" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/style.css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://dukeom.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Eclipse(Mars2) Marketplace에서 SVN 설치하기" href="https://dukeom.wordpress.com/2016/04/16/eclipsemars2-marketplace%ec%97%90%ec%84%9c-svn-%ec%84%a4%ec%b9%98%ed%95%98%ea%b8%b0/">
+<link rel="next" title="Ruby 1.9.3 설치하기(centos6)" href="https://dukeom.wordpress.com/2016/04/22/ruby-2-3-0-%ec%84%a4%ec%b9%98%ed%95%98%ea%b8%b0centos6/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/">
+<link rel="shortlink" href="https://wp.me/pRBI4-hk">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fdukeom.wordpress.com%2F2016%2F04%2F16%2Feclipse%25ec%2597%2590%25ec%2584%259c-properties-%25ed%258c%258c%25ec%259d%25bc%25ec%259d%2598-%25ed%2595%259c%25ea%25b8%2580%25ec%259d%25b4-%25ea%25b9%25a8%25ec%25a7%2588%25ea%25b2%25bd%25ec%259a%25b0%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fdukeom.wordpress.com%2F2016%2F04%2F16%2Feclipse%25ec%2597%2590%25ec%2584%259c-properties-%25ed%258c%258c%25ec%259d%25bc%25ec%259d%2598-%25ed%2595%259c%25ea%25b8%2580%25ec%259d%25b4-%25ea%25b9%25a8%25ec%25a7%2588%25ea%25b2%25bd%25ec%259a%25b0%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eclipse에서 .properties 파일의 한글이 깨질경우">
+<meta property="og:url" content="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/">
+<meta property="og:description" content="Eclipse에서 .properties 파일을 열었을때 아래와 같이 한글이 깨질 경우 unicode를 지원하는 propedit를 설치해야 한다. 설치 방법은 다음과 같다. Help – Eclipse Market Place 에서 find 입력창에 properties editor 라고 입력하고 go 버튼 클릭 unicode를 지원하는 것으로 나…">
+<meta property="article:published_time" content="2016-04-16T08:54:20+00:00">
+<meta property="article:modified_time" content="2017-03-20T08:13:43+00:00">
+<meta property="og:site_name" content="Dukeom&#39;s Blog">
+<meta property="og:image" content="https://dukeom.files.wordpress.com/2016/04/properties-editor.png">
+<meta property="og:image:width" content="564">
+<meta property="og:image:height" content="656">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:site" content="@dukeom">
+<meta name="twitter:text:title" content="Eclipse에서 .properties 파일의 한글이 깨질경우">
+<meta name="twitter:image" content="https://dukeom.files.wordpress.com/2016/04/properties-editor.png?w=240">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@dukeom">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="https://s2.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="https://s2.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://dukeom.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://dukeom.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://dukeom.wordpress.com/osd.xml" title="Dukeom&#39;s Blog">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="Dukeom&#39;s Blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="영감에서 열정으로"><meta name="msapplication-task" content="name=구독;action-uri=https://dukeom.wordpress.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=무료 블로그 등록;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com 지원;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com 포럼;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="Eclipse에서 .properties 파일의 한글이 깨질경우 | Dukeom&#39;s Blog on WordPress.com">
+<meta name="description" content="Eclipse에서 .properties 파일을 열었을때 아래와 같이 한글이 깨질 경우 unicode를 지원하는 propedit를 설치해야 한다. 설치 방법은 다음과 같다. Help - Eclipse Market Place 에서 find 입력창에 properties editor 라고 입력하고 go 버튼 클릭 unicode를 지원하는 것으로 나오는 Properties Editor 를 찾아 install 버튼을 클릭하고 설치한다. 설치가 완료되면 이클립스를 재시작한다. properties 파일을 마우스 우클릭하여 Open With…">
+	<style type="text/css" id="twentythirteen-header-css">
+			.site-header {
+			background: url(https://s0.wp.com/wp-content/themes/pub/twentythirteen/images/headers/circle.png) no-repeat scroll top;
+			background-size: 1600px auto;
+		}
+		@media (max-width: 767px) {
+			.site-header {
+				background-size: 768px auto;
+			}
+		}
+		@media (max-width: 359px) {
+			.site-header {
+				background-size: 360px auto;
+			}
+		}
+		</style>
+			<script type="text/javascript">
+		var __ATA_PP = { pt: 1, ht: 0, tn: 'twentythirteen', amp: false };
+		var __ATA = __ATA || {};
+		__ATA.cmd = __ATA.cmd || [];
+		__ATA.criteo = __ATA.criteo || {};
+		__ATA.criteo.cmd = __ATA.criteo.cmd || [];
+		</script>
+		<script type="text/javascript" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/publishertag.js.다운로드"></script>
+		<script type="text/javascript" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/head.js.다운로드" async=""></script><link rel="amphtml" href="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/amp/"><link rel="stylesheet" type="text/css" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/shThemeDefault.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<script type="text/javascript">
+	window.google_analytics_uacct = "UA-52447-2";
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_setDomainName', 'wordpress.com']);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/ga.js.다운로드"></script>
+<script charset="utf-8" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/rate.php"></script><style type="text/css"></style><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/services.css"><link type="text/css" rel="stylesheet" href="chrome-extension://eobejphpabbjeehffmbiecckpkggpbai/style.css"><script type="text/javascript" charset="utf-8" src="chrome-extension://eobejphpabbjeehffmbiecckpkggpbai/js/content-script/page_context.js"></script><style type="text/css" id="pd_popup_holder_style_1677984_post_1074">#pd_popup_holder_1677984_post_1074 { position:absolute; display:none; width:350px; height:auto; top:0px; left:0px; z-index:10000; border:solid 1px #CCC; background-color:white; padding:0px 15px;font-family:Arial,Sans;box-shadow: -10px 10px 20px rgba(0, 0, 0, .5);-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, .25);-moz-box-shadow: 0px 0px 6px rgba(0, 0, 0, .25); }</style><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><script type="text/javascript" charset="UTF-8" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/apstag.js.다운로드"></script></head>
+
+<body class="post-template-default single single-post postid-1074 single-format-standard mp6 customizer-styles-applied single-author sidebar highlander-enabled highlander-light" naver_screen_capture_injected="true">
+	<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+			<a class="home-link" href="https://dukeom.wordpress.com/" title="Dukeom&#39;s Blog" rel="home">
+				<h1 class="site-title">Dukeom's Blog</h1>
+				<h2 class="site-description">영감에서 열정으로</h2>
+			</a>
+
+			<div id="navbar" class="navbar">
+				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
+					<button class="menu-toggle" style="display: none;">메뉴</button>
+					<a class="screen-reader-text skip-link" href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#content" title="컨텐츠로 건너뛰기">컨텐츠로 건너뛰기</a>
+					<div id="primary-menu" class="nav-menu"></div>
+					<form role="search" method="get" class="search-form" action="https://dukeom.wordpress.com/">
+				<label>
+					<span class="screen-reader-text">검색:</span>
+					<input type="search" class="search-field" placeholder="검색 …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="검색">
+			</form>				</nav><!-- #site-navigation -->
+			</div><!-- #navbar -->
+		</header><!-- #masthead -->
+
+		<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+						
+				
+<article id="post-1074" class="post-1074 post type-post status-publish format-standard hentry category-eclipse-programming tag-eclipse tag-2842 tag-properties tag-unicode">
+	<header class="entry-header">
+		
+				<h1 class="entry-title">Eclipse에서 .properties 파일의 한글이&nbsp;깨질경우</h1>
+		
+		<div class="entry-meta">
+			<span class="date"><a href="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/" title="Eclipse에서 .properties 파일의 한글이 깨질경우 의 고유링크" rel="bookmark"><time class="entry-date" datetime="2016-04-16T17:54:20+00:00">2016/04/16</time></a></span><span class="categories-links"><a href="https://dukeom.wordpress.com/category/programming/eclipse-programming/" rel="category tag">Eclipse</a></span><span class="tags-links"><a href="https://dukeom.wordpress.com/tag/eclipse/" rel="tag">eclipse</a>, <a href="https://dukeom.wordpress.com/tag/%ed%95%9c%ea%b8%80/" rel="tag">한글</a>, <a href="https://dukeom.wordpress.com/tag/properties/" rel="tag">properties</a>, <a href="https://dukeom.wordpress.com/tag/unicode/" rel="tag">unicode</a></span><span class="author vcard"><a class="url fn n" href="https://dukeom.wordpress.com/author/dukeom/" title="dukeom의 모든 글 보기" rel="author">dukeom</a></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<div class="pd-rating" id="pd_rating_holder_1677984_post_1074" style="display: inline-block;"><div class="rating-icons" id="pd_rate_1677984_post_1074" style="float:left;"><div class="rating-star-icon" onmouseout="PDRTJS_1677984_post_1074.rebuild();" onclick="PDRTJS_1677984_post_1074.rate(1);" onmouseover="PDRTJS_1677984_post_1074.hover(1);" id="PDRTJS_1677984_post_1074_stars_1" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_1677984_post_1074.rebuild();" onclick="PDRTJS_1677984_post_1074.rate(2);" onmouseover="PDRTJS_1677984_post_1074.hover(2);" id="PDRTJS_1677984_post_1074_stars_2" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_1677984_post_1074.rebuild();" onclick="PDRTJS_1677984_post_1074.rate(3);" onmouseover="PDRTJS_1677984_post_1074.hover(3);" id="PDRTJS_1677984_post_1074_stars_3" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_1677984_post_1074.rebuild();" onclick="PDRTJS_1677984_post_1074.rate(4);" onmouseover="PDRTJS_1677984_post_1074.hover(4);" id="PDRTJS_1677984_post_1074_stars_4" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_1677984_post_1074.rebuild();" onclick="PDRTJS_1677984_post_1074.rate(5);" onmouseover="PDRTJS_1677984_post_1074.hover(5);" id="PDRTJS_1677984_post_1074_stars_5" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div></div><span style="float:left;">&nbsp;</span><div id="rating_info_1677984_post_1074" style="display:block;float:left;background:url(https://polldaddy.com/images/ratings/info.png) no-repeat 3px 2px;width:16px;height:16px;cursor:pointer; null " onclick="javascript:PDRTJS_1677984_post_1074.togglePopup();return false;"><span style="display:none;">i</span></div><div class="pd_popup_holder" id="pd_popup_holder_1677984_post_1074">&nbsp;</div><div class="rating-msg" id="PDRTJS_1677984_post_1074_msg" style="float:left; padding-left: 5px; text-align: left; font:normal normal /16px ; color: #;">Rate This</div><p style="padding: 0px; margin: 0px; clear: both;"></p></div><br><p>Eclipse에서 .properties 파일을 열었을때 아래와 같이 한글이 깨질 경우</p>
+<div><div id="highlighter_6074" class="syntaxhighlighter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">fail.common.msg=\uc5d0\ub7ec\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4!</code></div><div class="line number2 index1 alt1"><code class="java plain">fail.common.sql=sql \uc5d0\ub7ec\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4! error code: {</code><code class="java value">0</code><code class="java plain">}, error msg: {</code><code class="java value">1</code><code class="java plain">}</code></div><div class="line number3 index2 alt2"><code class="java plain">info.nodata.msg=\ud574\ub2f9 \ub370\uc774\ud130\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.</code></div></div></td></tr></tbody></table></div></div>
+<p>unicode를 지원하는 propedit를 설치해야 한다.</p>
+<p>설치 방법은 다음과 같다.</p>
+<ul>
+<li>Help – Eclipse Market Place 에서</li>
+<li>find 입력창에 properties editor 라고 입력하고 go 버튼 클릭<br>
+<img data-attachment-id="1089" data-permalink="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/properties-editor/" data-orig-file="https://dukeom.files.wordpress.com/2016/04/properties-editor.png?w=604" data-orig-size="564,656" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="properties editor" data-image-description="" data-medium-file="https://dukeom.files.wordpress.com/2016/04/properties-editor.png?w=604?w=258" data-large-file="https://dukeom.files.wordpress.com/2016/04/properties-editor.png?w=604?w=564" class="alignnone size-full wp-image-1089" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/properties-editor.png" alt="properties editor" srcset="https://dukeom.files.wordpress.com/2016/04/properties-editor.png 564w, https://dukeom.files.wordpress.com/2016/04/properties-editor.png?w=129 129w, https://dukeom.files.wordpress.com/2016/04/properties-editor.png?w=258 258w" sizes="(max-width: 564px) 100vw, 564px"></li>
+<li>unicode를 지원하는 것으로 나오는 Properties Editor 를 찾아 install 버튼을 클릭하고 설치한다.</li>
+<li>설치가 완료되면 이클립스를 재시작한다.</li>
+<li>properties 파일을 마우스 우클릭하여 Open With – properties editor를 선택한다.<br>
+<img data-attachment-id="1099" data-permalink="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/properties_openwith/" data-orig-file="https://dukeom.files.wordpress.com/2016/04/properties_openwith.png?w=604" data-orig-size="541,458" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="properties_openwith" data-image-description="" data-medium-file="https://dukeom.files.wordpress.com/2016/04/properties_openwith.png?w=604?w=300" data-large-file="https://dukeom.files.wordpress.com/2016/04/properties_openwith.png?w=604?w=541" class="alignnone size-full wp-image-1099" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/properties_openwith.png" alt="properties_openwith.png" srcset="https://dukeom.files.wordpress.com/2016/04/properties_openwith.png 541w, https://dukeom.files.wordpress.com/2016/04/properties_openwith.png?w=150 150w, https://dukeom.files.wordpress.com/2016/04/properties_openwith.png?w=300 300w" sizes="(max-width: 541px) 100vw, 541px"></li>
+<li>아래와 같이 한글이 정상적으로 보이면 제대로 설치가 된것이다.</li>
+</ul>
+<div><div id="highlighter_759093" class="syntaxhighlighter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">fail.common.msg=에러가 발생했습니다!</code></div><div class="line number2 index1 alt1"><code class="java plain">fail.common.sql=sql 에러가 발생했습니다! error code: {</code><code class="java value">0</code><code class="java plain">}, error msg: {</code><code class="java value">1</code><code class="java plain">}</code></div><div class="line number3 index2 alt2"><code class="java plain">info.nodata.msg=해당 데이터가 없습니다.</code></div></div></td></tr></tbody></table></div></div>
+		<div class="wpcnt">
+			<div class="wpa wpmrec" style="display: inline-block !important;">
+				<span class="wpa-about">Advertisements</span>
+				<div class="u">		<div style="padding-bottom:15px;width:300px;height:250px;float:left;margin-right:5px;margin-top:0px">
+		<div id="atatags-26942" style="overflow: hidden; position: relative; width: auto; height: auto;"><div style="width: 300px; height: 250px;"><iframe frameborder="0" scrolling="no" width="300" height="250" style="border:none;overflow:hidden;width:300px;height:250px;" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource.html"></iframe></div><div id="atatags-26942__controls" style="width:300px;height:10px;text-align:right;line-height:6px;"><span id="atatags-26942__complain-btn" style="font-size: 10px; color: rgb(109, 171, 210); text-decoration: underline; cursor: pointer; display: inline;">Report this ad</span></div></div></div>		<div style="padding-bottom:15px;width:300px;height:250px;float:left;margin-top:0px">
+		<div id="atatags-114160" style="overflow: hidden; position: relative; width: auto; height: auto;"><div style="width: 300px; height: 250px;"><iframe frameborder="0" scrolling="no" width="300" height="250" style="border:none;overflow:hidden;width:300px;height:250px;" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource(14).html"></iframe></div><div id="atatags-114160__controls" style="width:300px;height:10px;text-align:right;line-height:6px;"><span id="atatags-114160__complain-btn" style="font-size: 10px; color: rgb(109, 171, 210); text-decoration: underline; cursor: pointer; display: inline;">Report this ad</span></div></div></div></div>
+						<div id="crt-1867437983" style="width: 300px; height: 250px; display: none !important;"></div>
+		<script type="text/javascript">
+(function(){var c=function(){var a=document.getElementById("crt-1867437983");window.Criteo?(a.parentNode.style.setProperty("display","inline-block","important"),a.style.setProperty("display","block","important"),window.Criteo.DisplayAcceptableAdIfAdblocked({zoneid:388248,containerid:"crt-1867437983",collapseContainerIfNotAdblocked:!0,callifnotadblocked:function(){a.style.setProperty("display","none","important");a.style.setProperty("visbility","hidden","important")}})):(a.style.setProperty("display","none","important"),a.style.setProperty("visibility","hidden","important"))};if(window.Criteo)c();else{if(!__ATA.criteo.script){var b=document.createElement("script");b.src="//static.criteo.net/js/ld/publishertag.js";b.onload=function(){for(var a=0;a<__ATA.criteo.cmd.length;a++){var b=__ATA.criteo.cmd[a];"function"===typeof b&&b()}};(document.head||document.getElementsByTagName("head")[0]).appendChild(b);__ATA.criteo.script=b}__ATA.criteo.cmd.push(c)}})();
+		</script>		<div id="crt-779232423" style="width: 300px; height: 250px; display: none !important;"></div>
+		<script type="text/javascript">
+(function(){var c=function(){var a=document.getElementById("crt-779232423");window.Criteo?(a.parentNode.style.setProperty("display","inline-block","important"),a.style.setProperty("display","block","important"),window.Criteo.DisplayAcceptableAdIfAdblocked({zoneid:837497,containerid:"crt-779232423",collapseContainerIfNotAdblocked:!0,callifnotadblocked:function(){a.style.setProperty("display","none","important");a.style.setProperty("visbility","hidden","important")}})):(a.style.setProperty("display","none","important"),a.style.setProperty("visibility","hidden","important"))};if(window.Criteo)c();else{if(!__ATA.criteo.script){var b=document.createElement("script");b.src="//static.criteo.net/js/ld/publishertag.js";b.onload=function(){for(var a=0;a<__ATA.criteo.cmd.length;a++){var b=__ATA.criteo.cmd[a];"function"===typeof b&&b()}};(document.head||document.getElementsByTagName("head")[0]).appendChild(b);__ATA.criteo.script=b}__ATA.criteo.cmd.push(c)}})();
+		</script>
+			</div>
+		</div><div id="jp-post-flair" class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li><a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#" class="sharing-anchor sd-button share-more"><span>공유</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none; width: 150px;"><ul style="background-image:none;"><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-1074" class="share-facebook sd-button share-icon" href="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/?share=facebook&amp;nb=1" target="_blank" title="Facebook으로 공유하기"><span>Facebook</span></a></li><li class="share-end"></li></ul></div></div></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-12776344-1074-5a4b1e1c15a06" data-src="//widgets.wp.com/likes/#blog_id=12776344&amp;post_id=1074&amp;origin=dukeom.wordpress.com&amp;obj_id=12776344-1074-5a4b1e1c15a06" data-name="like-post-frame-12776344-1074-5a4b1e1c15a06"><h3 class="sd-title">이것이 좋아요:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>좋아요</span></span> <span class="loading">가져오는 중...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-12776344-1074-5a4b1e1c15a06" height="55px" width="100%" frameborder="0" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource(15).html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>관련</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="348" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://dukeom.wordpress.com/2011/02/10/linux-terminal-%ec%a0%91%ec%86%8d%ec%8b%9c-%ed%95%9c%ea%b8%80-%ea%b9%a8%ec%a7%90-%ed%98%84%ec%83%81/" title="Linux terminal 접속시 한글 깨짐 현상
+
+Linux 사용시 터미널에서 한글이 깨질 경우 profile에 아래 내용을 입력하시면 한글을 제대로 보실 수 있습니다. $ cd /etc (profile 디렉토리로 이동) $ vi profile (profile을 수정) export LANG=ko_KR.eucKR :wq! (저장) $ source profile (저장 내용 적용) 이제 한글이 제대로 나오시죠?" rel="nofollow" data-origin="1074" data-position="0">Linux terminal 접속시 한글 깨짐 현상</a></span><span class="jp-relatedposts-post-context">"Unix&amp;Linux"에서</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="495" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://dukeom.wordpress.com/2011/09/30/eclipse%ec%97%90%ec%84%9c-maven-web-project-%eb%a7%8c%eb%93%a4%ea%b8%b0/" title="Eclipse에서 Maven Web Project 만들기
+
+기본적으로 이클립스에 메이븐 플러그인은 설치되어 있어야 한다. SpringSourceTool 같은 것을 사용하면 기본적으로 설치가 되어있다. 1. File-&gt;New Project-&gt;Maven Project를 선택. 2. 프로젝트명과 이름은 변경할 필요없이 next. 3. Archetype 선택화면에서 아래와 같이 선택하고 next. Catalog : Internal Group Id : org.apache.maven.archetypes Artifact Id : maven-archetype-webapp 4. Specify Archetype parameters 입력화면에서 아래와 같이 입력하고…" rel="nofollow" data-origin="1074" data-position="1">Eclipse에서 Maven Web Project 만들기</a></span><span class="jp-relatedposts-post-context">"Maven"에서</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="1052" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://dukeom.wordpress.com/2016/04/16/eclipsemars2-marketplace%ec%97%90%ec%84%9c-svn-%ec%84%a4%ec%b9%98%ed%95%98%ea%b8%b0/" title="Eclipse(Mars2) Marketplace에서 SVN 설치하기
+
+이클립스에서 SVN을 설치할때마다 헷갈려서 기록으로 남긴다. 이클립스 버전 : Eclipse Mars.2 (4.5.2) 설치 방법 이클립스 실행 후 메뉴 - Help - Eclipse Marketplace find 입력창에 SVN 입력 후 Go 버튼 클릭 첫번째 나오는 Subversive - SVN Team Provider를 설치한다. 설치 완료 후 리부팅을 하면 SVN Connector 선택 팝업이 나타난다. SVNKit 1.8.7을…" rel="nofollow" data-origin="1074" data-position="2">Eclipse(Mars2) Marketplace에서 SVN 설치하기</a></span><span class="jp-relatedposts-post-context">"Eclipse"에서</span></p></div></div></div>	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+					<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">글 네비게이션</h1>
+		<div class="nav-links">
+
+			<a href="https://dukeom.wordpress.com/2016/04/16/eclipsemars2-marketplace%ec%97%90%ec%84%9c-svn-%ec%84%a4%ec%b9%98%ed%95%98%ea%b8%b0/" rel="prev"><span class="meta-nav">←</span> Eclipse(Mars2) Marketplace에서 SVN&nbsp;설치하기</a>			<a href="https://dukeom.wordpress.com/2016/04/22/ruby-2-3-0-%ec%84%a4%ec%b9%98%ed%95%98%ea%b8%b0centos6/" rel="next">Ruby 1.9.3 설치하기(centos6) <span class="meta-nav">→</span></a>
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+					
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			“<span>Eclipse에서 .properties 파일의 한글이&nbsp;깨질경우</span>”에 대한 2개의 생각		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-155" class="comment even thread-even depth-1 highlander-comment">
+			<article id="div-comment-155" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/5c07f6adfdee48328ec2a504a0abeae8" class="avatar avatar-74 grav-hashed grav-hijack" height="74" width="74" id="grav-5c07f6adfdee48328ec2a504a0abeae8-0">						<b class="fn">양수</b> <span class="says">댓글:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/#comment-155">
+							<time datetime="2017-08-02T09:30:03+00:00">
+								2017/08/02 9:30 오전							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>감사합니다</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/?replytocom=155#respond" onclick="return addComment.moveForm( &quot;div-comment-155&quot;, &quot;155&quot;, &quot;respond&quot;, &quot;1074&quot; )" aria-label="양수에 답글 달기">응답</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-170" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-170" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/1bfdec514ef252fe6ed84edf5f999e12" class="avatar avatar-74 grav-hashed grav-hijack" height="74" width="74" id="grav-1bfdec514ef252fe6ed84edf5f999e12-0">						<b class="fn">Kim.D</b> <span class="says">댓글:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/#comment-170">
+							<time datetime="2017-11-06T16:47:55+00:00">
+								2017/11/06 4:47 오후							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>감사합니다.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://dukeom.wordpress.com/2016/04/16/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0/?replytocom=170#respond" onclick="return addComment.moveForm( &quot;div-comment-170&quot;, &quot;170&quot;, &quot;respond&quot;, &quot;1074&quot; )" aria-label="Kim.D에 답글 달기">응답</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+		
+	
+		<div id="respond" class="comment-respond js">
+		<h3 id="reply-title" class="comment-reply-title">답글 남기기 <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#respond" style="display:none;">응답 취소</a></small></h3>			<form action="https://dukeom.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+				<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="2826cb84e0"><input type="hidden" name="_wp_http_referer" value="/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/">
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; word-wrap: break-word; overflow: hidden; transition: none; height: 0px !important; min-height: 0px !important; font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none solid rgba(0, 0, 0, 0.7); word-spacing: 0px; text-indent: 0px; line-height: normal; width: 582px;" class="autosizejs "></textarea><textarea id="comment" name="comment" title="여기에 댓글을 입력하세요..." placeholder="여기에 댓글을 입력하세요..." style="height: 38px; overflow: hidden; word-wrap: break-word; resize: none;"></textarea></div>
+</div>
+
+<div id="comment-form-identity" style="display: none;">
+
+	<div id="comment-form-nascar">
+		<p>아래 항목을 채우거나 오른쪽 아이콘 중 하나를 클릭하여 로그 인 하세요:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#comment-form-guest" id="postas-guest" title="손님">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource(16).html" width="24" height="24" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" width="25" class="no-grav">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">이메일 <span class="required">(필수)</span> <span class="nopublish">(주소는 공개되지 않습니다)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">이름 <span class="required">(필수)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">웹사이트</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value=""></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/ad516503a11cd5ca435acc9bb6523536" alt="WordPress.com 로고" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> WordPress.com의 계정을 사용하여 댓글을 남깁니다. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;wordpress&#39; );">로그아웃</a>&nbsp;/&nbsp;<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#" onclick="javascript:HighlanderComments.switchAccount();return false;">변경</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/ad516503a11cd5ca435acc9bb6523536" alt="Twitter 사진" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> Twitter의 계정을 사용하여 댓글을 남깁니다. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;twitter&#39; );">로그아웃</a>&nbsp;/&nbsp;<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#" onclick="javascript:HighlanderComments.switchAccount();return false;">변경</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/ad516503a11cd5ca435acc9bb6523536" alt="Facebook 사진" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> Facebook의 계정을 사용하여 댓글을 남깁니다. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;facebook&#39; );">로그아웃</a>&nbsp;/&nbsp;<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#" onclick="javascript:HighlanderComments.switchAccount();return false;">변경</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> Google+의 계정을 사용하여 댓글을 남깁니다. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;googleplus&#39; );">로그아웃</a>&nbsp;/&nbsp;<a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#" onclick="javascript:HighlanderComments.switchAccount();return false;">변경</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">취소</a></div>
+		<p>%s에 연결하는 중</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe" style="display: none;">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">후속 댓글을 이메일로 알립니다.</label></p></div>
+
+
+
+
+<p class="form-submit" style="display: none;"><input name="submit" type="submit" id="comment-submit" class="submit" value="댓글 달기"> <input type="hidden" name="comment_post_ID" value="1074" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="fe2b6927d4"></p>
+<input type="hidden" name="genseq" value="1514872348">
+<p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1514872348359"></form>
+			</div><!-- #respond -->
+	<div style="clear: both"></div>
+</div><!-- #comments -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+	<div id="tertiary" class="sidebar-container" role="complementary">
+		<div class="sidebar-inner">
+			<div class="widget-area">
+								<aside id="search-3" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://dukeom.wordpress.com/">
+				<label>
+					<span class="screen-reader-text">검색:</span>
+					<input type="search" class="search-field" placeholder="검색 …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="검색">
+			</form></aside><aside id="calendar-4" class="widget widget_calendar"><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar">
+	<caption>4월 2016</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="일요일">일</th>
+		<th scope="col" title="월요일">월</th>
+		<th scope="col" title="화요일">화</th>
+		<th scope="col" title="수요일">수</th>
+		<th scope="col" title="목요일">목</th>
+		<th scope="col" title="금요일">금</th>
+		<th scope="col" title="토요일">토</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="https://dukeom.wordpress.com/2016/02/">« 2월</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next"><a href="https://dukeom.wordpress.com/2016/06/">6월 »</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="5" class="pad">&nbsp;</td><td>1</td><td>2</td>
+	</tr>
+	<tr>
+		<td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td><a href="https://dukeom.wordpress.com/2016/04/08/" aria-label="2016 April 8 에 글이 발행됨">8</a></td><td>9</td>
+	</tr>
+	<tr>
+		<td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td><a href="https://dukeom.wordpress.com/2016/04/16/" aria-label="2016 April 16 에 글이 발행됨">16</a></td>
+	</tr>
+	<tr>
+		<td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td><a href="https://dukeom.wordpress.com/2016/04/22/" aria-label="2016 April 22 에 글이 발행됨">22</a></td><td>23</td>
+	</tr>
+	<tr>
+		<td>24</td><td>25</td><td><a href="https://dukeom.wordpress.com/2016/04/26/" aria-label="2016 April 26 에 글이 발행됨">26</a></td><td>27</td><td>28</td><td>29</td><td>30</td>
+	</tr>
+	</tbody>
+	</table></div></aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">카테고리</h3>		<ul>
+	<li class="cat-item cat-item-22511868"><a href="https://dukeom.wordpress.com/category/%ea%b0%9c%eb%b0%9c-%eb%b0%a9%eb%b2%95%eb%a1%a0/">개발 방법론</a>
+<ul class="children">
+	<li class="cat-item cat-item-11287"><a href="https://dukeom.wordpress.com/category/%ea%b0%9c%eb%b0%9c-%eb%b0%a9%eb%b2%95%eb%a1%a0/agile/">Agile</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-45766442"><a href="https://dukeom.wordpress.com/category/ipadtablet/" title="iPad 관련글">iPad(Tablet)</a>
+</li>
+	<li class="cat-item cat-item-147152263"><a href="https://dukeom.wordpress.com/category/%ec%84%b8%ec%83%81-%ec%82%ac%eb%8a%94-%ec%9d%b4%ec%95%bc%ea%b8%b0/" title="소소한 이야기들">세상 사는 이야기</a>
+<ul class="children">
+	<li class="cat-item cat-item-569135"><a href="https://dukeom.wordpress.com/category/%ec%84%b8%ec%83%81-%ec%82%ac%eb%8a%94-%ec%9d%b4%ec%95%bc%ea%b8%b0/%eb%8b%a8%ec%83%81/">단상</a>
+</li>
+	<li class="cat-item cat-item-83619"><a href="https://dukeom.wordpress.com/category/%ec%84%b8%ec%83%81-%ec%82%ac%eb%8a%94-%ec%9d%b4%ec%95%bc%ea%b8%b0/%ec%82%ac%ec%a7%84/" title="사진">사진</a>
+</li>
+	<li class="cat-item cat-item-62274585"><a href="https://dukeom.wordpress.com/category/%ec%84%b8%ec%83%81-%ec%82%ac%eb%8a%94-%ec%9d%b4%ec%95%bc%ea%b8%b0/%ec%8b%9c%ea%b0%80-%ec%9e%88%eb%8a%94-%ed%92%8d%ea%b2%bd/" title="아름다운 시 한편">시가 있는 풍경</a>
+</li>
+	<li class="cat-item cat-item-90904847"><a href="https://dukeom.wordpress.com/category/%ec%84%b8%ec%83%81-%ec%82%ac%eb%8a%94-%ec%9d%b4%ec%95%bc%ea%b8%b0/%ec%b6%94%ec%b2%9c-%ec%98%81%ed%99%94/" title="영화 이야기">추천 영화</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-33548484"><a href="https://dukeom.wordpress.com/category/%ec%9e%ac%eb%af%b8%ec%9e%88%eb%8a%94-it-%ec%9d%b4%ec%95%bc%ea%b8%b0%eb%93%a4/" title="IT의 재미있는 이야기들">재미있는 IT 이야기들</a>
+</li>
+	<li class="cat-item cat-item-64312581"><a href="https://dukeom.wordpress.com/category/%ec%a0%9c%eb%a1%9c%eb%b3%b4%eb%93%9cxe/">제로보드XE</a>
+</li>
+	<li class="cat-item cat-item-196"><a href="https://dukeom.wordpress.com/category/programming/">Programming</a>
+<ul class="children">
+	<li class="cat-item cat-item-641922"><a href="https://dukeom.wordpress.com/category/programming/android/" title="Adroid 개발, 사용 Tip">Android</a>
+</li>
+	<li class="cat-item cat-item-2290"><a href="https://dukeom.wordpress.com/category/programming/architecture/">Architecture</a>
+</li>
+	<li class="cat-item cat-item-12732925"><a href="https://dukeom.wordpress.com/category/programming/eclipse-programming/">Eclipse</a>
+</li>
+	<li class="cat-item cat-item-647"><a href="https://dukeom.wordpress.com/category/programming/html/">Html</a>
+</li>
+	<li class="cat-item cat-item-256186536"><a href="https://dukeom.wordpress.com/category/programming/%ec%a0%84%ec%9e%90%ec%a0%95%eb%b6%80%ed%91%9c%ec%a4%80%ed%94%84%eb%a0%88%ec%9e%84%ec%9b%8c%ed%81%ac/">전자정부표준프레임워크</a>
+</li>
+	<li class="cat-item cat-item-355753"><a href="https://dukeom.wordpress.com/category/programming/java-programming/">Java</a>
+</li>
+	<li class="cat-item cat-item-203308"><a href="https://dukeom.wordpress.com/category/programming/jquery/">jQuery</a>
+</li>
+	<li class="cat-item cat-item-47862"><a href="https://dukeom.wordpress.com/category/programming/maven/">Maven</a>
+</li>
+	<li class="cat-item cat-item-4419"><a href="https://dukeom.wordpress.com/category/programming/mysql/" title="MySQL">MySQL</a>
+</li>
+	<li class="cat-item cat-item-458"><a href="https://dukeom.wordpress.com/category/programming/php/">PHP</a>
+</li>
+	<li class="cat-item cat-item-14484"><a href="https://dukeom.wordpress.com/category/programming/rubyrails/">Ruby&amp;Rails</a>
+</li>
+	<li class="cat-item cat-item-68724"><a href="https://dukeom.wordpress.com/category/programming/spring-framework/" title="스프링 프레임웍 이야기">Spring Framework</a>
+</li>
+	<li class="cat-item cat-item-62270302"><a href="https://dukeom.wordpress.com/category/programming/tomcat-programming/">Tomcat</a>
+</li>
+	<li class="cat-item cat-item-27507"><a href="https://dukeom.wordpress.com/category/programming/trac/" title="Trac">Trac</a>
+</li>
+	<li class="cat-item cat-item-34310"><a href="https://dukeom.wordpress.com/category/programming/unixlinux/" title="Unix&amp;Linux 관련글">Unix&amp;Linux</a>
+</li>
+	<li class="cat-item cat-item-4476"><a href="https://dukeom.wordpress.com/category/programming/weblogic/" title="weblogic">Weblogic</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-7170"><a href="https://dukeom.wordpress.com/category/utility/">Utility</a>
+</li>
+	<li class="cat-item cat-item-13752713"><a href="https://dukeom.wordpress.com/category/windows-2/">Windows</a>
+</li>
+	<li class="cat-item cat-item-19765778"><a href="https://dukeom.wordpress.com/category/wordpress-open-source/" title="Wordpress">Wordpress</a>
+</li>
+		</ul>
+</aside><aside id="meta-4" class="widget widget_meta"><h3 class="widget-title">그 밖의 기능</h3>			<ul>
+			<li><a href="https://wordpress.com/start/ko?ref=wplogin">회원가입</a></li>			<li><a href="https://dukeom.wordpress.com/wp-login.php">로그인</a></li>
+			<li><a href="https://dukeom.wordpress.com/feed/">글 <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://dukeom.wordpress.com/comments/feed/">댓글 <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.com/" title="이 블로그는 가장 앞선 개인 발행 도구인 워드프레스로 운영됩니다.">WordPress.com</a></li>			</ul>
+			</aside><aside id="linkcat-34305701" class="widget widget_links"><h3 class="widget-title">Blog Link - Human &amp; Life</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://blog.naver.com/indizio" target="_blank">indizio</a></li>
+<li><a href="http://gedoc.tistory.com/" target="_blank">제닥 일기(제너럴닥터스)</a></li>
+
+	</ul>
+</aside>
+<aside id="linkcat-34305684" class="widget widget_links"><h3 class="widget-title">Blog Link - IT, New Tech.</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://channy.creation.net/" target="_blank">Channy’s Blog</a></li>
+<li><a href="http://blog.naver.com/dukeom" title="내 블로그" target="_blank">Dukeom's Blog(naver)</a></li>
+<li><a href="http://www.multiwriter.co.kr/" target="_blank">멀티라이터</a></li>
+<li><a href="http://deuxdoom.net/" target="_blank">불가리의 요거 조거</a></li>
+<li><a href="http://estima.wordpress.com/" target="_blank">에스티마의 인터넷이야기</a></li>
+<li><a href="http://blog.naver.com/dcknsk" target="_blank">지구별에서-아이폰이야기</a></li>
+<li><a href="http://jamiepark.wordpress.com/" target="_blank">Jamie Loves Social Media</a></li>
+<li><a href="http://sungmoon.wordpress.com/" target="_blank">Sungmoon's Blog</a></li>
+<li><a href="http://ryueyes11.tistory.com/" target="_blank">T.B의 SNS 이야기</a></li>
+<li><a href="http://yckim.wordpress.com/" target="_blank">YCKim's Blog</a></li>
+
+	</ul>
+</aside>
+<aside id="linkcat-198162136" class="widget widget_links"><h3 class="widget-title">커뮤니티</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.mozilla.or.kr/ko/firefox/" title="한국 모질라"><img src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/110x32arrow_b.png" alt="Firefox 다운로드" title="한국 모질라"></a></li>
+
+	</ul>
+</aside>
+			</div><!-- .widget-area -->
+		</div><!-- .sidebar-inner -->
+	</div><!-- #tertiary -->
+
+		</div><!-- #main -->
+		<footer id="colophon" class="site-footer" role="contentinfo">
+				<div id="secondary" class="sidebar-container" role="complementary">
+		<div class="widget-area masonry" style="position: relative; height: 1655px;">
+					<aside id="recent-posts-3" class="widget widget_recent_entries masonry-brick" style="position: absolute; left: 0px; top: 0px;">		<h3 class="widget-title">최근 글</h3>		<ul>
+											<li>
+					<a href="https://dukeom.wordpress.com/2017/08/11/spring-rest-api-%ed%98%b8%ec%b6%9c%ec%8b%9c-tomcat%ec%97%90%ec%84%9c-404-%ec%97%90%eb%9f%ac/">spring rest api 호출시 tomcat에서 404&nbsp;에러</a>
+									</li>
+											<li>
+					<a href="https://dukeom.wordpress.com/2017/03/20/jenkinsgithubmaven-%ec%9c%bc%eb%a1%9c-%eb%b9%8c%eb%93%9c%eb%b0%b0%ed%8f%ac%ed%95%98%ea%b8%b0-44/">Jenkins/github/maven 으로 빌드&amp;배포하기-4/4</a>
+									</li>
+											<li>
+					<a href="https://dukeom.wordpress.com/2017/03/20/jenkinsgithubmaven-%ec%9c%bc%eb%a1%9c-%eb%b9%8c%eb%93%9c%eb%b0%b0%ed%8f%ac%ed%95%98%ea%b8%b0-34/">Jenkins/github/maven 으로 빌드&amp;배포하기-3/4</a>
+									</li>
+											<li>
+					<a href="https://dukeom.wordpress.com/2017/03/20/jenkinsgithubmaven-%ec%9c%bc%eb%a1%9c-%eb%b9%8c%eb%93%9c%eb%b0%b0%ed%8f%ac%ed%95%98%ea%b8%b0-24/">Jenkins/github/maven 으로 빌드&amp;배포하기-2/4</a>
+									</li>
+											<li>
+					<a href="https://dukeom.wordpress.com/2017/03/19/jenkinsgithubmaven-%ec%9c%bc%eb%a1%9c-%eb%b9%8c%eb%93%9c%eb%b0%b0%ed%8f%ac%ed%95%98%ea%b8%b0-14/">Jenkins/github/maven 으로 빌드&amp;배포하기-1/4</a>
+									</li>
+					</ul>
+		</aside><aside id="wp_tag_cloud-2" class="widget wp_widget_tag_cloud masonry-brick" style="position: absolute; left: 248px; top: 0px;"><h3 class="widget-title"></h3><div style="overflow:hidden"><ul class="wp-tag-cloud" role="list">
+	<li><a href="https://dukeom.wordpress.com/tag/adobe-cs5/" class="tag-cloud-link tag-link-22694276 tag-link-position-1" style="font-size: 8pt;" aria-label="Adobe CS5 (1 아이템)">Adobe CS5</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/aes256/" class="tag-cloud-link tag-link-39905544 tag-link-position-2" style="font-size: 12.2pt;" aria-label="AES256 (2 아이템)">AES256</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/agile/" class="tag-cloud-link tag-link-11287 tag-link-position-3" style="font-size: 12.2pt;" aria-label="Agile (2 아이템)">Agile</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/android/" class="tag-cloud-link tag-link-641922 tag-link-position-4" style="font-size: 15pt;" aria-label="Android (3 아이템)">Android</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/apache/" class="tag-cloud-link tag-link-3768 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 아이템)">apache</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/centos/" class="tag-cloud-link tag-link-134600 tag-link-position-6" style="font-size: 15pt;" aria-label="Centos (3 아이템)">Centos</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/cmake/" class="tag-cloud-link tag-link-546665 tag-link-position-7" style="font-size: 8pt;" aria-label="cmake (1 아이템)">cmake</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/comiczeal/" class="tag-cloud-link tag-link-13901990 tag-link-position-8" style="font-size: 8pt;" aria-label="ComicZeal (1 아이템)">ComicZeal</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/eclipse/" class="tag-cloud-link tag-link-18466 tag-link-position-9" style="font-size: 19.2pt;" aria-label="eclipse (5 아이템)">eclipse</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/ftp/" class="tag-cloud-link tag-link-10522 tag-link-position-10" style="font-size: 12.2pt;" aria-label="ftp (2 아이템)">ftp</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/github/" class="tag-cloud-link tag-link-5603054 tag-link-position-11" style="font-size: 17.333333333333pt;" aria-label="github (4 아이템)">github</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/give-party/" class="tag-cloud-link tag-link-5377241 tag-link-position-12" style="font-size: 8pt;" aria-label="Give Party (1 아이템)">Give Party</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/ipad/" class="tag-cloud-link tag-link-580102 tag-link-position-13" style="font-size: 8pt;" aria-label="iPad (1 아이템)">iPad</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/ipadtablet/" class="tag-cloud-link tag-link-45766442 tag-link-position-14" style="font-size: 17.333333333333pt;" aria-label="iPad(Tablet) (4 아이템)">iPad(Tablet)</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/itunes/" class="tag-cloud-link tag-link-1844 tag-link-position-15" style="font-size: 8pt;" aria-label="itunes (1 아이템)">itunes</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/jailbreakme/" class="tag-cloud-link tag-link-2393960 tag-link-position-16" style="font-size: 8pt;" aria-label="jailbreakme (1 아이템)">jailbreakme</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/java/" class="tag-cloud-link tag-link-1017 tag-link-position-17" style="font-size: 15pt;" aria-label="java (3 아이템)">java</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/jekins/" class="tag-cloud-link tag-link-96398957 tag-link-position-18" style="font-size: 17.333333333333pt;" aria-label="jekins (4 아이템)">jekins</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/jquery/" class="tag-cloud-link tag-link-203308 tag-link-position-19" style="font-size: 15pt;" aria-label="jQuery (3 아이템)">jQuery</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/linux/" class="tag-cloud-link tag-link-610 tag-link-position-20" style="font-size: 20.833333333333pt;" aria-label="linux (6 아이템)">linux</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/maven/" class="tag-cloud-link tag-link-47862 tag-link-position-21" style="font-size: 19.2pt;" aria-label="Maven (5 아이템)">Maven</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/mysql-2/" class="tag-cloud-link tag-link-35100804 tag-link-position-22" style="font-size: 20.833333333333pt;" aria-label="mysql (6 아이템)">mysql</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/php-2/" class="tag-cloud-link tag-link-25985434 tag-link-position-23" style="font-size: 12.2pt;" aria-label="php (2 아이템)">php</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/rest/" class="tag-cloud-link tag-link-15314 tag-link-position-24" style="font-size: 12.2pt;" aria-label="REST (2 아이템)">REST</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/rooting/" class="tag-cloud-link tag-link-2710291 tag-link-position-25" style="font-size: 8pt;" aria-label="rooting (1 아이템)">rooting</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/ruby/" class="tag-cloud-link tag-link-4872 tag-link-position-26" style="font-size: 12.2pt;" aria-label="Ruby (2 아이템)">Ruby</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/seoul/" class="tag-cloud-link tag-link-90141 tag-link-position-27" style="font-size: 8pt;" aria-label="Seoul (1 아이템)">Seoul</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/setting/" class="tag-cloud-link tag-link-28537 tag-link-position-28" style="font-size: 8pt;" aria-label="setting (1 아이템)">setting</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/setup/" class="tag-cloud-link tag-link-17177 tag-link-position-29" style="font-size: 8pt;" aria-label="setup (1 아이템)">setup</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/spring/" class="tag-cloud-link tag-link-9486 tag-link-position-30" style="font-size: 19.2pt;" aria-label="spring (5 아이템)">spring</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/spring-framework/" class="tag-cloud-link tag-link-68724 tag-link-position-31" style="font-size: 8pt;" aria-label="Spring Framework (1 아이템)">Spring Framework</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/svn/" class="tag-cloud-link tag-link-164684 tag-link-position-32" style="font-size: 12.2pt;" aria-label="svn (2 아이템)">svn</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/talent/" class="tag-cloud-link tag-link-28168 tag-link-position-33" style="font-size: 8pt;" aria-label="talent (1 아이템)">talent</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/termina/" class="tag-cloud-link tag-link-1150011 tag-link-position-34" style="font-size: 8pt;" aria-label="termina (1 아이템)">termina</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/tomcat/" class="tag-cloud-link tag-link-7585 tag-link-position-35" style="font-size: 22pt;" aria-label="tomcat (7 아이템)">tomcat</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/tomcat7/" class="tag-cloud-link tag-link-38300799 tag-link-position-36" style="font-size: 8pt;" aria-label="tomcat7 (1 아이템)">tomcat7</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/trac/" class="tag-cloud-link tag-link-27507 tag-link-position-37" style="font-size: 12.2pt;" aria-label="Trac (2 아이템)">Trac</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/twestival/" class="tag-cloud-link tag-link-11502798 tag-link-position-38" style="font-size: 8pt;" aria-label="Twestival (1 아이템)">Twestival</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/twitter/" class="tag-cloud-link tag-link-599182 tag-link-position-39" style="font-size: 8pt;" aria-label="twitter (1 아이템)">twitter</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/upload/" class="tag-cloud-link tag-link-20203 tag-link-position-40" style="font-size: 12.2pt;" aria-label="upload (2 아이템)">upload</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/windows/" class="tag-cloud-link tag-link-800 tag-link-position-41" style="font-size: 12.2pt;" aria-label="windows (2 아이템)">windows</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/windows8/" class="tag-cloud-link tag-link-17315706 tag-link-position-42" style="font-size: 22pt;" aria-label="windows8 (7 아이템)">windows8</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/wordpress/" class="tag-cloud-link tag-link-33 tag-link-position-43" style="font-size: 22pt;" aria-label="wordpress (7 아이템)">wordpress</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/workbench/" class="tag-cloud-link tag-link-243093 tag-link-position-44" style="font-size: 8pt;" aria-label="workbench (1 아이템)">workbench</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/z4root/" class="tag-cloud-link tag-link-45990239 tag-link-position-45" style="font-size: 8pt;" aria-label="z4root (1 아이템)">z4root</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ea%b3%a0%eb%a0%a4%eb%8c%80/" class="tag-cloud-link tag-link-4418794 tag-link-position-46" style="font-size: 8pt;" aria-label="고려대 (1 아이템)">고려대</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ea%b4%91%ec%95%bc/" class="tag-cloud-link tag-link-29711792 tag-link-position-47" style="font-size: 8pt;" aria-label="광야 (1 아이템)">광야</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ea%b7%80%ec%b2%9c/" class="tag-cloud-link tag-link-170944 tag-link-position-48" style="font-size: 8pt;" aria-label="귀천 (1 아이템)">귀천</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ea%b7%b8%eb%85%80%ec%9d%98-%ea%bf%88/" class="tag-cloud-link tag-link-34368707 tag-link-position-49" style="font-size: 8pt;" aria-label="그녀의 꿈 (1 아이템)">그녀의 꿈</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ea%b9%80%ec%98%88%ec%8a%ac/" class="tag-cloud-link tag-link-32754357 tag-link-position-50" style="font-size: 12.2pt;" aria-label="김예슬 (2 아이템)">김예슬</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ea%bf%88%ec%9d%84-%ec%b0%be%eb%8a%94%ea%b2%8c-%ea%bf%88%ec%9d%b4-%eb%8f%bc-%eb%b2%84%eb%a6%b0-%ec%84%b8%eb%8c%80/" class="tag-cloud-link tag-link-34418942 tag-link-position-51" style="font-size: 8pt;" aria-label="꿈을 찾는게 꿈이 돼 버린 세대 (1 아이템)">꿈을 찾는게 꿈이 돼 버린 세대</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%eb%b0%95%eb%8f%99%ec%8b%9d/" class="tag-cloud-link tag-link-34368708 tag-link-position-52" style="font-size: 8pt;" aria-label="박동식 (1 아이템)">박동식</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%eb%b0%b0%ed%8f%ac/" class="tag-cloud-link tag-link-34732958 tag-link-position-53" style="font-size: 19.2pt;" aria-label="배포 (5 아이템)">배포</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%eb%b9%8c%eb%93%9c/" class="tag-cloud-link tag-link-56668687 tag-link-position-54" style="font-size: 17.333333333333pt;" aria-label="빌드 (4 아이템)">빌드</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%82%ac%eb%ac%b4%ec%97%98%ec%9a%b8%eb%a7%8c/" class="tag-cloud-link tag-link-35498810 tag-link-position-55" style="font-size: 8pt;" aria-label="사무엘울만 (1 아이템)">사무엘울만</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%84%a4%ec%b9%98/" class="tag-cloud-link tag-link-99691 tag-link-position-56" style="font-size: 22pt;" aria-label="설치 (7 아이템)">설치</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%86%8c%eb%b9%84%ec%9e%90/" class="tag-cloud-link tag-link-5122433 tag-link-position-57" style="font-size: 8pt;" aria-label="소비자 (1 아이템)">소비자</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%8a%a4%ed%94%84%eb%a7%81%ec%8b%9c%ed%81%90%eb%a6%ac%ed%8b%b0/" class="tag-cloud-link tag-link-396293279 tag-link-position-58" style="font-size: 12.2pt;" aria-label="스프링시큐리티 (2 아이템)">스프링시큐리티</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%95%88%eb%93%9c%eb%a1%9c%ec%9d%b4%eb%93%9c/" class="tag-cloud-link tag-link-15235831 tag-link-position-59" style="font-size: 15pt;" aria-label="안드로이드 (3 아이템)">안드로이드</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%96%b4%ed%94%8c/" class="tag-cloud-link tag-link-16213544 tag-link-position-60" style="font-size: 8pt;" aria-label="어플 (1 아이템)">어플</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%97%b0%eb%8f%99/" class="tag-cloud-link tag-link-28828164 tag-link-position-61" style="font-size: 12.2pt;" aria-label="연동 (2 아이템)">연동</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%9a%95%ea%b5%ac/" class="tag-cloud-link tag-link-14024186 tag-link-position-62" style="font-size: 8pt;" aria-label="욕구 (1 아이템)">욕구</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%9b%8c%eb%93%9c%ed%94%84%eb%a0%88%ec%8a%a4/" class="tag-cloud-link tag-link-2010669 tag-link-position-63" style="font-size: 12.2pt;" aria-label="워드프레스 (2 아이템)">워드프레스</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%9d%b4%ec%9c%a1%ec%82%ac/" class="tag-cloud-link tag-link-47056301 tag-link-position-64" style="font-size: 8pt;" aria-label="이육사 (1 아이템)">이육사</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%9e%90%ed%87%b4/" class="tag-cloud-link tag-link-32754359 tag-link-position-65" style="font-size: 8pt;" aria-label="자퇴 (1 아이템)">자퇴</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%a0%84%ec%9e%90%ec%a0%95%eb%b6%80/" class="tag-cloud-link tag-link-6604258 tag-link-position-66" style="font-size: 12.2pt;" aria-label="전자정부 (2 아이템)">전자정부</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%a0%9c%eb%a1%9c%eb%b3%b4%eb%93%9cxe/" class="tag-cloud-link tag-link-64312581 tag-link-position-67" style="font-size: 12.2pt;" aria-label="제로보드XE (2 아이템)">제로보드XE</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%a2%8b%ec%9d%80-%ec%95%84%ec%b9%a8-%ec%a2%8b%ec%9d%80-%ed%8e%b8%ec%a7%80/" class="tag-cloud-link tag-link-34368706 tag-link-position-68" style="font-size: 8pt;" aria-label="좋은 아침 좋은 편지 (1 아이템)">좋은 아침 좋은 편지</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%b1%85%ec%9e%84/" class="tag-cloud-link tag-link-4183171 tag-link-position-69" style="font-size: 8pt;" aria-label="책임 (1 아이템)">책임</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%b2%9c%ec%83%81%eb%b3%91/" class="tag-cloud-link tag-link-35550607 tag-link-position-70" style="font-size: 8pt;" aria-label="천상병 (1 아이템)">천상병</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ec%b2%ad%ec%b6%98/" class="tag-cloud-link tag-link-13588760 tag-link-position-71" style="font-size: 8pt;" aria-label="청춘 (1 아이템)">청춘</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ed%83%88%ec%98%a5/" class="tag-cloud-link tag-link-27242932 tag-link-position-72" style="font-size: 8pt;" aria-label="탈옥 (1 아이템)">탈옥</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ed%8c%8c%ec%9d%bc%eb%b3%b5%ec%82%ac/" class="tag-cloud-link tag-link-38013647 tag-link-position-73" style="font-size: 8pt;" aria-label="파일복사 (1 아이템)">파일복사</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ed%95%9c%ea%b8%80/" class="tag-cloud-link tag-link-2842 tag-link-position-74" style="font-size: 12.2pt;" aria-label="한글 (2 아이템)">한글</a></li>
+	<li><a href="https://dukeom.wordpress.com/tag/%ed%95%9c%ea%b8%80%ed%82%a4%eb%b3%b4%eb%93%9c/" class="tag-cloud-link tag-link-40704445 tag-link-position-75" style="font-size: 8pt;" aria-label="한글키보드 (1 아이템)">한글키보드</a></li>
+</ul>
+</div></aside><aside id="rss_links-3" class="widget widget_rss_links masonry-brick" style="position: absolute; left: 496px; top: 0px;"><h3 class="widget-title">Dukeom’s blog</h3><ul><li><a href="https://dukeom.wordpress.com/feed/" title="글에 구독하기">RSS - 글</a></li><li><a href="https://dukeom.wordpress.com/comments/feed/" title="댓글에 구독하기">RSS - 댓글</a></li></ul>
+</aside><aside id="archives-2" class="widget widget_archive masonry-brick" style="position: absolute; left: 496px; top: 159px;"><h3 class="widget-title">글 목록</h3>		<ul>
+			<li><a href="https://dukeom.wordpress.com/2017/08/">2017년 8월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2017/03/">2017년 3월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2017/02/">2017년 2월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2016/11/">2016년 11월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2016/10/">2016년 10월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2016/06/">2016년 6월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2016/04/">2016년 4월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2016/02/">2016년 2월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2014/09/">2014년 9월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2014/05/">2014년 5월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2013/10/">2013년 10월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2013/09/">2013년 9월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2013/07/">2013년 7월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2013/03/">2013년 3월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2013/02/">2013년 2월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2013/01/">2013년 1월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/12/">2012년 12월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/11/">2012년 11월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/10/">2012년 10월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/09/">2012년 9월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/08/">2012년 8월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/07/">2012년 7월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/06/">2012년 6월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/05/">2012년 5월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/04/">2012년 4월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/03/">2012년 3월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/02/">2012년 2월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2012/01/">2012년 1월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2011/12/">2011년 12월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2011/11/">2011년 11월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2011/10/">2011년 10월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2011/09/">2011년 9월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2011/08/">2011년 8월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2011/06/">2011년 6월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2011/05/">2011년 5월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2011/04/">2011년 4월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2011/02/">2011년 2월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2010/12/">2010년 12월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2010/09/">2010년 9월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2010/08/">2010년 8월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2010/07/">2010년 7월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2010/06/">2010년 6월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2010/05/">2010년 5월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2010/04/">2010년 4월</a></li>
+	<li><a href="https://dukeom.wordpress.com/2010/03/">2010년 3월</a></li>
+		</ul>
+		</aside><aside id="linkcat-34305701" class="widget widget_links masonry-brick" style="position: absolute; left: 0px; top: 361px;"><h3 class="widget-title">Blog Link - Human &amp; Life</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://blog.naver.com/indizio" target="_blank">indizio</a></li>
+<li><a href="http://gedoc.tistory.com/" target="_blank">제닥 일기(제너럴닥터스)</a></li>
+
+	</ul>
+</aside>
+<aside id="linkcat-34305684" class="widget widget_links masonry-brick" style="position: absolute; left: 0px; top: 543px;"><h3 class="widget-title">Blog Link - IT, New Tech.</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://channy.creation.net/" target="_blank">Channy’s Blog</a></li>
+<li><a href="http://blog.naver.com/dukeom" title="내 블로그" target="_blank">Dukeom's Blog(naver)</a>
+내 블로그</li>
+<li><a href="http://www.multiwriter.co.kr/" target="_blank">멀티라이터</a></li>
+<li><a href="http://deuxdoom.net/" target="_blank">불가리의 요거 조거</a></li>
+<li><a href="http://estima.wordpress.com/" target="_blank">에스티마의 인터넷이야기</a></li>
+<li><a href="http://blog.naver.com/dcknsk" target="_blank">지구별에서-아이폰이야기</a></li>
+<li><a href="http://jamiepark.wordpress.com/" target="_blank">Jamie Loves Social Media</a></li>
+<li><a href="http://sungmoon.wordpress.com/" target="_blank">Sungmoon's Blog</a></li>
+<li><a href="http://ryueyes11.tistory.com/" target="_blank">T.B의 SNS 이야기</a></li>
+<li><a href="http://yckim.wordpress.com/" target="_blank">YCKim's Blog</a></li>
+
+	</ul>
+</aside>
+<aside id="linkcat-198162136" class="widget widget_links masonry-brick" style="position: absolute; left: 248px; top: 907px;"><h3 class="widget-title">커뮤니티</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.mozilla.or.kr/ko/firefox/" title="한국 모질라"><img src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/110x32arrow_b.png" alt="Firefox 다운로드 한국 모질라" title="한국 모질라"> Firefox 다운로드</a>
+한국 모질라</li>
+
+	</ul>
+</aside>
+		</div><!-- .widget-area -->
+	</div><!-- #secondary -->
+
+			<div class="site-info">
+								<a href="https://wordpress.com/?ref=footer_website">WordPress.com에서 무료 웹사이트 또는 블로그 만들기.</a>
+			</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+	<!--  -->
+<script type="text/javascript" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/gprofiles.js.다운로드"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/wpgroho.js.다운로드"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-5c07f6adfdee48328ec2a504a0abeae8">
+	</div>
+	<div class="grofile-hash-map-1bfdec514ef252fe6ed84edf5f999e12">
+	</div>
+	</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"\ub85c\uadf8\uc778 \uc911\u2026","submittingText":"\ub313\uae00 \uac8c\uc2dc \uc911\u2026","postCommentText":"\ub313\uae00 \ub2ec\uae30","connectingToText":"%s\uc5d0 \uc5f0\uacb0\ud558\ub294 \uc911","commentingAsText":"%2$s\uc758 \uacc4\uc815 %1$s\uc744(\ub97c) \uc0ac\uc6a9\ud558\uc5ec \ub313\uae00\uc744 \ub0a8\uae41\ub2c8\ub2e4.","logoutText":"\ub85c\uadf8\uc544\uc6c3","loginText":"\ub85c\uadf8\uc778","connectURL":"https:\/\/dukeom.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"https:\/\/dukeom.wordpress.com\/wp-login.php?action=logout&_wpnonce=598a4c1af5","homeURL":"https:\/\/dukeom.wordpress.com\/","postID":"1074","gravDefault":"identicon","enterACommentError":"\ub313\uae00\uc744 \uc785\ub825\ud558\uc138\uc694","enterEmailError":"\uc5ec\uae30\uc5d0 \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \uc785\ub825\ud558\uc138\uc694","invalidEmailError":"\uc798\ubabb\ub41c \uc804\uc790 \uc6b0\ud3b8 \uc8fc\uc18c\uc785\ub2c8\ub2e4.","enterAuthorError":"\uc5ec\uae30\uc5d0 \uc774\ub984\uc744 \uc785\ub825\ud558\uc138\uc694","gravatarFromEmail":"\ub313\uae00\uc744 \ub0a8\uae38 \ub54c\ub9c8\ub2e4 \uc774 \uc0ac\uc9c4\uc774 \ud45c\uc2dc\ub429\ub2c8\ub2e4. \ud074\ub9ad\ud558\uc5ec \ucee4\uc2a4\ud130\ub9c8\uc774\uc9d5\ud558\uc138\uc694.","logInToExternalAccount":"\uc774 \uc18c\uc15c \ub124\ud2b8\uc6cc\ud06c \uc911 \ud558\ub098\ub97c \uc774\uc6a9\ud558\uc5ec \ub85c\uadf8 \uc778 \ud558\uc138\uc694.","change":"\ubcc0\uacbd","changeAccount":"\uacc4\uc815 \ubcc0\uacbd","comment_registration":"0","userIsLoggedIn":"","isJetpack":"","text_direction":"ltr"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource(4)"></script>
+
+	<div id="carousel-reblog-box">
+		<form action="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="생각을 여기에 적으세요... (선택사항)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">다음에 게시:</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/#" class="cancel">취소</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="글 퍼가기">
+				<input type="hidden" id="carousel-reblog-blog-id" value="12776344">
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://dukeom.wordpress.com">
+				<input type="hidden" id="carousel-reblog-blog-title" value="Dukeom&#39;s Blog">
+				<input type="hidden" id="carousel-reblog-post-url" value="">
+				<input type="hidden" id="carousel-reblog-post-title" value="">
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="339821b59b"><input type="hidden" name="_wp_http_referer" value="/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/">		</form>
+
+		<div class="arrow"></div>
+	</div>
+<script type="text/javascript" charset="UTF-8" id="polldaddyRatings"><!--//--><![CDATA[//><!--
+PDRTJS_settings_1677984_post_1074={"id":1677984,"unique_id":"wp-post-1074","title":"Eclipse%EC%97%90%EC%84%9C%20.properties%20%ED%8C%8C%EC%9D%BC%EC%9D%98%20%ED%95%9C%EA%B8%80%EC%9D%B4%26nbsp%3B%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0","permalink":"https:\/\/dukeom.wordpress.com\/2016\/04\/16\/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0\/","item_id":"_post_1074"}; if ( typeof PDRTJS_RATING !== 'undefined' ){if ( typeof PDRTJS_1677984_post_1074 == 'undefined' ){PDRTJS_1677984_post_1074 = new PDRTJS_RATING( PDRTJS_settings_1677984_post_1074 );}}
+//--><!]]></script><script type="text/javascript" charset="UTF-8" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/rating.js.다운로드"></script>
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/dukeom.wordpress.com\/2016\/04\/16\/eclipse%ec%97%90%ec%84%9c-properties-%ed%8c%8c%ec%9d%bc%ec%9d%98-%ed%95%9c%ea%b8%80%ec%9d%b4-%ea%b9%a8%ec%a7%88%ea%b2%bd%ec%9a%b0\/":1074};
+	</script>
+		<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+		<script type="text/javascript" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource(5)"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?m=1363304414h&amp;ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+// Infinite scroll support
+jQuery( function( $ ) {
+	$( document.body ).on( 'post-load', function() {
+		SyntaxHighlighter.highlight();
+	} );
+} );
+</script>
+<link rel="stylesheet" id="all-css-0-3" href="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/jetpack-carousel.css" type="text/css" media="all">
+<!--[if lte IE 8]>
+<link rel='stylesheet' id='jetpack-carousel-ie8fix-css'  href='https://s1.wp.com/wp-content/mu-plugins/carousel/jetpack-carousel-ie8fix.css?m=1412618825h&#038;ver=20121024' type='text/css' media='all' />
+<![endif]-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"12776344","siteName":"Dukeom's Blog","siteURL":"http:\/\/dukeom.wordpress.com","icon":"<img alt='' src='https:\/\/s1.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/twentythirteen","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/dukeom.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fdukeom.wordpress.com%2F2016%2F04%2F16%2Feclipse%25ec%2597%2590%25ec%2584%259c-properties-%25ed%258c%258c%25ec%259d%25bc%25ec%259d%2598-%25ed%2595%259c%25ea%25b8%2580%25ec%259d%25b4-%25ea%25b9%25a8%25ec%25a7%2588%25ea%25b2%25bd%25ec%259a%25b0%2F","themeURL":"https:\/\/wordpress.com\/theme\/twentythirteen\/","xhrURL":"https:\/\/dukeom.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"e1a5d8c904","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"10f07737eb\" \/>","referer":"https:\/\/dukeom.wordpress.com\/2016\/04\/16\/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0\/","canFollow":"1","feedID":"8435541","statusMessage":"","customizeLink":"https:\/\/dukeom.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fdukeom.wordpress.com%2F2016%2F04%2F16%2Feclipse%25EC%2597%2590%25EC%2584%259C-properties-%25ED%258C%258C%25EC%259D%25BC%25EC%259D%2598-%25ED%2595%259C%25EA%25B8%2580%25EC%259D%25B4-%25EA%25B9%25A8%25EC%25A7%2588%25EA%25B2%25BD%25EC%259A%25B0%2F","postID":"1074","shortlink":"https:\/\/wp.me\/pRBI4-hk","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/dukeom.wordpress.com\/1074","statsLink":"https:\/\/wordpress.com\/stats\/post\/1074\/dukeom.wordpress.com","i18n":{"view":"\uc0ac\uc774\ud2b8 \ubcf4\uae30","follow":"\ud314\ub85c\uc6b0","following":"\ud314\ub85c\uc6b0\uc911","edit":"\ud3b8\uc9d1","login":"\ub85c\uadf8\uc778","signup":"\uac00\uc785","customize":"\uc0ac\uc6a9\uc790 \uc815\uc758\ud558\uae30","report":"\uc774 \ucf58\ud150\uce20 \uc2e0\uace0\ud558\uae30","themeInfo":"\ud14c\ub9c8 \uac00\uc838\uc624\uae30: Twenty Thirteen","shortlink":"\ub2e8\ucd95 \ub9c1\ud06c \ubcf5\uc0ac","copied":"\ubcf5\uc0ac\ub428","followedText":"\uc774 \uc0ac\uc774\ud2b8\uc758 \uc0c8 \uae00\uc774 \uc774\uc81c <a href=\"https:\/\/wordpress.com\/\">\ub274\uc2a4\ud53c\ub4dc<\/a>\uc5d0 \ud45c\uc2dc\ub429\ub2c8\ub2e4.","foldBar":"\uc774 \ud45c\uc2dc\uc904 \ucd95\uc18c","unfoldBar":"\uc774 \ud45c\uc2dc\uc904 \ud655\uc7a5","editSubs":"\uad6c\ub3c5 \uad00\ub9ac","viewReader":"\ub9ac\ub354\uc5d0\uc11c \uc0ac\uc774\ud2b8 \ubcf4\uae30","viewReadPost":"View post in Reader","subscribe":"\uac00\uc785\ud558\uae30","enterEmail":"\uc774\uba54\uc77c \uc8fc\uc18c \uc785\ub825","followers":"\ub2e4\ub978 781\uba85\uc758 \ud314\ub85c\uc6cc\uc640 \ud568\uaed8 \ud558\uc138\uc694","alreadyUser":"\uc774\ubbf8 \uc6cc\ub4dc\ud504\ub808\uc2a4\ub2f7\ucef4 \uacc4\uc815\uc744 \uac16\uace0 \uacc4\uc138\uc694? <a href=\"https:\/\/dukeom.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fdukeom.wordpress.com%2F2016%2F04%2F16%2Feclipse%25ec%2597%2590%25ec%2584%259c-properties-%25ed%258c%258c%25ec%259d%25bc%25ec%259d%2598-%25ed%2595%259c%25ea%25b8%2580%25ec%259d%25b4-%25ea%25b9%25a8%25ec%25a7%2588%25ea%25b2%25bd%25ec%259a%25b0%2F\">\uc9c0\uae08 \ub85c\uadf8\uc778\ud558\uc138\uc694.<\/a>","stats":"\ud1b5\uacc4"}};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"ko","ajaxurl":"https:\/\/dukeom.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"c50e756ddc","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"\ub313\uae00","post_comment":"\ub313\uae00 \ub2ec\uae30","write_comment":"\ub313\uae00 \ub2ec\uae30...","loading_comments":"\ub313\uae00 \ub85c\ub4dc\uc911...","download_original":"\uc804\uccb4 \ud06c\uae30 <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span> \ubcf4\uae30","no_comment_text":"\ub313\uae00\ub85c \uba87\uac1c\uc758 \uae00\uc790\ub97c \uaf2d \uc62c\ub824\uc8fc\uc138\uc694.","no_comment_email":"\ub313\uae00\uc5d0 \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \ub123\uc5b4\uc8fc\uc138\uc694.","no_comment_author":"\ub313\uae00\uc5d0 \uc774\ub984\uc744 \ub123\uc5b4\uc8fc\uc138\uc694.","comment_post_error":"\uc8c4\uc1a1\ud569\ub2c8\ub2e4. \ub313\uae00\uc744 \uc62c\ub9ac\ub294\ub370 \uc5d0\ub7ec\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4. \ub098\uc911\uc5d0 \ub2e4\uc2dc \ud574\uc8fc\uc138\uc694.","comment_approved":"\ub313\uae00\uc774 \uc2b9\uc778\ub410\uc2b5\ub2c8\ub2e4.","comment_unapproved":"\ub313\uae00\uc774 \uc2b9\uc778 \uad00\ub9ac \uc911\uc785\ub2c8\ub2e4.","camera":"\uce74\uba54\ub77c","aperture":"\uc870\ub9ac\uac1c","shutter_speed":"\uc154\ud130 \uc18d\ub3c4","focal_length":"\ucd1b\uc810 \uac70\ub9ac","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/dukeom.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fdukeom.wordpress.com%2F2016%2F04%2F16%2Feclipse%25ec%2597%2590%25ec%2584%259c-properties-%25ed%258c%258c%25ec%259d%25bc%25ec%259d%2598-%25ed%2595%259c%25ea%25b8%2580%25ec%259d%25b4-%25ea%25b9%25a8%25ec%25a7%2588%25ea%25b2%25bd%25ec%259a%25b0%2F","blog_id":"12776344","local_comments_commenting_as":"<fieldset><label for=\"email\">\uc774\uba54\uc77c (\ud544\uc218)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">\uc774\ub984 (\ud544\uc218)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">\uc6f9\uc0ac\uc774\ud2b8<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>","reblog":"\ud37c\uac00\uae30","reblogged":"\ud37c\uac10","reblog_add_thoughts":"\uc0dd\uac01\uc744 \uc5ec\uae30\uc5d0 \uc801\uc73c\uc138\uc694... (\uc120\ud0dd\uc0ac\ud56d)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=12776344&v=wpcom&tz=9&user_id=0&subd=dukeom","is_public":"1","reblog_enabled":""};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/saved_resource(6)"></script><div id="actionbar" class="actnbr-pub-twentythirteen actnbr-has-follow actnbr-hidden"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>팔로우</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="http://dukeom.wordpress.com/"><img alt="" src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/wpcom-gray-white.png" class="avatar avatar-50" height="50" width="50"> Dukeom's Blog</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://dukeom.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fdukeom.wordpress.com%2F2016%2F04%2F16%2Feclipse%25EC%2597%2590%25EC%2584%259C-properties-%25ED%258C%258C%25EC%259D%25BC%25EC%259D%2598-%25ED%2595%259C%25EA%25B8%2580%25EC%259D%25B4-%25EA%25B9%25A8%25EC%25A7%2588%25EA%25B2%25BD%25EC%259A%25B0%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>사용자 정의하기<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>팔로우</span></a></li> 					<li class="actnbr-signup actnbr-hidden"><a href="https://wordpress.com/start/">가입</a></li> 				    <li class="actnbr-login actnbr-hidden"><a href="https://dukeom.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fdukeom.wordpress.com%2F2016%2F04%2F16%2Feclipse%25ec%2597%2590%25ec%2584%259c-properties-%25ed%258c%258c%25ec%259d%25bc%25ec%259d%2598-%25ed%2595%259c%25ea%25b8%2580%25ec%259d%25b4-%25ea%25b9%25a8%25ec%25a7%2588%25ea%25b2%25bd%25ec%259a%25b0%2F">로그인</a></li> 				     				    <li class="actnbr-shortlink actnbr-hidden"><a href="https://wp.me/pRBI4-hk">단축 링크 복사</a></li> 				    <li class="flb-report actnbr-hidden"><a href="http://en.wordpress.com/abuse/">이 콘텐츠 신고하기</a></li> 				     				     				    <li class="actnbr-subs actnbr-hidden"><a href="https://subscribe.wordpress.com/">구독 관리</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="https://dukeom.wordpress.com/2016/04/16/eclipse%EC%97%90%EC%84%9C-properties-%ED%8C%8C%EC%9D%BC%EC%9D%98-%ED%95%9C%EA%B8%80%EC%9D%B4-%EA%B9%A8%EC%A7%88%EA%B2%BD%EC%9A%B0/">이 표시줄 축소</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> 블로거가 이것을 좋아합니다:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/w.js.다운로드" type="text/javascript" async="" defer=""></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'12776344','blog_tz':'9','user_lang':'ko','blog_lang':'ko','user_id':'0'}]);
+_stq.push(['view', {'blog':'12776344','v':'wpcom','tz':'9','user_id':'0','post':'1074','subd':'dukeom'}]);
+_stq.push(['extra', {'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdWFnNncxc1tjZG9XVXhRMnUzcWhIRkllQ2l2Q3ZyRGZSTUh1fERyNGcuTXlPTGclVz12aXFpJT9ldUpHZWE5JXF6VDYvYnhrUVUzNmlqaExvJSVFWWMxbXZ1dkNMLzB2dGU2P1Usc0RMcnxXZE1ES1BzXWxzZS96dmxTUitxTj1DNWk9QWRPclttRDBhVCZFRXhGLUEvJjRPYy1RZ18wdHdFSFZVaEJjdUZjc2V1Qz0tdTRbNFQyaGd3Yk1raEttP2NWJWRGQ202L2xdTjdkWyslfkh5VzE2ZF8zJnI4YyVmRUtFaVk0Mmd3L1dTbEZXS01neSZOT09xaW0='}]);
+_stq.push([ 'clickTrackerInit', '12776344', '1074' ]);
+	</script>
+<noscript>&lt;img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /&gt;</noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+<img src="./Eclipse에서 .properties 파일의 한글이 깨질경우 _ Dukeom&#39;s Blog_files/g.gif" alt=":)" id="wpstats"><span style="border-radius: 3px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 11px; line-height: 20px; font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; color: rgb(255, 255, 255); background: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjYmQwODFjIj48L3BhdGg+PC9nPjwvc3ZnPg==&quot;) 3px 50% / 14px 14px no-repeat rgb(189, 8, 28); position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; border: none; -webkit-font-smoothing: antialiased; top: 834px; left: 177px;">저장</span><span style="width: 24px; height: 24px; background: url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI0IDI0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxtYXNrIGlkPSJtIj48cmVjdCBmaWxsPSIjZmZmIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHJ4PSI2IiByeT0iNiIvPjxyZWN0IGZpbGw9IiMwMDAiIHg9IjUiIHk9IjUiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgcng9IjEiIHJ5PSIxIi8+PHJlY3QgZmlsbD0iIzAwMCIgeD0iMTAiIHk9IjAiIHdpZHRoPSI0IiBoZWlnaHQ9IjI0Ii8+PHJlY3QgZmlsbD0iIzAwMCIgeD0iMCIgeT0iMTAiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0Ii8+PC9tYXNrPjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNmZmYiIG1hc2s9InVybCgjbSkiLz48L3N2Zz4=&quot;) 50% 50% / 14px 14px no-repeat rgba(0, 0, 0, 0.4); position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; border: none; border-radius: 12px; top: 832px; left: 699px;"></span><div id="__dic_menulayer__" style="z-index: 99999998; padding: 0px; position: absolute; overflow: hidden; white-space: nowrap; left: 327px; top: 655px; width: 118px; display: none;"><a id="m_dic" href="javascript:void(0)" title="선택한 단어나 문장으로 사전 검색이나 번역을 합니다. (Google 번역)" style=""><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/dic.png" border="0"></a><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/blank.png" id="m_dic2_b" style="width: 2px;"><a id="m_dic2" href="javascript:void(0)" title="사전 검색 또는 번역 입력창을 엽니다. (Google 번역)" style=""><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/dic2.png" border="0"></a><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/blank.png" id="m_search_b" style="width: 2px;"><a id="m_search" href="javascript:void(0)" title="웹 검색을 합니다." style=""><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/search.png" border="0"></a><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/blank.png" id="m_search2_b" style="width: 2px; display: none;"><a id="m_search2" href="javascript:void(0)" title="웹 검색 입력창을 엽니다." style="display: none;"><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/search2.png" border="0"></a><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/blank.png" id="m_url_b" style="width: 2px; display: none;"><a id="m_url" href="javascript:void(0)" style="display: none;"><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/internet.png" border="0"></a><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/blank.png" id="m_conf_b" style="width: 2px; display: none;"><a id="m_conf" href="javascript:void(0)" title="옵션" style="display: none;"><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/configure.png" border="0"></a><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/blank.png" id="m_close_b" style="width: 2px; display: none;"><a id="m_close" href="javascript:void(0)" title="도구메뉴를 이 페이지에서 사용하지 않습니다." style="display: none;"><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/close.png" border="0"></a><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/blank.png" id="m_expand_b" style="width: 2px;"><a id="m_expand" href="javascript:void(0)" title="메뉴 확장하기" style=""><img src="chrome-extension://oiplkfaidhjklglajdpfehoagkmlcakh/images/forward.png" border="0"></a></div></body><audio src="" id="naver_dic_audio_controller" controls="controls" style="display: none;"></audio><style>#__dic_layer__ img{ width:auto;height:auto;margin:0px;padding:0px;background-color:transparent;border-color:transparent;border-width:0px;text-shadow:none; display: inline; opacity:1;}#__dic_menulayer__ img{ width:auto;height:auto;margin:0px;padding:0px;background-color:transparent;border-color:transparent;border-width:0px;text-shadow:none; display: inline; opacity:1;}#__dic_waitlayer__ img{ width:auto;height:auto;margin:0px;padding:0px;background-color:transparent;border-color:transparent;border-width:0px;text-shadow:none; display: inline; opacity:1;}#__dic_layer__ a{ font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none;display: inline; background-color:transparent}#__dic_layer__ a:link{ color:#0860A8; }#__dic_layer__ a:visited{ color:#0860A8; }#__dic_layer__ a:active{ color:#0860A8;}#__dic_layer__ a:hover{ color:#0860A8; text-decoration:underline; }#__dic_layer__ div{ font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none;width:auto;height:auto; }#__dic_menulayer__ a{ display: inline; background-color:transparent}#__dic_layer__ tr{ width:auto;height:auto;margin:0px;padding:0px;background-color:transparent;border-color:transparent;border-width:0px;text-shadow:none;font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none; }#__dic_layer__ td{ width:auto;height:auto;margin:0px;padding:0px;background-color:transparent;border-color:transparent;border-width:0px;text-shadow:none;font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none; }#__table_source_open__ { width:auto;height:auto;margin:0px;padding:0px;background-color:transparent;border-color:transparent;border-width:0px;text-shadow:none; }#__dic_source_data__ div{ width:99%; }#__dic_layer__ p{ font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none; }#__dic_layer__ b{ font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none; }#__dic_layer__ ul{ font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none;width:auto;height:auto; padding:0px 0px 0px 4px; margin:0px; list-style-type: disc;}#__dic_layer__ li{ font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none;width:auto;height:auto; padding:0px 0px 0xp 8px; margin:0px; list-style-type: decimal; list-style-position: outside;}#__dic_layer__ span{font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none; }#__dic_layer__ option{font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none; }#__dic_layer__ select{font-size:10pt;color:black; font-family:Arial, Helvetica, sans-serif; text-align: left; letter-spacing:normal;line-height:normal;font-weight: normal;text-shadow:none;background-color:white;width:145px;height: 20px;display:inline-block;border:1px solid transparent;padding: 0px;margin:2px 0px 2px 0px;}</style></html>
