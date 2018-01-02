@@ -1,0 +1,49 @@
+
+
+spring include
+
+.vm 적용시
+
+
+--------------------아래꺼 딴거인듯
+
+1 로그쪽에서 output된 정보를 .vm에 넣었음
+2 로그쪽에서 결과를 얻기 위해 java application을 실행
+
+3 완료후에 .vm에 코드를 넣었슴
+
+171223 수업파일 참조
+
+------------------------------------------
+
+순서
+
+1
+
+Window - Preferences -General - Editors - FileAssociation
+에서 위의 File type : 상자에 Add  (*.vm)
+
+2
+
+1) Window - Preferences -General - ContextType - Text - jsp에서 add (*.vm) 하고 파일만들었다면 다시만듬
+2) 설정 후 서버 재시작
+※ Associated editors : JSP Editor, CSS Editor, Text Editor, Web Page Editor 추가 하면 .vm도 jsp처럼 인식함.
+
+3
+
+이미지대로하고
+ContextType - Text - jsp에서
+
+add(*.vm) 해주시면되용 ㅋㅋㅋ
+지금어디나가봐야되서 이미지먼저드림 ㅋㅋ
+
+
+
+
+
+
+
+
+
+
+
