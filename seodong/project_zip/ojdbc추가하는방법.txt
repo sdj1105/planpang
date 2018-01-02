@@ -1,0 +1,6 @@
+.m2
+
+C:\Users\SeoDong\.m2\repository\com\oracle\ojdbc6\11.1.0.7.0
+이렇게 직접추가해도 되고
+
+import afi어쩌구에 버전이랑 다쓰면서 추가해도됨
